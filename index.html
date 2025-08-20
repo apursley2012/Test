@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Only Windows 98</title>
+  <link rel="stylesheet" href="./style.css">
+
+
+</head>
+<body>
+    
+<!-- partial:index.partial.html -->
+<form id="windows">
+    <!-- Login and Shutdown -->
+    <input type="checkbox" id="login-screen-input" name="login-screen-input" />
+    <input type="checkbox" id="shutdown-screen-input" name="shutdown-screen-input" />
+    <input type="checkbox" name="start-button-input" id="start-button-input" />
+    <input type="radio" name="update-input" id="update-input" />
+    <div id="background"></div>
+    <!-- Minimize Windows -->
+    <input type="checkbox" id="windows-ie-input-min" name="windows-ie-input-min" />
+    <input type="checkbox" id="windows-documents-input-min" name="windows-documents-input-min" />
+    <input type="checkbox" id="windows-help-input-min" name="windows-help-input-min" /> 
+    <input type="checkbox" id="windows-update-input-min" name="windows-update-input-min" />
+    <input type="checkbox" id="windows-notepad-input-min" name="windows-notepad-min" /> 
+    <input type="checkbox" id="windows-minesweeper-input-min" name="windows-minesweeper-input-min" /> 
+    <input type="checkbox" id="windows-trash-input-min" name="windows-trash-input-min" />
+    <!-- Maximize Windows -->
+    <input type="checkbox" id="windows-ie-input-max" name="windows-ie-input-max" />
+    <input type="checkbox" id="windows-documents-input-max" name="windows-documents-input-max" />
+    <input type="checkbox" id="windows-help-input-max" name="windows-help-input-max" /> 
+    <input type="checkbox" id="windows-update-input-max" name="windows-update-input-max" /> 
+    <input type="checkbox" id="windows-notepad-input-max" name="windows-notepad-max" /> 
+    <input type="checkbox" id="windows-minesweeper-input-max" name="windows-minesweeper-input-max" />
+    <input type="checkbox" id="windows-trash-input-max" name="windows-trash-input-max" />
+    <!-- Window Order -->
+    <input type="radio" id="windows-ie-input-on-top" name="windows-order" /> 
+    <input type="radio" id="windows-documents-input-on-top" name="windows-order" />
+    <input type="radio" id="windows-help-input-on-top" name="windows-order" /> 
+    <input type="radio" id="windows-update-input-on-top" name="windows-order" /> 
+    <input type="radio" id="windows-notepad-input-on-top" name="windows-order" />
+    <input type="radio" id="windows-minesweeper-input-on-top" name="windows-order" /> 
+    <input type="radio" id="windows-trash-input-on-top" name="windows-order" />
+    <!-- Window Visibility -->
+    <input type="checkbox" id="windows-ie-input" name="windows-ie-input" />
+    <input type="checkbox" id="windows-documents-input" name="windows-documents-input" />
+    <input type="checkbox" id="windows-help-input" name="windows-help-input" /> 
+    <input type="checkbox" id="windows-update-input" name="windows-update-input" /> 
+    <input type="checkbox" id="windows-notepad-input" name="windows-notepad-input" />
+    <input type="checkbox" id="windows-minesweeper-input" name="windows-minesweeper-input" />
+    <input type="checkbox" id="windows-trash-input" name="windows-trash-input" />
+
+    <div id="shutdown-screen"><label for="shutdown-screen-input"></div>
+    <div id="login-screen">
+        <div id="login-window" class="window windows-box-shadow">
+            <div class="header">Enter Password</div>
+            <div class="content">
+                <img class="icon" data-icon="windows" alt="Windows">
+                <div class="select-box inverse-windows-box-shadow">
+                    <input type="radio" name="users" id="zark-muckerberg" checked />
+                    <input type="radio" name="users" id="donald-trump" />
+                    <input type="radio" name="users" id="spiderman" />
+                    <label for="zark-muckerberg" id="zark-muckerberg-label" />Zark Muckerberg</label>
+                    <label for="donald-trump" id="donald-trump-label" />Donald Trump</label>
+                    <label for="spiderman" id="spiderman-label" />Spiderman</label>
+                </div>
+                <input type="password" class="margin-input inverse-windows-box-shadow" />
+                <div class="ok-cancel">
+                    <label for="login-screen-input" class="windows-box-shadow">OK</label>
+                    <label for="login-screen-input" class="windows-box-shadow">Cancel</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="desktop">
+        <label for="windows-ie-input" class="desktop-item">
+            <div><img class="icon" data-icon="internet-explorer" alt="Internet Explorer"/></div>
+            <div class="text">Internet Explorer</div>
+        </label>
+        <label for="windows-documents-input" class="desktop-item">
+            <div><img class="icon" data-icon="documents" alt="Documents"></div>
+            <div class="text">Documents</div>
+        </label>
+        <label for="windows-notepad-input" class="desktop-item">
+            <div><img class="icon" data-icon="notepad" alt="Notepad"></div>
+            <div class="text">Notepad</div>
+        </label>
+        <label for="windows-minesweeper-input" class="desktop-item">
+            <div><img class="icon" data-icon="minesweeper" alt="Minesweeper"></div>
+            <div class="text">Minesweeper</div>
+        </label>
+        <label for="windows-update-input" class="desktop-item update">
+            <div><img class="icon" data-icon="winUpdate" alt="Update Windows"></div>
+            <div class="text">Update Windows</div>
+        </label>
+        <label for="windows-trash-input" class="desktop-item">
+            <div><img class="icon" data-icon="recycleBin" alt="Recycle Bin"> </div>
+            <div class="text">Recycle Bin</div>
+        </label>
+        <a href="https://fjolt.com/article/css-windows-98" class="desktop-item"><span class="icon"><img class="icon" data-icon="readArticle" alt="Read Article"></span><span class="text">Read Article</span></a>
+    </div>
+    <div id="all-windows">
+        <div class="window ie windows-box-shadow">
+            <div class="header"><label for="windows-ie-input-on-top">FJOLT</label>
+                <div class="header-buttons">
+                    <label for="windows-ie-input-min" class="minimize windows-box-shadow"></label>
+                    <label for="windows-ie-input-max" class="maximize windows-box-shadow"></label>
+                    <label for="windows-ie-input" class="close windows-box-shadow">X</label>
+                </div>
+            </div>
+            <div class="options line">
+                <div class="item">File</div>
+                <div class="item">Edit</div>
+                <div class="item">Views</div>
+                <div class="item">Favorites</div>
+                <div class="item">Tools</div>
+                <div class="item">Help</div>
+                <div class="item float-right"><img class="icon" data-icon="startLogo" alt="Start Logo">></div>
+            </div>
+            <div class="options padding">
+                <div class="item">Address</div>
+                <input type="text" class="inverse-windows-box-shadow" value="https://fjolt.com/" />
+            </div>
+            <div class="content">
+                <iframe src="https://fjolt.com/article/css-windows-98"></iframe>
+            </div>
+        </div>
+        <div class="window help windows-box-shadow">
+            <div class="header"><label for="windows-help-input-on-top">Windows Help</label>
+                <div class="header-buttons">
+                    <label for="windows-help-input-min" class="minimize windows-box-shadow"></label>
+                    <label for="windows-help-input-max" class="maximize windows-box-shadow"></label>
+                    <label for="windows-help-input" class="close windows-box-shadow">X</label>
+                </div>
+            </div>
+            <div class="options padding">
+                <div class="item">Location</div>
+                <input type="text" class="inverse-windows-box-shadow" value="General Help" />
+            </div>
+            <div class="tab-box-content">
+                <input name="topics-radio" id="topic-1" type="radio" checked />
+                <input name="topics-radio" id="topic-2" type="radio" />
+                <input name="topics-radio" id="topic-3" type="radio" />
+                <input name="topics-radio" id="topic-4" type="radio" />
+                <div class="tab-box">
+                    <div class="tab-header">CSS Windows</div>
+                    <ul class="box">
+                        <li><label for="topic-1"><img data-help-icon="help" alt="Help"/> Why is my copy of Windows feature limited?</label></li>
+                        <li><label for="topic-2"><img data-help-icon="help" alt="Help"/> Why can't I move Windows?</label></li>
+                        <li><label for="topic-3"><img data-help-icon="help" alt="Help"/> Is it a good idea to make CSS Windows?</label></li>
+                        <li><label for="topic-4"><img data-help-icon="help" alt="Help"/> How long did it take to make CSS Windows?</label></li>
+                    </ul>
+                </div>
+                <div class="content">
+                    <div class="topic-1-content">
+                        <h2>Why is my copy of Windows feature limited?</h2>
+                        <p>Since this version of Windows was built entirely with CSS, you may notice some features are missing. This is because of the limitations of CSS. <a href="https://fjolt.com/category/css" target="_blank">To learn more about CSS, you can click here</a>.</p>
+                    </div>
+                    <div class="topic-2-content">
+                        <h2>Why can't I move windows?</h2>
+                        <p>Although CSS lets you do quite a lot of things, unfortunately drag and drop is not one of them. To enable drag and drop on this version of windows, <a href="https://fjolt.com/series/learn-javascript" target="_blank">please learn Javascript first</a>, and then write the necessary scripts to add drag and drop.</p>
+                    </div>
+                    <div class="topic-3-content">
+                        <h2>Why can't I move windows?</h2>
+                        <p>Creating Windows in CSS is quite difficult, and requires a lot of input elements. Therefore, it may be recommended that you use another language if you wish to make a fully fledged operating system. Even so, it is a good way to demonstrate the <strong>power</strong> of CSS.</p>
+                    </div>
+                    <div class="topic-4-content">
+                        <h2>How long did it take to make CSS Windows?</h2>
+                        <p>Roughly 1.5 weeks, on and off.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="window update windows-box-shadow">
+            <div class="header"><label for="windows-update-input-on-top">Microsoft Windows Update</label>
+                <div class="header-buttons">
+                    <label for="windows-update-input-min" class="minimize windows-box-shadow"></label>
+                    <label for="windows-update-input-max" class="maximize windows-box-shadow"></label>
+                    <label for="windows-update-input" class="close windows-box-shadow">X</label>
+                </div>
+            </div>
+            <div class="content">
+                <img src="data:image/gif;base103,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" alt="" />                <div class="title">Install progress</div>
+                <div id="install-bar">
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                </div>
+                <div class="ok-cancel">
+                    <label for="windows-update-input" class="windows-box-shadow"></label>
+                </div>
+            </div>
+        </div>
+        <div class="window update-successful windows-box-shadow">
+            <div class="header">Microsoft Windows Updated!
+            </div>
+            <div class="content">
+                Your copy of Microsoft Windows has been updated successfully. Click "OK" to confirm your update.
+                <div class="ok-cancel">
+                    <label for="update-input" class="windows-box-shadow">OK</label>
+                </div>
+            </div>
+        </div>
+        <div class="window trash windows-box-shadow">
+            <div class="header"><label for="windows-trash-input-on-top">Recycle Bin</label>
+                <div class="header-buttons">
+                    <label for="windows-trash-input-min" class="minimize windows-box-shadow"></label>
+                    <label for="windows-trash-input-max" class="maximize windows-box-shadow"></label>
+                    <label for="windows-trash-input" class="close windows-box-shadow">X</label>
+                </div>
+            </div>
+            <div class="options line">
+                <div class="item">File</div>
+                <div class="item">Edit</div>
+                <div class="item">Views</div>
+                <div class="item">Go</div>
+                <div class="item">Favourites</div>
+                <div class="item">Help</div>
+            </div>
+            <div class="content white">
+                <input type="radio" name="trash-radio" id="windows-11" />
+                <input type="radio" name="trash-radio" id="macos" />
+                <input type="radio" name="trash-radio" id="itunes" />
+                <label class="file windows-11" for="windows-11">
+                    <span class="image"><img class="icon" data-icon="winUpdate" alt="Update Windows"></span>
+                    <span class="text">Windows_11.exe</span>
+                </label>
+                <label class="file macos" for="macos">
+                    <span class="image"><img class="icon" data-icon="macos" alt="macOS"/></span>
+                    <span class="text">Mac_OS.exe</span>
+                </label>
+                <label class="file itunes" for="itunes">
+                    <span class="image"><img class="icon" data-icon="itunes" alt="iTunes"/></span>
+                    <span class="text">itunes.exe</span>
+                </label>
+            </div>
+        </div>
+        <div class="window documents windows-box-shadow">
+            <div class="header"><label for="windows-documents-input-on-top">Documents</label>
+                <div class="header-buttons">
+                    <label for="windows-documents-input-min" class="minimize windows-box-shadow"></label>
+                    <label for="windows-documents-input-max" class="maximize windows-box-shadow"></label>
+                    <label for="windows-documents-input" class="close windows-box-shadow">X</label>
+                </div>
+            </div>
+            <div class="options line">
+                <div class="item">File</div>
+                <div class="item">Edit</div>
+                <div class="item">Views</div>
+                <div class="item">Go</div>
+                <div class="item">Favourites</div>
+                <div class="item">Help</div>
+            </div>
+            <div class="content white">
+                <input type="radio" name="documents-radio" id="narrative-one" />
+                <input type="radio" name="documents-radio" id="narrative-one" />
+                <label class="file narrative-one" for="narrative-one">
+                    <span class="image"><img class="icon" data-icon="textdoc" alt="Text Doc"></span>
+                    <span class="text">Narrative<br> One.txt</span>
+                </label>
+                <label class="file diary" for="diary">
+                    <span class="image"><img class="icon" data-icon="note" alt="Note"/></span>
+                    <span class="text">Professional Self-Assessment.txt</span>
+                </label>
+            </div>
+        </div>
+        <div class="window notepad windows-box-shadow">
+            <div class="header"><label for="windows-notepad-input-on-top">Notepad</label>
+                <div class="header-buttons">
+                    <label for="windows-notepad-input-min" class="minimize windows-box-shadow"></label>
+                    <label for="windows-notepad-input-max" class="maximize windows-box-shadow"></label>
+                    <label for="windows-notepad-input" class="close windows-box-shadow">X</label>
+                </div>
+            </div>
+            <div class="options line">
+                <div class="item">File</div>
+                <div class="item">Edit</div>
+                <div class="item">Search</div>
+            </div>
+            <div class="content">
+                <textarea></textarea>
+            </div>
+        </div>
+        <div class="window minesweeper windows-box-shadow">
+            <div class="header"><label for="windows-minesweeper-input-on-top">Minesweeper</label>
+                <div class="header-buttons">
+                    <label for="windows-minesweeper-input-min" class="minimize windows-box-shadow"></label>
+                    <label for="windows-minesweeper-input-max" class="maximize windows-box-shadow"></label>
+                    <label for="windows-minesweeper-input" class="close windows-box-shadow">X</label>
+                </div>
+            </div>
+            <div class="options line">
+                <div class="item">Game</div>
+                <div class="item">Help</div>
+            </div>
+            <input type="radio" name="data-id-1-1" id="data-id-1-1" class="group"><input type="radio" name="data-id-2-1" id="data-id-2-1" class="group"><input type="radio" name="data-id-3-1" id="data-id-3-1" class="group"><input type="radio" name="data-id-4-1" id="data-id-4-1" class="group"><input type="radio" name="data-id-5-1" id="data-id-5-1"><input class="mine" type="radio" name="data-id-6-1" id="data-id-6-1"><input type="radio" name="data-id-7-1" id="data-id-7-1"><input type="radio" name="data-id-8-1" id="data-id-8-1">
+            <input type="radio" name="data-id-1-2" id="data-id-1-2"><input type="radio" name="data-id-2-2" id="data-id-2-2"><input type="radio" name="data-id-3-2" id="data-id-3-2"><input type="radio" name="data-id-4-2" id="data-id-4-2"><input type="radio" name="data-id-5-2" id="data-id-5-2"><input type="radio" name="data-id-6-2" id="data-id-6-2"><input type="radio" name="data-id-7-2" id="data-id-7-2"><input type="radio" name="data-id-8-2" id="data-id-8-2">
+            <input type="radio" name="data-id-1-3" id="data-id-1-3"><input type="radio" name="data-id-2-3" id="data-id-2-3"><input type="radio" name="data-id-3-3" id="data-id-3-3"><input type="radio" name="data-id-4-3" id="data-id-4-3"><input type="radio" name="data-id-5-3" id="data-id-5-3"><input type="radio" name="data-id-6-3" id="data-id-6-3"><input type="radio" name="data-id-7-3" id="data-id-7-3"><input type="radio" name="data-id-8-3" id="data-id-8-3">
+            <input type="radio" name="data-id-1-4" id="data-id-1-4"><input type="radio" name="data-id-2-4" id="data-id-2-4"><input class="mine" type="radio" name="data-id-3-4" id="data-id-3-4"><input type="radio" name="data-id-4-4" id="data-id-4-4"><input type="radio" name="data-id-5-4" id="data-id-5-4"><input type="radio" name="data-id-6-4" id="data-id-6-4"><input class="mine" type="radio" name="data-id-7-4" id="data-id-7-4"><input type="radio" name="data-id-8-4" id="data-id-8-4">
+            <input class="mine" type="radio" name="data-id-1-5" id="data-id-1-5"><input type="radio" name="data-id-2-5" id="data-id-2-5"><input type="radio" name="data-id-3-5" id="data-id-3-5"><input type="radio" name="data-id-4-5" id="data-id-4-5"><input type="radio" name="data-id-5-5" id="data-id-5-5"><input type="radio" name="data-id-6-5" id="data-id-6-5"><input type="radio" name="data-id-7-5" id="data-id-7-5"><input type="radio" name="data-id-8-5" id="data-id-8-5">
+            <input type="radio" name="data-id-1-6" id="data-id-1-6"><input type="radio" name="data-id-2-6" id="data-id-2-6"><input type="radio" name="data-id-3-6" id="data-id-3-6"><input type="radio" name="data-id-4-6" id="data-id-4-6"><input class="mine" type="radio" name="data-id-5-6" id="data-id-5-6"><input type="radio" name="data-id-6-6" id="data-id-6-6"><input class="mine" type="radio" name="data-id-7-6" id="data-id-7-6"><input class="mine" type="radio" name="data-id-8-6" id="data-id-8-6">
+            <input type="radio" name="data-id-1-7" id="data-id-1-7"><input type="radio" name="data-id-2-7" id="data-id-2-7"><input type="radio" name="data-id-3-7" id="data-id-3-7"><input type="radio" name="data-id-4-7" id="data-id-4-7"><input type="radio" name="data-id-5-7" id="data-id-5-7"><input type="radio" name="data-id-6-7" id="data-id-6-7"><input type="radio" name="data-id-7-7" id="data-id-7-7"><input class="mine" type="radio" name="data-id-8-7" id="data-id-8-7">
+            <input type="radio" name="data-id-1-8" id="data-id-1-8"><input type="radio" name="data-id-2-8" id="data-id-2-8"><input class="mine" type="radio" name="data-id-3-8" id="data-id-3-8"><input class="mine" type="radio" name="data-id-4-8" id="data-id-4-8"><input type="radio" name="data-id-5-8" id="data-id-5-8"><input type="radio" name="data-id-6-8" id="data-id-6-8"><input type="radio" name="data-id-7-8" id="data-id-7-8"><input type="radio" name="data-id-8-8" id="data-id-8-8">
+    
+            <div class="score">
+                <div class="scoreboard">
+                    <div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div>
+                </div>
+                <div class="smiley-face">
+                </div>
+                <div class="scoreboard">
+                    <div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+
+            <div class="content">
+                <label for="data-id-1-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
+                <label for="data-id-2-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
+                <label for="data-id-3-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
+                <label for="data-id-4-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
+                <label for="data-id-5-1" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-6-1" class="minesweeper-block" data-type="mine"></label>
+                <label for="data-id-7-1" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-8-1" class="minesweeper-block end" data-type="empty" data-group="2"></label>
+    
+                <label for="data-id-1-2" class="minesweeper-block" data-type="empty" data-group="1"></label>
+                <label for="data-id-2-2" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-3-2" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-4-2" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-5-2" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-6-2" class="minesweeper-block" data-type="2">2</label>
+                <label for="data-id-7-2" class="minesweeper-block" data-type="2">2</label>
+                <label for="data-id-8-2" class="minesweeper-block end" data-type="empty" data-group="2"></label>
+    
+                <label for="data-id-1-4" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-2-4" class="minesweeper-block" data-type="2">2</label>
+                <label for="data-id-3-4" class="minesweeper-block" data-type="mine"></label>
+                <label for="data-id-4-4" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-5-4" class="minesweeper-block" data-type="empty"></label>
+                <label for="data-id-6-4" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-7-4" class="minesweeper-block" data-type="mine"></label>
+                <label for="data-id-8-4" class="minesweeper-block end" data-type="1">1</label>
+    
+                <label for="data-id-1-5" class="minesweeper-block" data-type="mine"></label>
+                <label for="data-id-2-5" class="minesweeper-block" data-type="2">2</label>
+                <label for="data-id-3-5" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-4-5" class="minesweeper-block" data-type="2">2</label>
+                <label for="data-id-5-5" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-6-5" class="minesweeper-block" data-type="2">2</label>
+                <label for="data-id-7-5" class="minesweeper-block" data-type="3">3</label>
+                <label for="data-id-8-5" class="minesweeper-block end" data-type="3">3</label>
+    
+                <label for="data-id-1-6" class="minesweeper-block" data-type="empty" data-group="3"></label>
+                <label for="data-id-2-6" class="minesweeper-block" data-type="empty" data-group="3"></label>
+                <label for="data-id-3-6" class="minesweeper-block" data-type="empty" data-group="3"></label>
+                <label for="data-id-4-6" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-5-6" class="minesweeper-block" data-type="mine"></label>
+                <label for="data-id-6-6" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-7-6" class="minesweeper-block" data-type="mine"></label>
+                <label for="data-id-8-6" class="minesweeper-block end" data-type="mine"></label>
+    
+                <label for="data-id-1-7" class="minesweeper-block" data-type="empty" data-group="3"></label>
+                <label for="data-id-2-7" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-3-7" class="minesweeper-block" data-type="2">2</label>
+                <label for="data-id-4-7" class="minesweeper-block" data-type="3">3</label>
+                <label for="data-id-5-7" class="minesweeper-block" data-type="2">2</label>
+                <label for="data-id-6-7" class="minesweeper-block" data-type="2">2</label>
+                <label for="data-id-7-7" class="minesweeper-block" data-type="3">3</label>
+                <label for="data-id-8-7" class="minesweeper-block end" data-type="mine"></label>
+    
+                <label for="data-id-1-8" class="minesweeper-block" data-type="empty" data-group="3"></label>
+                <label for="data-id-2-8" class="minesweeper-block" data-type="1" >1</label>
+                <label for="data-id-3-8" class="minesweeper-block" data-type="mine"></label>
+                <label for="data-id-4-8" class="minesweeper-block" data-type="mine"></label>
+                <label for="data-id-5-8" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-6-8" class="minesweeper-block" data-type="empty"></label>
+                <label for="data-id-7-8" class="minesweeper-block" data-type="1">1</label>
+                <label for="data-id-8-8" class="minesweeper-block end" data-type="1">1</label>
+            </div>
+        </div>    
+    </div>
+</div>
+    <div id="start-bar">
+        <div id="start-button-items">
+            <label id="start-button" class="windows-box-shadow" for="start-button-input"></label>
+            <div id="items">
+                <label for="windows-ie-input-min" class="ie-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="internet-explorer" alt="Internet Explorer"/></span><span>Help Center</span></label>
+                <label for="windows-notepad-input-min" class="notepad-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="notepad" alt="Notepad"></span><span>Notepad</span></label>
+                <label for="windows-documents-input-min" class="documents-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="documents" alt="Documents"></span><span>Documents</span></label>
+                <label for="windows-update-input-min" class="update-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="winUpdate" alt="Update Windows"></span><span>Windows Update</span></label>
+                <label for="windows-trash-input-min" class="trash-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="recycleBin" alt="Recycly Bin"></span><span>Recycle Bin</span></label>
+                <label for="windows-minesweeper-input-min" class="minesweeper-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="minesweeper" alt="Minesweeper"></span><span>Minesweeper</span></label>
+            </div>
+        </div>
+        <div id="start-menu" class="windows-box-shadow">
+            <div id="windows-start-menu-blue">Windows<span>98</span></div>
+            <ul>
+                <li class="line update"><label for="windows-update-input"><img class="icon" data-start-icon="winUpdate" alt="Update Windows"> Windows Update</label></li>
+                <li class="programs"><label><img class="icon" data-start2-icon="programs" alt="Programs"/> Progams</label>
+                    <ul class="windows-box-shadow">
+                        <li><label for="windows-ie-input"><img class="icon" data-help-icon="internet-explorer" alt="Internet Explorer"><input type="checkbox" /> Internet Explorer</label></li>
+                        <li><label for="windows-minesweeper-input"><img class="icon" data-help-icon="minesweeper" alt="Minesweeper"> Minesweeper</label></li>
+                        <li><label for="windows-notepad-input"><img class="icon" data-help-icon="notepad" alt="Notepad">Notepad</label></li>
+                    </ul>
+                </li>
+                <li><label for="windows-documents-input"><img class="icon" data-taskbar-icon="documents" alt="Documents"/> Documents</label></li>
+                <li class="line"><label for="windows-help-input"><img class="icon" data-start-icon="help" alt="help"/> Help</label></li>
+                <li><label for="login-screen-input"><img class="icon" data-start-icon="logoff" alt="logoff"/> Log Off <span class="spiderman logout-prompt"> Spiderman...</span><span class="zark-muckerberg logout-prompt"> Zark Muckerberg...</span><span class="donald-trump logout-prompt"> Donald Trump...</span></label></li>
+                <li><label for="shutdown-screen-input"><img class="icon" data-start-icon="shutdown" alt="Shutdown"/> Shutdown</label></li>
+            </ul>
+        </div>
+        <div id="time-options"></div>
+    </div>
+</form>
+<!-- partial -->
+  
+<!-- Your Base64 icon variables -->
+<script src="icons.js"></script>
+
+<!-- Assign icons + match original alignment/sizing -->
+<script src="icons.js"></script>
+<script>
+(function () {
+    // helper: center an img in its parent
+    function centerInParent(img, minHeight) {
+    const parent = img.parentElement;
+    if (!parent) return;
+    Object.assign(parent.style, {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: minHeight + 'px'
+    });
+    img.style.flex = '0 0 auto'; // prevent shrinking
+  }
+        
+  // Extra Large (XL) (48x48)
+  document.querySelectorAll('img[data-icon]').forEach(img => {
+    const key = img.dataset.icon;
+    if (ICONS[key]) img.src = ICONS[key];
+    Object.assign(img.style, {
+      width: '48px',
+      height: '48px',
+      margin: '0 0 0.75rem 0',
+      display: 'inline-block'
+    });
+  });
+    
+  // large (32x32)
+  document.querySelectorAll('img[data-start-icon]').forEach(img => {
+    const key = img.dataset.startIcon;
+    if (ICONS[key]) img.src = ICONS[key];
+    Object.assign(img.style, {
+      width: '32px',
+      height: '32px',
+      margin: '0 0.5rem 0.5rem 0'
+    });
+  });
+  
+  // Medium (28x28)
+  document.querySelectorAll('img[data-taskbar-icon]').forEach(img => {
+    const key = img.dataset.taskbarIcon;
+    if (ICONS[key]) img.src = ICONS[key];
+    Object.assign(img.style, {
+      width: '28px',
+      height: '28px',
+      margin: '0 0.5rem'
+    });
+  });
+
+  // Medium-Small (24x24)
+  document.querySelectorAll('img[data-start2-icon]').forEach(img => {
+    const key = img.dataset.start2Icon;
+    if (ICONS[key]) img.src = ICONS[key];
+    Object.assign(img.style, {
+      width: '24px',
+      height: '24px',
+      margin: '0 0.5rem 0.5rem 0'
+    });
+  });
+    
+  // Small List (16x16)
+  document.querySelectorAll('img[data-help-icon]').forEach(img => {
+    const key = img.dataset.helpIcon;
+    if (ICONS[key]) img.src = ICONS[key];
+    Object.assign(img.style, {
+      width: '16px',
+      height: '16px',
+      margin: '0 0.5rem 0.5rem 0'
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
