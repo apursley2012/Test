@@ -1427,3 +1427,80 @@ h2 {
     padding: 1rem;
     box-sizing: border-box;
 }
+
+/* =========================
+   NOTE WINDOWS (SA, E1, E2, E3)
+   ========================= */
+
+/* Show when their own checkbox is opened */
+#windows-note-sa-input:checked ~ #all-windows .note-sa { display: block; }
+#windows-note-e1-input:checked ~ #all-windows .note-e1 { display: block; }
+#windows-note-e2-input:checked ~ #all-windows .note-e2 { display: block; }
+#windows-note-e3-input:checked ~ #all-windows .note-e3 { display: block; }
+
+/* Hide when minimized */
+#windows-note-sa-input-min:checked ~ #all-windows .note-sa { display: none; }
+#windows-note-e1-input-min:checked ~ #all-windows .note-e1 { display: none; }
+#windows-note-e2-input-min:checked ~ #all-windows .note-e2 { display: none; }
+#windows-note-e3-input-min:checked ~ #all-windows .note-e3 { display: none; }
+
+/* Maximize */
+#windows-note-sa-input-max:checked ~ #all-windows .note-sa,
+#windows-note-e1-input-max:checked ~ #all-windows .note-e1,
+#windows-note-e2-input-max:checked ~ #all-windows .note-e2,
+#windows-note-e3-input-max:checked ~ #all-windows .note-e3 {
+  left: -0.5rem;
+  width: 100%;
+  height: calc(100% - 3.75rem);
+  margin-top: 0;
+  top: 0;
+  z-index: 9999999;
+}
+
+/* Bring to front when on-top radio checked */
+#windows-note-sa-input-on-top:checked ~ #all-windows .note-sa { z-index: 9999999; }
+#windows-note-e1-input-on-top:checked ~ #all-windows .note-e1 { z-index: 9999999; }
+#windows-note-e2-input-on-top:checked ~ #all-windows .note-e2 { z-index: 9999999; }
+#windows-note-e3-input-on-top:checked ~ #all-windows .note-e3 { z-index: 9999999; }
+
+/* Taskbar tabs: show when opened */
+#windows-note-sa-input:checked ~ #start-bar .note-sa-tab { display: flex; }
+#windows-note-e1-input:checked ~ #start-bar .note-e1-tab { display: flex; }
+#windows-note-e2-input:checked ~ #start-bar .note-e2-tab { display: flex; }
+#windows-note-e3-input:checked ~ #start-bar .note-e3-tab { display: flex; }
+
+/* Active tab style */
+#windows-note-sa-input:checked ~ #start-bar .note-sa-tab,
+#windows-note-e1-input:checked ~ #start-bar .note-e1-tab,
+#windows-note-e2-input:checked ~ #start-bar .note-e2-tab,
+#windows-note-e3-input:checked ~ #start-bar .note-e3-tab {
+  box-shadow: -2px -2px #818181, -2px 0 #818181, 0 -2px #818181,
+              -4px -4px black, -4px 0 black, 0 -4px black,
+              2px 2px #e0dede, 0 2px #e0dede, 2px 0 #e0dede,
+              2px -2px #818181, -2px 2px #e0dede,
+              -4px 2px black, -4px 4px white, 4px 4px white,
+              4px 0 white, 0 4px white, 2px -4px black, 4px -4px white;
+}
+
+/* Inactive/minimized tab style */
+#windows-note-sa-input-min:checked ~ #start-bar .note-sa-tab,
+#windows-note-e1-input-min:checked ~ #start-bar .note-e1-tab,
+#windows-note-e2-input-min:checked ~ #start-bar .note-e2-tab,
+#windows-note-e3-input-min:checked ~ #start-bar .note-e3-tab {
+  box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede,
+              -4px -4px white, -4px 0 white, 0 -4px white,
+              2px 2px #818181, 0 2px #818181, 2px 0 #818181,
+              2px -2px #e0dede, -2px 2px #818181,
+              -4px 2px white, -4px 4px black, 4px 4px black,
+              4px 0 black, 0 4px black, 2px -4px white, 4px -4px black;
+}
+
+/* IMPORTANT: prevent the generic Notepad toggle from opening ALL note windows */
+#windows-notepad-input:checked ~ #all-windows .notepad.note-sa,
+#windows-notepad-input:checked ~ #all-windows .notepad.note-e1,
+#windows-notepad-input:checked ~ #all-windows .notepad.note-e2,
+#windows-notepad-input:checked ~ #all-windows .notepad.note-e3 { display: none; }
+
+#windows-notepad-input:checked ~ #all-windows .notepad:not(.note-sa):not(.note-e1):not(.note-e2):not(.note-e3) {
+  display: block;
+}
