@@ -141,6 +141,7 @@ label {
 
 #start-button-input:checked ~ #start-menu {
     display: block;
+    overflow: hidden;
 }
 
 #windows-start-menu-blue {
