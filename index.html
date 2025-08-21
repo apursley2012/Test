@@ -17,18 +17,57 @@
   @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
     html { zoom: 2; }
     
-  /* 1) Use  Win98 webfont everywhere inside the Windows UI */
-  @font-face{
-    font-family: "MS98UI";
-    src: url("fonts/ms98ui.woff2") format("woff2"),
-         url("fonts/ms98ui.woff")  format("woff");
+  <!-- Make MS98UI apply everywhere, without editing style.css -->
+<link rel="preload" href="fonts/ms98ui.woff2" as="font" type="font/woff2" crossorigin>
+
+<style id="ms98ui-override">
+
+
+@font-face{
+    font-family: "MS98UI-Regular";
+    src: url("assets/fonts/MSW98UI-Regular.woff") format("woff"),
+         url("assets/fonts/MSW98UI-Regular.woff2")  format("woff2");
     font-display: swap;
   }
-  /* Force the classic font inside the Win98 shell only. 
-     !important ensures it wins over other font rules. */
-  #windows, #windows * {
-    font-family: "MS98UI","MS Sans Serif",Tahoma,"Segoe UI",sans-serif !important;
+
+@font-face{
+    font-family: "MS98UI-Bold";
+    src: url("assets/fonts/MSW98UI-Bold.woff") format("woff"),
+         url("assets/fonts/MSW98UI-Bold.woff2")  format("woff2");
+    font-display: swap;
   }
+
+/* Reusable stack */
+  :root { --ui-font: "MS98UI","MS Sans Serif",Tahoma,"Segoe UI",sans-serif; }
+
+  /* Set a sane base */
+  html, body { font-family: var(--ui-font); } 
+
+<!-- Make MS98UI apply everywhere, without editing style.css -->
+<link rel="preload" href="fonts/ms98ui.woff2" as="font" type="font/woff2" crossorigin>
+
+<style id="ms98ui-override">
+
+
+@font-face{
+    font-family: "MS98UI-Regular";
+    src: url("assets/fonts/MSW98UI-Regular.woff") format("woff"),
+         url("assets/fonts/MSW98UI-Regular.woff2")  format("woff2");
+    font-display: swap;
+  }
+
+@font-face{
+    font-family: "MS98UI-Bold";
+    src: url("assets/fonts/MSW98UI-Bold.woff") format("woff"),
+         url("assets/fonts/MSW98UI-Bold.woff2")  format("woff2");
+    font-display: swap;
+  }
+
+/* Reusable stack */
+  :root { --ui-font: "MS98UI","MS Sans Serif",Tahoma,"Segoe UI",sans-serif; }
+
+  /* Set a sane base */
+  html, body { font-family: var(--ui-font);}
 
   /* 3) Notepad: make the text area truly reach the bottom & scroll fully */
   .window.notepad .content{
