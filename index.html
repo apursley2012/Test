@@ -7,10 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
-  html { zoom: 2.0; }
+  /* at the very end of style.css */
+html { zoom: 2.0; }
 
-  /* 1) Use your Win98 webfont everywhere inside the Windows UI */
-  /*    (update the paths to your font files if needed) */
+/* optional: don’t zoom on phones */
+@media (max-width: 768px) { html { zoom: 1; } }
+
+  /* 1) Use  Win98 webfont everywhere inside the Windows UI */
   @font-face{
     font-family: "MS98UI";
     src: url("../assets/fonts/ms98ui.woff2") format("woff2"),
@@ -18,13 +21,13 @@
     font-display: swap;
   }
   /* Force the classic font inside the Win98 shell only. 
-     !important ensures it wins over your other font rules. */
+     !important ensures it wins over other font rules. */
   #windows, #windows * {
     font-family: "MS98UI","MS Sans Serif",Tahoma,"Segoe UI",sans-serif !important;
   }
 
   /* 2) Start menu should sit just above the taskbar regardless of zoom */
-  /*    (taskbar is 2.5rem tall with 0.5rem pad; adjust if you change those) */
+  /*    (taskbar is 2.5rem tall with 0.5rem pad; adjust if that changes) */
   #start-menu{
     position: fixed !important;
     left: 0.25rem;
