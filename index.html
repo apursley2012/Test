@@ -7,12 +7,16 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
-  /* at the very end of style.css */
-html { zoom: 2.0; }
 
-/* optional: don’t zoom on phones */
-@media (max-width: 768px) { html { zoom: 1; } }
+ /* Default: no zoom on touch/smaller screens */
+  @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+    html { zoom: 1 !important; }
+  }
 
+  /* Desktop/laptop: scale up */
+  @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+    html { zoom: 2; }
+    
   /* 1) Use  Win98 webfont everywhere inside the Windows UI */
   @font-face{
     font-family: "MS98UI";
