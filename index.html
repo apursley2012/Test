@@ -529,7 +529,7 @@
     1.	Course Outcome 1:
     “Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision-making in the field of computer science.”
     Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:
-    1.	Modular Designy
+    1.	Modular Design
     2.	Code Documentation
     3.	Modular Architecture
     4.	Code Readability
@@ -829,6 +829,95 @@
       width: '16px',
       height: '16px',
       margin: '0 0.5rem 0.5rem 0'
+    });
+  });
+})();
+</script>
+
+<script>
+/* Drag any .window by its .header — moves the entire window box (frame + contents).
+   Works with mouse & touch via Pointer Events. Respects maximize state heuristically. */
+(function () {
+  const startBar = document.getElementById('start-bar');
+  const taskbarH = () => (startBar ? startBar.getBoundingClientRect().height : 0);
+
+  // Big z-index bump so dragged window comes to front (won't fight your CSS radios)
+  let zCounter = 1000002000;
+
+  function isMaximized(win) {
+    const r = win.getBoundingClientRect();
+    const fullW = Math.abs(r.width - window.innerWidth) < 2;
+    const fullH = Math.abs(r.height - (window.innerHeight - taskbarH())) < 2;
+    return fullW && fullH;
+  }
+
+  function makeDraggable(win) {
+    const header = win.querySelector('.header');
+    if (!header) return;
+
+    header.addEventListener('pointerdown', (e) => {
+      // Don’t start a drag if user clicked the window buttons
+      if (e.target.closest('.header-buttons')) return;
+      // Don’t drag a maximized window (leave maximize behavior intact)
+      if (isMaximized(win)) return;
+
+      // Bring to front
+      win.style.zIndex = String(++zCounter);
+
+      // Starting offsets
+      const rect = win.getBoundingClientRect();
+      const offsetX = e.clientX - rect.left;
+      const offsetY = e.clientY - rect.top;
+
+      // Make sure we’re absolutely positioned
+      win.style.position = 'absolute';
+      // Capture the pointer so move/up track even if the finger/mouse leaves the header
+      header.setPointerCapture(e.pointerId);
+
+      const onMove = (ev) => {
+        let newLeft = ev.clientX - offsetX;
+        let newTop  = ev.clientY - offsetY;
+
+        // Keep windows on screen (don’t cover the taskbar)
+        const maxLeft = Math.max(0, window.innerWidth  - win.offsetWidth);
+        const maxTop  = Math.max(0, window.innerHeight - taskbarH() - win.offsetHeight);
+
+        if (newLeft < 0) newLeft = 0;
+        if (newTop  < 0) newTop  = 0;
+        if (newLeft > maxLeft) newLeft = maxLeft;
+        if (newTop  > maxTop)  newTop  = maxTop;
+
+        // Move the WHOLE window (contents come with it)
+        win.style.left = newLeft + 'px';
+        win.style.top  = newTop  + 'px';
+      };
+
+      const onUp = () => {
+        header.removeEventListener('pointermove', onMove);
+        header.removeEventListener('pointerup', onUp);
+        header.releasePointerCapture(e.pointerId);
+      };
+
+      header.addEventListener('pointermove', onMove);
+      header.addEventListener('pointerup', onUp);
+
+      // Prevent text selection/scroll jitter while dragging
+      e.preventDefault();
+    });
+  }
+
+  document.querySelectorAll('#all-windows .window').forEach(makeDraggable);
+
+  // Optional: if the viewport resizes (orientation change), nudge windows back on-screen
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('#all-windows .window').forEach((win) => {
+      const rect = win.getBoundingClientRect();
+      let left = parseFloat(win.style.left || rect.left);
+      let top  = parseFloat(win.style.top  || rect.top);
+      const maxLeft = Math.max(0, window.innerWidth  - win.offsetWidth);
+      const maxTop  = Math.max(0, window.innerHeight - taskbarH() - win.offsetHeight);
+      if (left > maxLeft) win.style.left = maxLeft + 'px';
+      if (top  > maxTop)  win.style.top  = maxTop  + 'px';
     });
   });
 })();
