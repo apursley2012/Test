@@ -5,9 +5,17 @@
   <title>Alysha Pursley's ePortfolio</title>
   <link rel="stylesheet" href="./style.css">
 
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
-  /* Change 1.25 to 1.5, 1.75, 2, etc. */
-  html { zoom: 2.0; }
+  /* Change 2.0 to 1.5 or 1.25 to resize the whole UI */
+  :root { --ui-scale: 2.0; }
+  body {
+    transform: scale(var(--ui-scale));
+    transform-origin: top left;
+    width: calc(100% / var(--ui-scale));
+    height: calc(100% / var(--ui-scale));
+    overflow: hidden; /* page doesn’t scroll; windows do */
+  }
 </style>
 </head>
 <body>
