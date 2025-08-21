@@ -16,42 +16,44 @@
   /* Desktop/laptop: scale up */
   @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
     html { zoom: 2; }
-    
-/* Make MS98UI apply everywhere, without editing style.css */
-<link rel="preload" href="fonts/MSW98UI-Regular.woff" as="font" type="font/woff" crossorigin>
+
+<!-- Preload to avoid flash-of-default-font -->
 <link rel="preload" href="fonts/MSW98UI-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/MSW98UI-Bold.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="fonts/MSW98UI-Bold.woff2" as="font" type="font/woff2" crossorigin>
 
-
-<style id="MSW98UI-override">
-@font-face{
-    font-family: "MSW98UI-Regular";
-    src: url("assets/fonts/MSW98UI-Regular.woff") format("woff"),
-         url("assets/fonts/MSW98UI-Regular.woff2")  format("woff2");
+<style id="msw98ui-global-override">
+  /* 1) Register both weights. Multiple URL fallbacks help if your fonts folder differs. */
+  @font-face {
+    font-family: "MSW98UI";
+    src: url("fonts/MSW98UI-Regular.woff2") format("woff2"),
+         url("./MSW98UI-Regular.woff2") format("woff2"),
+         url("fonts/MSW98UI-Regular.woff") format("woff"),
+         url("./MSW98UI-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "MSW98UI";
+    src: url("fonts/MSW98UI-Bold.woff2") format("woff2"),
+         url("./MSW98UI-Bold.woff2") format("woff2"),
+         url("fonts/MSW98UI-Bold.woff") format("woff"),
+         url("./MSW98UI-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
     font-display: swap;
   }
 
-@font-face{
-    font-family: "MSW98UI-Bold";
-    src: url("assets/fonts/MSW98UI-Bold.woff") format("woff"),
-         url("assets/fonts/MSW98UI-Bold.woff2")  format("woff2");
-    font-display: swap;
+  /* 2) Hard, global override. This will win over almost anything. */
+  html, body, body * {
+    font-family: "MSW98UI", "MS Sans Serif", "Source Code Pro", "Tahoma", "Segoe UI", "Arial", sans-serif !important;
   }
 
-/* Default weight */
-#windows, #start-bar, #start-menu, #all-windows,
-#windows *, #start-bar *, #start-menu *, #all-windows * {
-  font-family: var(--ui-font) !important;
-  font-weight: 400;               /* use the Regular face by default */
-  font-synthesis: none;           /* don’t “fake bold/italic” */
-}
-
-/* Things that should be bold will pick up the Bold face automatically */
-b, strong, h1, h2, h3, h4, h5, h6,
-.window .header, .menu .item.is-active {
-  font-weight: 700 !important;    /* uses the Bold face 
-
+  /* 3) Ensure bold actually maps to the bold face */
+  b, strong, h1, h2, h3, h4, h5, h6, .bold {
+    font-weight: 700 !important;
+  }
+    
   /* 3) Notepad: make the text area truly reach the bottom & scroll fully */
   .window.notepad .content{
     display: block;       /* no flex clipping */
