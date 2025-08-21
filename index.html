@@ -17,57 +17,40 @@
   @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
     html { zoom: 2; }
     
-  <!-- Make MS98UI apply everywhere, without editing style.css -->
-<link rel="preload" href="fonts/ms98ui.woff2" as="font" type="font/woff2" crossorigin>
+/* Make MS98UI apply everywhere, without editing style.css */
+<link rel="preload" href="fonts/MSW98UI-Regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/MSW98UI-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/MSW98UI-Bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/MSW98UI-Bold.woff2" as="font" type="font/woff2" crossorigin>
 
-<style id="ms98ui-override">
 
-
+<style id="MSW98UI-override">
 @font-face{
-    font-family: "MS98UI-Regular";
+    font-family: "MSW98UI-Regular";
     src: url("assets/fonts/MSW98UI-Regular.woff") format("woff"),
          url("assets/fonts/MSW98UI-Regular.woff2")  format("woff2");
     font-display: swap;
   }
 
 @font-face{
-    font-family: "MS98UI-Bold";
+    font-family: "MSW98UI-Bold";
     src: url("assets/fonts/MSW98UI-Bold.woff") format("woff"),
          url("assets/fonts/MSW98UI-Bold.woff2")  format("woff2");
     font-display: swap;
   }
 
-/* Reusable stack */
-  :root { --ui-font: "MS98UI","MS Sans Serif",Tahoma,"Segoe UI",sans-serif; }
+/* Default weight */
+#windows, #start-bar, #start-menu, #all-windows,
+#windows *, #start-bar *, #start-menu *, #all-windows * {
+  font-family: var(--ui-font) !important;
+  font-weight: 400;               /* use the Regular face by default */
+  font-synthesis: none;           /* don’t “fake bold/italic” */
+}
 
-  /* Set a sane base */
-  html, body { font-family: var(--ui-font); } 
-
-<!-- Make MS98UI apply everywhere, without editing style.css -->
-<link rel="preload" href="fonts/ms98ui.woff2" as="font" type="font/woff2" crossorigin>
-
-<style id="ms98ui-override">
-
-
-@font-face{
-    font-family: "MS98UI-Regular";
-    src: url("assets/fonts/MSW98UI-Regular.woff") format("woff"),
-         url("assets/fonts/MSW98UI-Regular.woff2")  format("woff2");
-    font-display: swap;
-  }
-
-@font-face{
-    font-family: "MS98UI-Bold";
-    src: url("assets/fonts/MSW98UI-Bold.woff") format("woff"),
-         url("assets/fonts/MSW98UI-Bold.woff2")  format("woff2");
-    font-display: swap;
-  }
-
-/* Reusable stack */
-  :root { --ui-font: "MS98UI","MS Sans Serif",Tahoma,"Segoe UI",sans-serif; }
-
-  /* Set a sane base */
-  html, body { font-family: var(--ui-font);}
+/* Things that should be bold will pick up the Bold face automatically */
+b, strong, h1, h2, h3, h4, h5, h6,
+.window .header, .menu .item.is-active {
+  font-weight: 700 !important;    /* uses the Bold face 
 
   /* 3) Notepad: make the text area truly reach the bottom & scroll fully */
   .window.notepad .content{
