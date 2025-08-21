@@ -7,18 +7,49 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
-  /* Change 2.0 to 1.5 or 1.25 to resize the whole UI */
-  :root { --ui-scale: 2.0; }
-  body {
-    transform: scale(var(--ui-scale));
-    transform-origin: top left;
-    width: calc(100% / var(--ui-scale));
-    height: calc(100% / var(--ui-scale));
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    overflow: hidden; /* page doesn’t scroll; windows do */
+  html { zoom: 2.0; }
+
+  /* 1) Use your Win98 webfont everywhere inside the Windows UI */
+  /*    (update the paths to your font files if needed) */
+  @font-face{
+    font-family: "MS98UI";
+    src: url("fonts/ms98ui.woff2") format("woff2"),
+         url("fonts/ms98ui.woff")  format("woff");
+    font-display: swap;
   }
+  /* Force the classic font inside the Win98 shell only. 
+     !important ensures it wins over your other font rules. */
+  #windows, #windows * {
+    font-family: "MS98UI","MS Sans Serif",Tahoma,"Segoe UI",sans-serif !important;
+  }
+
+  /* 2) Start menu should sit just above the taskbar regardless of zoom */
+  /*    (taskbar is 2.5rem tall with 0.5rem pad; adjust if you change those) */
+  #start-menu{
+    position: fixed !important;
+    left: 0.25rem;
+    bottom: calc(2.5rem + 0.5rem);
+    z-index: 1000000000; /* above desktop/windows */
+  }
+
+  /* 3) Notepad: make the text area truly reach the bottom & scroll fully */
+  .window.notepad .content{
+    display: block;       /* no flex clipping */
+    overflow: hidden;
+  }
+  .window.notepad .content textarea{
+    height: calc(100% - 2px);
+    box-sizing: border-box;
+    overflow: auto;
+    padding-bottom: 4rem; /* extra space so last lines aren't near the bar */
+  }
+
+  /* Mobile: make the close "X" easier to tap and always on top */
+  .window .header-buttons{ z-index: 1000000010; }
+  .window .header-buttons > label.close{
+    min-width: 1.4rem; height: 1.4rem; line-height: 1.4rem;
+  }
+
 </style>
 </head>
 <body>
