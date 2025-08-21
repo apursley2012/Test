@@ -50,6 +50,14 @@
     min-width: 1.4rem; height: 1.4rem; line-height: 1.4rem;
   }
 
+  /* header is the drag handle; make it obvious & touch-friendly */
+  .window .header{
+    cursor: move;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none; /* prevents the page from panning while dragging on mobile */
+  }
+
 </style>
 </head>
 <body>
