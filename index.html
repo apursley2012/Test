@@ -30,15 +30,6 @@
     font-family: "MS98UI","MS Sans Serif",Tahoma,"Segoe UI",sans-serif !important;
   }
 
-  /* 2) Start menu should sit just above the taskbar regardless of zoom */
-  /*    (taskbar is 2.5rem tall with 0.5rem pad; adjust if that changes) */
-  #start-menu{
-    position: fixed !important;
-    left: 0.25rem;
-    bottom: calc(2.5rem + 0.5rem);
-    z-index: 1000000000; /* above desktop/windows */
-  }
-
   /* 3) Notepad: make the text area truly reach the bottom & scroll fully */
   .window.notepad .content{
     display: block;       /* no flex clipping */
@@ -534,83 +525,64 @@
             <div class="item">Search</div>
           </div>
           <div class="content">
-            <textarea spellcheck="false" wrap="soft">
-    Database Enhancement
-    Artifact Overview
-    The artifact selected for this enhancement is the same Corner Grocer application originally developed in C++ for CS 210: Programming Languages. In its earliest form, the application read grocery sales data from a text file, stored the frequency of each item using a std::map, and allowed users to view results as a list or a histogram. In earlier enhancements, the program was rewritten in Python and expanded with sorting and search capabilities. For this third enhancement, the focus shifted to replacing the program’s in-memory data handling with a persistent SQLite database backend. The change ensures that data is stored and retrieved efficiently, even across program restarts, without losing any of the program’s original functionality.
-    Justification for Inclusion
-    This enhancement was selected because it demonstrates my ability to integrate a database into an existing application while maintaining backward compatibility with all previously implemented features. In practical terms, this update improves the program’s value for real-world use by allowing it to store, retrieve, and update inventory frequency data directly from a database rather than relying solely on memory. The use of SQLite means the application can be run as a standalone program without requiring additional database setup, making it portable and easy to distribute. Additionally, this enhancement showcases skills in database schema design, SQL query writing, and Python database API usage, all of which are important for full-stack and backend development roles.
-    Skills and Course Outcomes
-    1.	Course Outcome 1:
-    “Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision-making in the field of computer science.”
-    Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:
-    1.	Modular Design
-    2.	Code Documentation
-    3.	Modular Architecture
-    4.	Code Readability
-    5.	Separation of Concerns
-    How these skills support this outcome:
-    	Modular Design – By placing all database-related logic into a dedicated db_handler.py file, the project is easier for multiple developers to work on without interfering with unrelated code.
-    	Code Documentation – Structured, descriptive comments clearly explain the purpose of each SQL operation and why certain database practices were used, making it easier for collaborators to understand the database layer.
-    	Modular Architecture – Separating database operations from the main menu code allows each part to be developed or updated independently, supporting teamwork.
-    	Code Readability – Using clear function names like connect_to_db and insert_item makes it obvious what each part of the program does.
-    	Separation of Concerns – Database logic is fully isolated from user interaction logic, reducing the chance that changes to one will break the other.
-    2.	Course Outcome 2:
-    “Design, develop, and deliver professional-quality oral, written, and visual communications that are coherent, technically sound, and appropriately adapted to specific audiences and contexts.”
-    Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:
-    •	Menu Design
-    •	User Experience Improvements
-    •	Expanded Menu System
-    •	Code Documentation
-    •	Code Readability
-    How these skills support this outcome:
-    	Menu Design – The main menu clearly labels all options related to database actions, making them intuitive for end users.
-    	User Experience Improvements – The program now provides success messages when connecting to the database, inserting records, or retrieving data, as well as clear error messages if something goes wrong.
-    	Expanded Menu System – New menu options for loading data into the database and retrieving stored information are integrated without overwhelming the user.
-    	Code Documentation – Comments explain how each database interaction works, helping others understand the application’s data flow.
-    	Code Readability – The logical organization and naming conventions make the code accessible to both technical reviewers and less experienced developers.
-    3.	Course Outcome 3:
-    “Design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards appropriate to its solution while managing the trade-offs involved in design choices.”
-    Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:
-    •	Database Query Logic
-    •	Separation of Concerns
-    •	Function Abstraction
-    •	Code Reusability
-    How these skills support this outcome:
-    	Database Query Logic – I implemented efficient SQL queries to store and retrieve grocery item frequencies, ensuring minimal overhead and accurate results.
-    	Separation of Concerns – Database CRUD operations are handled in db_handler.py while presentation logic stays in the main program, keeping responsibilities clear.
-    	Function Abstraction – Each database operation is encapsulated in a dedicated function, making them easy to maintain and test individually.
-    	Code Reusability – The same database query functions can be used across different menu options without rewriting logic.
-    4.	Course Outcome 4:
-    “Demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals.”
-    Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:
-    •	Programming Proficiency
-    •	Database Integration
-    •	Function Abstraction
-    •	Code Reusability
-    •	Preserved Backward Compatibility
-    How these skills support this outcome:
-    	Programming Proficiency – The enhancement demonstrates strong Python and SQL skills by integrating SQLite and writing clean, functional database code.
-    	Database Integration – Introducing persistent storage into the application transforms it from a temporary data processor to a fully capable inventory tracking system.
-    	Function Abstraction – Isolating SQL operations into functions makes the database layer easier to expand in the future.
-    	Code Reusability – The database functions can be adapted for other projects requiring similar functionality.
-    	Preserved Backward Compatibility – All existing non-database features still work, ensuring that the enhancement adds value without removing existing functionality.
-    5.	Course Outcome 5:
-    “Develop a security mindset that anticipates adversarial exploits in software architecture and designs to expose potential vulnerabilities, mitigate design flaws, and ensure privacy and enhanced security of data and resources.”
-    Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:
-    •	Input Validation
-    •	Error Handling Enhancements
-    •	User Experience Improvements
-    How these skills support this outcome:
-    	Input Validation – Only valid grocery item names are accepted, preventing injection of invalid or potentially harmful data into the database.
-    	Error Handling Enhancements – Database operations include try/except blocks to handle connection failures or query errors without crashing the application.
-    	User Experience Improvements – Error messages are clear and informative, helping users correct mistakes without compromising data integrity.
-    Reflection on the Enhancement Process
-    This enhancement significantly changed the internal workings of the Corner Grocer application while keeping the user interface consistent with earlier versions. Moving the data into a SQLite database required rethinking how the program reads, stores, and retrieves information. One of the main lessons learned during the process was the importance of separating business logic from database operations, which makes the program more modular and easier to maintain. I also learned the value of user feedback in database-driven applications—providing clear connection messages, success confirmations, and error outputs makes the system feel more reliable and professional to the end user.
-    The biggest challenge was ensuring backward compatibility while shifting the program from file-based data storage to a persistent database. This required carefully mapping the existing data flow to new database operations and making sure that all existing features still worked exactly as they did before. Error handling was another important focus; the program now gives clear error messages when the database cannot be connected to or when a file is missing, which would have been silent failures in earlier versions. Overall, this enhancement strengthened the application’s reliability, maintainability, and professional quality, making it a stronger example of my abilities in database integration and software design.
-    
+            <textarea spellcheck="false" wrap="soft"></textarea>
+              <div class="content">
+                <div class="doc">
+                  <h1>Database Enhancement</h1>
+                  <h2>Artifact Overview</h2>
+                  <p>The Corner Grocer app now uses a persistent <strong>SQLite</strong> backend, replacing in-memory storage. All previous features remain, but data persists across runs for real-world utility and portability.
+    </p>
 
-            </textarea>
+    <h2>Justification for Inclusion</h2>
+    <p>
+      This enhancement integrates a database while maintaining backward compatibility. It demonstrates schema design,
+      SQL queries, and Python’s DB-API, improving reliability and distribution without external setup.
+    </p>
+
+    <h2>Skills &amp; Course Outcomes</h2>
+
+    <h3>Outcome 1 — Collaboration</h3>
+    <ul>
+      <li>Dedicated <code>db_handler.py</code> isolates database logic</li>
+      <li>Structured comments explain SQL choices</li>
+      <li>Clear, readable function names</li>
+    </ul>
+
+    <h3>Outcome 2 — Communication</h3>
+    <ul>
+      <li>Menu options for DB actions are clearly labeled</li>
+      <li>Success and error messages improve user trust</li>
+      <li>Documentation clarifies data flow</li>
+    </ul>
+
+    <h3>Outcome 3 — Algorithmic/Design Choices</h3>
+    <ul>
+      <li>Efficient queries for storing/retrieving frequencies</li>
+      <li>Separation of concerns between DB and UI</li>
+      <li>Function abstraction for maintainability and tests</li>
+    </ul>
+
+    <h3>Outcome 4 — Techniques &amp; Tools</h3>
+    <ul>
+      <li>SQLite integration elevates value and reliability</li>
+      <li>Reusability of DB functions across menu paths</li>
+      <li>Backward compatibility preserved</li>
+    </ul>
+
+    <h3>Outcome 5 — Security Mindset</h3>
+    <ul>
+      <li>Validated item names reduce bad data and risk</li>
+      <li><code>try/except</code> guards connection/query failures</li>
+      <li>Clear error messages without exposing internals</li>
+    </ul>
+
+    <h2>Reflection</h2>
+    <p>
+      Shifting to SQLite required re-thinking data flow while preserving the interface. The biggest wins were cleanly
+      separating DB concerns and improving feedback to users. The result is a more reliable, maintainable application.
+    </p>
+  </div>
+            </div>
           </div>
         </div>
       
