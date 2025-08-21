@@ -375,10 +375,246 @@
             <div class="item">Search</div>
           </div>
           <div class="content">
-            <textarea spellcheck="false" wrap="soft">
-    PASTE YOUR FULL PROFESSIONAL SELF-ASSESSMENT TEXT HERE
-    (Keep it as plain text. Start right after this line; delete this note.)
-            </textarea>
+            <textarea spellcheck="false" wrap="soft"></textarea>
+            
+          /* FULL-STACK SKILLS & OUTCOMES DASHBOARD */
+            <section class="fsw-dashboard">
+
+  <!-- ===== Retro Window: Skills Spotlight ===== -->
+  <div class="win-window active">
+    <div class="win-titlebar">
+      <span class="win-title">Skills Spotlight — Full-Stack Web</span>
+      <span class="win-controls" aria-hidden="true">▁ ◻ ✕</span>
+    </div>
+    <div class="win-body">
+      <!-- Filter Pills -->
+      <div class="filters" role="tablist" aria-label="Skill filters">
+        <button class="filter is-active" data-filter="all" aria-selected="true">All</button>
+        <button class="filter" data-filter="frontend">Frontend</button>
+        <button class="filter" data-filter="backend">Backend</button>
+        <button class="filter" data-filter="database">Databases</button>
+        <button class="filter" data-filter="design">UX / Design</button>
+        <button class="filter" data-filter="security">Security</button>
+        <button class="filter" data-filter="practice">Dev Practices</button>
+        <button class="filter" data-filter="communication">Communication</button>
+      </div>
+
+      <!-- Skill Badges (edit freely; add/remove without touching JS) -->
+      <div class="badge-grid">
+        <!-- Frontend -->
+        <span class="badge" data-tags="frontend design">HTML5</span>
+        <span class="badge" data-tags="frontend design">CSS3</span>
+        <span class="badge" data-tags="frontend design">Responsive Layout</span>
+        <span class="badge" data-tags="frontend">JavaScript (ES6+)</span>
+        <span class="badge" data-tags="frontend">Angular (components, routing)</span>
+        <span class="badge" data-tags="frontend design">Accessibility-minded UI</span>
+
+        <!-- Backend -->
+        <span class="badge" data-tags="backend">Node.js</span>
+        <span class="badge" data-tags="backend">Express</span>
+        <span class="badge" data-tags="backend practice">RESTful API design</span>
+        <span class="badge" data-tags="backend practice security">Input validation</span>
+        <span class="badge" data-tags="backend">Python (app logic)</span>
+
+        <!-- Databases -->
+        <span class="badge" data-tags="database">MongoDB (Mongoose models)</span>
+        <span class="badge" data-tags="database">SQLite (schema & queries)</span>
+        <span class="badge" data-tags="database security">Parameterized SQL</span>
+        <span class="badge" data-tags="database practice">CRUD patterns</span>
+
+        <!-- UX / Design -->
+        <span class="badge" data-tags="design">Menu-driven flows</span>
+        <span class="badge" data-tags="design">Clear, readable outputs</span>
+        <span class="badge" data-tags="design practice">Error states & empty states</span>
+
+        <!-- Security -->
+        <span class="badge" data-tags="security">Defensive programming</span>
+        <span class="badge" data-tags="security">Safe data access patterns</span>
+
+        <!-- Dev Practices -->
+        <span class="badge" data-tags="practice">Separation of concerns</span>
+        <span class="badge" data-tags="practice">Modular architecture</span>
+        <span class="badge" data-tags="practice">Backward-compatible changes</span>
+        <span class="badge" data-tags="practice">Code readability & comments</span>
+        <span class="badge" data-tags="practice">Version control (Git/GitHub)</span>
+        <span class="badge" data-tags="practice">Basic testing & small units</span>
+
+        <!-- Communication -->
+        <span class="badge" data-tags="communication">Audience-aware documentation</span>
+        <span class="badge" data-tags="communication">Clear commit messages</span>
+        <span class="badge" data-tags="communication">Walkthroughs & demos</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Retro Window: Course Outcomes (visual cards) ===== -->
+  <div class="win-window">
+    <div class="win-titlebar">
+      <span class="win-title">Program Outcomes — At-a-Glance</span>
+      <span class="win-controls" aria-hidden="true">▁ ◻ ✕</span>
+    </div>
+    <div class="win-body outcomes">
+      <!-- Paraphrased, short & skimmable. Replace text if your rubric requires exact wording. -->
+      <article class="outcome">
+        <header>Collaboration</header>
+        <p>Write handoff-friendly code (small modules, clear names) and keep feedback loops calm and specific.</p>
+        <div class="tags">
+          <span>Modular architecture</span><span>Readable docs</span><span>Team reviews</span>
+        </div>
+      </article>
+
+      <article class="outcome">
+        <header>Professional Communication</header>
+        <p>Explain decisions for different audiences with concise docs, status notes, and short demos.</p>
+        <div class="tags">
+          <span>Docs & comments</span><span>Commit messages</span><span>Walkthroughs</span>
+        </div>
+      </article>
+
+      <article class="outcome">
+        <header>Algorithms & Trade-offs</header>
+        <p>Choose structures and operations that are correct, predictable, and easy to extend.</p>
+        <div class="tags">
+          <span>Sorting & search</span><span>Input handling</span><span>Edge cases</span>
+        </div>
+      </article>
+
+      <article class="outcome">
+        <header>Techniques & Tools</header>
+        <p>Ship maintainable features with clean layering, REST patterns, and sensible storage.</p>
+        <div class="tags">
+          <span>Express API</span><span>Angular client</span><span>SQLite/MongoDB</span>
+        </div>
+      </article>
+
+      <article class="outcome">
+        <header>Security Mindset</header>
+        <p>Validate inputs, separate user data from logic, and favor safe access patterns by default.</p>
+        <div class="tags">
+          <span>Parameterized SQL</span><span>Defensive coding</span><span>Least surprise</span>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- ===== Retro Window: Skill → Outcome Map (quick matrix) ===== -->
+  <div class="win-window">
+    <div class="win-titlebar">
+      <span class="win-title">Skill → Outcome Map</span>
+      <span class="win-controls" aria-hidden="true">▁ ◻ ✕</span>
+    </div>
+    <div class="win-body">
+      <div class="matrix">
+        <div class="matrix-row matrix-head">
+          <div class="cell"></div>
+          <div class="cell">Collab</div>
+          <div class="cell">Comm</div>
+          <div class="cell">Alg</div>
+          <div class="cell">Tools</div>
+          <div class="cell">Sec</div>
+        </div>
+
+        <!-- Each row is a skill group; the dots mark relevance. Add/remove rows as needed. -->
+        <div class="matrix-row">
+          <div class="cell head">Frontend (HTML/CSS/JS/Angular)</div>
+          <div class="cell dot">•</div><div class="cell dot">•</div><div class="cell dot">•</div><div class="cell dot">•</div><div class="cell"></div>
+        </div>
+        <div class="matrix-row">
+          <div class="cell head">Backend (Node/Express, Python)</div>
+          <div class="cell dot">•</div><div class="cell dot"></div><div class="cell dot">•</div><div class="cell dot">•</div><div class="cell dot">•</div>
+        </div>
+        <div class="matrix-row">
+          <div class="cell head">Databases (MongoDB, SQLite)</div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell dot">•</div><div class="cell dot">•</div>
+        </div>
+        <div class="matrix-row">
+          <div class="cell head">UX / Design</div>
+          <div class="cell dot">•</div><div class="cell dot">•</div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        </div>
+        <div class="matrix-row">
+          <div class="cell head">Dev Practices</div>
+          <div class="cell dot">•</div><div class="cell dot">•</div><div class="cell dot">•</div><div class="cell dot">•</div><div class="cell dot">•</div>
+        </div>
+      </div>
+      <p class="matrix-note">Tip: replace the dot “•”s with icons (✓, ★) or numbers if you want to show depth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Minimal, theme-aware CSS (retro window + neon green accent) ===== -->
+<style>
+  :root{
+    --bg:#111; --fg:#e6ffe6; --glow:#00ff00;
+    --titlebar-active: linear-gradient(#7db3ff, #2b6bd4);
+    --titlebar-inactive: linear-gradient(#e2e2e2,#bdbdbd);
+    --frame:#bfbfbf; --shadow:#2b2b2b; --highlight:#fafafa;
+    --chip-bg:#0f1a0f; --chip-border:#2f4f2f;
+  }
+  .fsw-dashboard{ display:grid; gap:1.25rem; margin:1.25rem 0; font-family:"Share Tech Mono", monospace; color:var(--fg); }
+  .win-window{ border:2px solid var(--frame); box-shadow:2px 2px 0 var(--shadow), -1px -1px 0 var(--highlight); background:#1a1a1a; }
+  .win-window .win-titlebar{ display:flex; justify-content:space-between; align-items:center; padding:.5rem .75rem; color:#fff; border-bottom:2px solid var(--frame); background:var(--titlebar-inactive); }
+  .win-window.active .win-titlebar{ background:var(--titlebar-active); }
+  .win-title{ font-weight:700; text-shadow:0 0 6px rgba(0,255,0,.5); }
+  .win-controls{ opacity:.8 }
+  .win-body{ padding:1rem; }
+
+  /* Filters */
+  .filters{ display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.75rem; }
+  .filter{ border:1px solid var(--chip-border); background:var(--chip-bg); color:var(--fg); padding:.35rem .6rem; cursor:pointer; border-radius:4px; box-shadow: inset 0 0 8px rgba(0,255,0,.08); }
+  .filter.is-active{ outline:1px solid var(--glow); text-shadow:0 0 8px var(--glow); }
+
+  /* Badges */
+  .badge-grid{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .badge{ border:1px solid var(--chip-border); background:var(--chip-bg); padding:.35rem .6rem; border-radius:4px; box-shadow: inset 0 0 12px rgba(0,255,0,.08); }
+  .badge.hide{ display:none; }
+
+  /* Outcomes */
+  .outcomes{ display:grid; gap:.75rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .outcome{ border:1px solid var(--frame); padding:.75rem; background:#141414; }
+  .outcome header{ color:var(--glow); font-weight:700; margin-bottom:.35rem; text-shadow:0 0 6px rgba(0,255,0,.5); }
+  .outcome .tags{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.4rem; }
+  .outcome .tags span{ font-size:.85rem; border:1px dashed var(--chip-border); padding:.15rem .4rem; border-radius:3px; }
+
+  /* Matrix */
+  .matrix{ display:grid; gap:0; border:1px solid var(--frame); background:#141414; }
+  .matrix-row{ display:grid; grid-template-columns: 1.6fr repeat(5, .7fr); border-top:1px solid #2e2e2e; }
+  .matrix-row:first-child{ border-top:none; }
+  .matrix-head{ background:#0f0f0f; }
+  .cell{ padding:.5rem .6rem; border-left:1px solid #2e2e2e; }
+  .cell:first-child{ border-left:none; }
+  .cell.head{ font-weight:700; color:#cfe8cf; }
+  .cell.dot{ text-align:center; color:var(--glow); text-shadow:0 0 6px rgba(0,255,0,.6); }
+  .matrix-note{ margin-top:.6rem; opacity:.85; font-size:.95rem; }
+
+  /* Small screens */
+  @media (max-width:600px){
+    .matrix-row{ grid-template-columns: 1.2fr repeat(5, .6fr); }
+  }
+</style>
+
+<!-- ===== Tiny JS for filters (no dependencies) ===== -->
+<script>
+  (function(){
+    const buttons = document.querySelectorAll('.fsw-dashboard .filter');
+    const badges  = document.querySelectorAll('.fsw-dashboard .badge');
+
+    function apply(filter){
+      badges.forEach(b => {
+        if(filter === 'all'){ b.classList.remove('hide'); return; }
+        const tags = (b.dataset.tags || '').split(/\s+/);
+        tags.includes(filter) ? b.classList.remove('hide') : b.classList.add('hide');
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        apply(btn.dataset.filter);
+      });
+    });
+  })();
+</script>            </textarea>
           </div>
         </div>
     
