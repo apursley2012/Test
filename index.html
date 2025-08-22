@@ -18,9 +18,13 @@
     html { zoom: 2; }
 
 <!-- Preload to avoid flash-of-default-font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
 <link rel="preload" href="fonts/MSW98UI-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/MSW98UI-Bold.woff2" as="font" type="font/woff2" crossorigin>
 
+<link href="https://fonts.googleapis.com/css2?family=Arbutus&family=Press+Start+2P&family=Share+Tech+Mono&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=VT323&display=swap" rel="stylesheet">
+  
 <style id="msw98ui-global-override">
   /* 1) Register both weights. Multiple URL fallbacks help if your fonts folder differs. */
   @font-face {
@@ -44,13 +48,17 @@
     font-display: swap;
   }
 
+  h1 {
+    font-family: "Press Start 2P", "MSW98UI", "MS Sans Serif", "Source Code Pro", "Tahoma", "Segoe UI", "Arial", sans-serif !important;
+  }
   /* 2) Hard, global override. This will win over almost anything. */
   html, body, body * {
-    font-family: "MSW98UI", "MS Sans Serif", "Source Code Pro", "Tahoma", "Segoe UI", "Arial", sans-serif !important;
+    font-family: "VT323", "Source Code Pro", "Share Tech Mono", "MSW98UI", "MS Sans Serif", "Tahoma", "Segoe UI", "Arial", sans-serif !important;
   }
 
   /* 3) Ensure bold actually maps to the bold face */
-  b, strong, h1, h2, h3, h4, h5, h6, .bold {
+  b, strong, , h2, h3, h4, h5, h6, .bold {
+    font-family: "VT323", "Source Code Pro", "Share Tech Mono", "MSW98UI", "MS Sans Serif", "Tahoma", "Segoe UI", "Arial", sans-serif !important;
     font-weight: 700 !important;
   }
     
