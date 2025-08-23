@@ -193,7 +193,7 @@
     <input type="checkbox" id="windows-minesweeper-input-max" name="windows-minesweeper-input-max"/>
     <input type="checkbox" id="windows-trash-input-max" name="windows-trash-input-max"/>
     
-    <input type="checkbox" id="windows-welcome-input-on-top" name="windows-welcome-input-on-top">
+    <input type="radio" id="windows-welcome-input-on-top" name="windows-welcome-input-on-top">
     <input type="radio" id="windows-ie-input-on-top" name="windows-order"/>
     <input type="radio" id="windows-documents-input-on-top" name="windows-order"/>
     <input type="radio" id="windows-help-input-on-top" name="windows-order"/>
@@ -240,6 +240,10 @@
         </div>
     </div>
     <div id="desktop">
+        <label for="windows-welcome-input" class="desktop-item">
+          <div><img class="icon" data-icon="info" alt="Info"></div>
+          <div class="text">Welcome</div>
+        </label>
         <label for="windows-ie-input" class="desktop-item">
             <div><img class="icon" data-icon="internet-explorer" alt="Internet Explorer"/></div>
             <div class="text">Internet Explorer</div>
@@ -522,7 +526,7 @@
                     <h3>Course Outcomes and Skills Demonstrated</h3>
                     <p>This enhancement clearly aligns with the software engineering and design category. It touches on several course outcomes and builds on a wide range of technical skills:</p>
                     <table>
-                        <thead>
+                         <caption><strong>Skills</strong></caption>
                         <tr>
                             <th>Skill</th>
                             <th>Description</th>
@@ -565,7 +569,7 @@
                     </table>
                     <p>These updates directly support the following course outcomes:</p>
                     <table>
-                      <caption>Course Outcomes</caption>
+                      <caption><strong>Course Outcomes</strong></caption>
                       <tr><th>&nbsp;</th><th>Course Outcome</th><th>Description</th></tr>
                       <tr>
                           <td>Course Outcome 1</td>
