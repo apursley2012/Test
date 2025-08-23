@@ -25,6 +25,7 @@ body {
 
 #all-windows {
     position: absolute;
+    padding: 8rem
     top: 0;
     left: 0;
     width: 100%;
