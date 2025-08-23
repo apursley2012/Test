@@ -819,7 +819,96 @@
     <div id="start-bar">
         <div id="start-button-items">
             <label id="start-button" class="windows-box-shadow" for="start-button-input"></label>
-            <div id="items">
+          <ul>
+            <!-- PROGRAMS (submenu) -->
+            <li class="programs">
+              <label>
+                <img class="icon" data-start2-icon="programs" alt="Programs"> Programs
+              </label>
+              <ul class="windows-box-shadow"
+                <!-- Your portfolio items inside Programs -->
+                <li>
+                  <label for="windows-note-sa-input">
+                    <img class="icon" data-help-icon="notepad" alt="Notepad"> Professional Self-Assessment.txt
+                  </label>
+                </li>
+                <li>
+                  <label for="windows-note-e1-input">
+                    <img class="icon" data-help-icon="notepad" alt="Notepad"> Enhancement 1 Narrative.txt
+                  </label
+                    </li>
+        <li>
+          <label for="windows-note-e2-input">
+            <img class="icon" data-help-icon="notepad" alt="Notepad"> Enhancement 2 Narrative.txt
+          </label>
+        </li>
+        <li>
+          <label for="windows-note-e3-input">
+            <img class="icon" data-help-icon="notepad" alt="Notepad"> Enhancement 3 Narrative.txt
+          </label>
+        </li>
+
+        <!-- Built-in examples -->
+        <li>
+          <label for="windows-ie-input">
+            <img class="icon" data-help-icon="internet-explorer" alt="Internet Explorer"> Internet Explorer
+          </label>
+        </li>
+        <li>
+          <label for="windows-minesweeper-input">
+            <img class="icon" data-help-icon="minesweeper" alt="Minesweeper"> Minesweeper
+          </label>
+        </li>
+        <li>
+          <label for="windows-notepad-input">
+            <img class="icon" data-help-icon="notepad" alt="Notepad"> Notepad
+          </label>
+        </li>
+      </ul>
+    </li>
+
+    <!-- MAIN LIST ITEMS (top level) -->
+    <li>
+      <!-- Use the ? speech-bubble (help) icon for Welcome.
+           If you have a console icon (e.g., "console" / "cmd" / "terminal"),
+           change data-start-icon="help" to that key. -->
+      <label for="windows-welcome-input">
+        <img class="icon" data-start-icon="help" alt="Welcome"> Welcome
+      </label>
+    </li>
+
+    <li>
+      <label for="windows-documents-input">
+        <img class="icon" data-start-icon="documents" alt="Documents"> Documents
+      </label>
+    </li>
+
+    <li class="line">
+      <label for="windows-help-input">
+        <img class="icon" data-start-icon="help" alt="Help"> Help
+      </label>
+    </li>
+
+    <li>
+      <label for="login-screen-input">
+        <img class="icon" data-start-icon="logoff" alt="Log Off"> Log Off 
+        <span class="spiderman logout-prompt"> Spiderman...</span>
+        <span class="zark-muckerberg logout-prompt"> Zark Muckerberg...</span>
+        <span class="donald-trump logout-prompt"> Donald Trump...</span>
+      </label>
+    </li>
+
+    <li>
+      <label for="shutdown-screen-input">
+        <img class="icon" data-start-icon="shutdown" alt="Shutdown"> Shutdown
+      </label>
+    </li>
+  </ul>
+</div>
+          
+          
+          
+          <div id="items">
                 <label for="windows-ie-input-min" class="ie-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="internet-explorer" alt="Internet Explorer"/></span><span>Help Center</span></label>
                 <label for="windows-notepad-input-min" class="notepad-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="notepad" alt="Notepad"></span><span>Notepad</span></label>
              
