@@ -38,9 +38,9 @@ const ICONS = {
   //<img class="icon" data-icon="note" alt="Note"/>
   "note": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAGFBMVEUAAAAAAACAgID////AwMAAAL8AAP///wCsLlssAAAAAXRSTlMAQObYZgAAAAFiS0dEAxEMTPIAAAAHdElNRQfiBhoAOCQMIApYAAAAvUlEQVQoz22Ryw7CIBREqYl7xlb3Pj7APpQ1iaZbXcjaxBTXhCi/bx+2XBomd8PJDDcMjCUc43DWab8rpunIIi/TcbYyCkovKdltBpbPGVAtuHjJqz6GDvUOI1d9DiPqpcMt6tsEkXyjwy04NWEkhWooEMD6wUnEGuBOHidEBXACrKsNuuf/A7Wr3AekD2trB1JQe4MzUvqIK4BMeofIV0OFIzBpOYG+qmxoLNJ6DNCSow528I6s//4EXu3xB1FNX4O6vHKSAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE4LTA2LTI2VDAwOjU2OjM2LTA0OjAwEWYRaQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOC0wNi0yNlQwMDo1NjozNi0wNDowMGA7qdUAAAAASUVORK5CYII=",
   //<img class="icon" data-icon="info" alt="Info"/>
-  "info": "https://raw.githubusercontent.com/apursley2012/test/refs/heads/main/assets/icons/icon_information.png",
+  "info": "https://github.com/apursley2012/test/raw/main/assets/icons/icon_information.png",
   //<img class="icon" data-icon="faq" alt="FAQ"/>
-  "faq": "https://raw.githubusercontent.com/apursley2012/test/refs/heads/main/assets/icons/icon_question.png",
+  "faq": "https://github.com/apursley2012/test/raw/main/assets/icons/icon_question.png",
   //<img class="icon" data-icon="console" alt="Console"/>
-  "console": "https://raw.githubusercontent.com/apursley2012/test/refs/heads/main/assets/icons/console_prompt.png"
+  "console": "https://github.com/apursley2012/test/raw/main/assets/icons/console_prompt.png"
 };
