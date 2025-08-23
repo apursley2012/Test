@@ -139,6 +139,85 @@
             font-weight: bold;
             color: #000080;
         }
+
+        /* ===== VISUAL BUILDING BLOCKS FOR NARRATIVES ===== */
+.narrative-container {
+  --win-blue:#000080; --paper:#f7f7f7; --line:#808080; --ink:#222;
+}
+
+/* Title strip */
+.narrative-container .nc-title{
+  display:flex; align-items:center; gap:.75rem;
+  border-bottom:2px solid var(--line); padding-bottom:.4rem; margin:0 0 .8rem;
+}
+.narrative-container .nc-title .emoji{font-size:1.6rem; line-height:1;}
+.narrative-container .nc-title h2{margin:0; color:var(--win-blue);}
+.narrative-container .nc-title .subtitle{margin:.1rem 0 0; color:#444; font-size:.95em;}
+.narrative-container .badge{
+  margin-left:auto; border:1px solid var(--line); background:#e9e9e9;
+  padding:.15rem .5rem; border-radius:999px; font-size:.85em; white-space:nowrap;
+}
+
+/* Callouts */
+.narrative-container .callout{
+  border:2px solid var(--win-blue); background:#eaf0ff; padding:.75rem; margin:.8rem 0;
+}
+.narrative-container .callout.success{border-color:#0a8; background:#e8fff6;}
+.narrative-container .callout.warn{border-color:#c88; background:#fff2f2;}
+
+/* KPI bars (pure CSS) */
+.narrative-container .kpi{display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; margin:.4rem 0 .2rem;}
+.narrative-container .kpi .bar{
+  width:180px; height:10px; background:#ececec; border:1px solid var(--line); position:relative;
+}
+.narrative-container .kpi .bar > span{
+  display:block; height:100%; width:var(--val,0%); background:var(--win-blue);
+}
+.narrative-container .kpi small{opacity:.8}
+
+/* Tag pills */
+.narrative-container .tags{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.4rem}
+.narrative-container .tag{
+  border:1px solid var(--line); background:#efefef; border-radius:999px; padding:.12rem .45rem;
+  font-size:.85em;
+}
+
+/* Card grid */
+.narrative-container .card-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+  gap:.75rem; margin:1rem 0;
+}
+.narrative-container .card{
+  border:1px solid var(--line); background:#fff; padding:.7rem; box-shadow:inset 0 0 0 2px #fff;
+}
+.narrative-container .card header{font-weight:700; color:var(--win-blue); margin-bottom:.35rem}
+
+/* Checklist bullets */
+.narrative-container .checklist{list-style:none; padding-left:0; margin:.4rem 0}
+.narrative-container .checklist li{position:relative; padding-left:1.1rem; margin:.15rem 0}
+.narrative-container .checklist li::before{content:"✓"; position:absolute; left:0; top:0; color:#0a7}
+
+/* Sticky header/first column tables */
+.narrative-container table.sticky{border-collapse:collapse; width:100%; font-size:.95em}
+.narrative-container table.sticky th, .narrative-container table.sticky td{
+  border:1px solid var(--line); padding:.45rem; background:#fff;
+}
+.narrative-container table.sticky thead th{
+  position:sticky; top:0; background:#cfd2d6; z-index:2;
+}
+.narrative-container table.sticky th[scope=row]{
+  position:sticky; left:0; background:#eee; z-index:1; min-width:11ch;
+}
+
+/* Figure with caption */
+.narrative-container figure{margin:1rem 0; padding:.6rem; background:#fff; border:1px solid var(--line)}
+.narrative-container figcaption{font-size:.85em; color:#555; margin-top:.35rem}
+
+/* Simple accordion (no JS) */
+.narrative-container details{border:1px solid var(--line); background:#fff; padding:.5rem .6rem; margin:.6rem 0}
+.narrative-container summary{cursor:pointer; font-weight:700; color:var(--win-blue)}
+
+        
         /* Welcome window body: black background + green text */
 .window.welcome .content{
   background: #000 !important;
@@ -513,6 +592,48 @@
                 <div class="item">Search</div>
             </div>
             <div class="content">
+                <div class="nc-title">
+                  <span class="emoji">🧰</span>
+                  <div>
+                    <h2>Software Design & Engineering</h2>
+                    <p class="subtitle">Corner Grocer — Python Refactor</p>
+                  </div>
+                  <span class="badge">Enhancement 1</span>
+                </div>
+                
+                <div class="callout">
+                  <strong>Why this matters:</strong> Modernizes a C++ console app into a safer, more extensible Python tool with backups and clearer UX.
+                </div>
+                <div class="card-grid">
+                  <article class="card">
+                    <header>Outcome 1 — Collaboration</header>
+                    <p>Handoff-friendly modules and comments; clear menu boundaries.</p>
+                    <div class="kpi"><div class="bar" style="--val:90%"><span></span></div><small>Evidence: module split, docstrings</small></div>
+                    <div class="tags"><span class="tag">Modularity</span><span class="tag">Docs</span><span class="tag">Reviews</span></div>
+                  </article>
+                
+                  <article class="card">
+                    <header>Outcome 2 — Communication</header>
+                    <p>Readable prompts, errors, and change logs.</p>
+                    <div class="kpi"><div class="bar" style="--val:85%"><span></span></div><small>Evidence: UX copy, messages</small></div>
+                    <div class="tags"><span class="tag">UX</span><span class="tag">Clarity</span></div>
+                  </article>
+                
+                  <article class="card">
+                    <header>Outcome 3 — Algorithms & Trade-offs</header>
+                    <p>Efficient counting/search; simple, testable functions.</p>
+                    <div class="kpi"><div class="bar" style="--val:95%"><span></span></div><small>Evidence: sorting/search utils</small></div>
+                    <div class="tags"><span class="tag">Sorting</span><span class="tag">Search</span></div>
+                  </article>
+                </div>
+                <ul class="checklist">
+                  <li>Added <code>GroceryFrequency</code> class and input validation</li>
+                  <li>Backups for frequency list + histogram with success paths</li>
+                  <li>Clear error handling via <code>try/except</code></li>
+                </ul>
+
+
+
                 <div class="narrative-container">
                     <h2>Software Design & Engineering Enhancement</h2>
                     <br>
