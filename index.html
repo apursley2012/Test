@@ -139,6 +139,28 @@
             font-weight: bold;
             color: #000080;
         }
+        /* Welcome window body: black background + green text */
+.window.welcome .content{
+  background: #000 !important;
+  color: #00ff00 !important;       /* inherits to the typewriter + caret */
+  padding: 1rem 1.25rem;
+  line-height: 1.35;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+/* Keep the Press Start 2P heading green + glow */
+.window.welcome .welcome-title{
+  color: #00ff00;
+  text-shadow: 0 0 6px rgba(0,255,0,0.35);
+}
+
+/* Make links readable on black if you ever add any here */
+.window.welcome .content a{
+  color: #8cc8ff;
+  text-decoration: underline;
+}
+
     </style>
 </head>
 <body>
@@ -1048,6 +1070,56 @@
         document.title = baseTitle + " - Microsoft Internet Explorer";
     });
 </script>
+<!-- Base64 icon map -->
+<script src="icons.js"></script>
+
+<script>
+/* Auto-open Welcome once per session + typewriter effect */
+(function () {
+  const vis = document.getElementById('windows-welcome-input');
+  const top = document.getElementById('windows-welcome-input-on-top');
+  const typer = document.getElementById('welcome-typer');
+
+  function bringWelcomeToFront() {
+    if (vis) vis.checked = true;
+    if (top) top.checked = true;
+  }
+
+  // Show the Welcome window once per session
+  if (sessionStorage.getItem('welcome_shown') !== '1') {
+    bringWelcomeToFront();
+    sessionStorage.setItem('welcome_shown', '1');
+  }
+
+  // Typewriter effect (types entire message)
+  if (typer) {
+    const full = typer.getAttribute('data-text') || '';
+    typer.textContent = '';
+    let i = 0;
+
+    function tick() {
+      // type ~60 chars/second but with animation frame cadence for smoothness
+      typer.textContent = full.slice(0, i);
+      i++;
+      if (i <= full.length) {
+        // small delay without blocking UI
+        setTimeout(() => requestAnimationFrame(tick), 16);
+      } else {
+        typer.classList.remove('typewriter-caret'); // stop caret after finish
+      }
+    }
+    tick();
+  }
+
+  // If user re-opens from desktop or Start, make sure it's on top
+  document.addEventListener('change', (e) => {
+    if (e.target && e.target.id === 'windows-welcome-input' && e.target.checked) {
+      bringWelcomeToFront();
+    }
+  });
+})();
+</script>
+
 
 </body>
 </html>
