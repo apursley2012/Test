@@ -42,5 +42,5 @@ const ICONS = {
   //<img class="icon" data-icon="faq" alt="FAQ"/>
   "faq": "https://raw.githubusercontent.com/apursley2012/test/refs/heads/main/assets/icons/icon_question.png",
   //<img class="icon" data-icon="console" alt="Console"/>
-  "console": "https://raw.githubusercontent.com/apursley2012/test/refs/heads/main/assets/icons/console_prompt.png";
+  "console": "https://raw.githubusercontent.com/apursley2012/test/refs/heads/main/assets/icons/console_prompt.png"
 };
