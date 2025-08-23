@@ -52,170 +52,67 @@
             -webkit-user-select: none;
             touch-action: none; /* prevents the page from panning while dragging on mobile */
         }
-
-        /* --- Custom Styles for Narratives --- */
-        .narrative-container {
-            font-family: "Share Tech Mono", monospace;
-            padding: 15px;
-            background-color: #f0f0f0;
-            color: #333;
-            border: 2px solid #000;
-        }
-        .narrative-container h2 {
-            font-size: 1.5em;
-            color: #000080;
-            border-bottom: 2px solid #808080;
-            padding-bottom: 5px;
-            margin-top: 20px;
-        }
-        .narrative-container h3 {
-            font-size: 1.2em;
-            color: #000;
-            margin-top: 15px;
-        }
-        .narrative-container p, .narrative-container ul {
-            font-size: 1em;
-            line-height: 1.4;
-            margin-bottom: 10px;
-        }
-        .narrative-container table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            font-size: 0.9em;
-        }
-        .narrative-container th, .narrative-container td {
-            border: 1px solid #808080;
-            padding: 8px;
-            text-align: left;
-        }
-        .narrative-container th {
-            background-color: #c0c0c0;
-            font-weight: bold;
-        }
-        .narrative-container .chart-container {
-            margin: 20px 0;
-            text-align: center;
-        }
-        .narrative-container .chart-container h4 {
-            margin-bottom: 10px;
-            font-size: 1.1em;
-            color: #000;
-        }
-        .bar-chart {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            background-color: #e0e0e0;
-            padding: 10px;
-            border: 1px solid #808080;
-            height: 200px;
-            position: relative;
-        }
-        .bar {
-            width: 30px;
-            background-color: #000080;
-            margin: 0 5px;
-            transition: height 0.5s ease-in-out;
-            position: relative;
-        }
-        .bar-label {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8em;
-            white-space: nowrap;
-        }
-        .bar-value {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8em;
-            color: #000;
-        }
-        .highlight {
-            font-weight: bold;
-            color: #000080;
-        }
-
-        /* ===== VISUAL BUILDING BLOCKS FOR NARRATIVES ===== */
-.narrative-container {
-  --win-blue:#000080; --paper:#f7f7f7; --line:#808080; --ink:#222;
+/* === Corner Grocer (teal) theme for narratives & self-assessment === */
+:root{
+  --cg-bg-start:#06b6d4;   /* top-left teal */
+  --cg-bg-end:#0284c7;     /* bottom-right teal */
+  --cg-card:#ffffff;
+  --cg-text:#0b2940;
+  --cg-muted:#5f7d95;
+  --cg-radius:14px;
+  --cg-shadow:0 8px 24px rgba(0,0,0,.18);
 }
 
-/* Title strip */
-.narrative-container .nc-title{
-  display:flex; align-items:center; gap:.75rem;
-  border-bottom:2px solid var(--line); padding-bottom:.4rem; margin:0 0 .8rem;
-}
-.narrative-container .nc-title .emoji{font-size:1.6rem; line-height:1;}
-.narrative-container .nc-title h2{margin:0; color:var(--win-blue);}
-.narrative-container .nc-title .subtitle{margin:.1rem 0 0; color:#444; font-size:.95em;}
-.narrative-container .badge{
-  margin-left:auto; border:1px solid var(--line); background:#e9e9e9;
-  padding:.15rem .5rem; border-radius:999px; font-size:.85em; white-space:nowrap;
+/* Make narrative windows match the demo background (NO GRAY) */
+.window.notepad .content{
+  background: linear-gradient(135deg,var(--cg-bg-start),var(--cg-bg-end));
+  padding: 22px;
+  overflow:auto;
 }
 
-/* Callouts */
-.narrative-container .callout{
-  border:2px solid var(--win-blue); background:#eaf0ff; padding:.75rem; margin:.8rem 0;
+/* Reusable cards */
+.note-card{
+  background:var(--cg-card);
+  color:var(--cg-text);
+  border-radius:var(--cg-radius);
+  box-shadow:var(--cg-shadow);
+  border:1px solid rgba(255,255,255,.35);
+  padding:20px 22px;
+  margin:14px 0;
 }
-.narrative-container .callout.success{border-color:#0a8; background:#e8fff6;}
-.narrative-container .callout.warn{border-color:#c88; background:#fff2f2;}
+.note-header{ text-align:center; margin:4px 0 10px; }
+.note-title{ font-size:28px; font-weight:800; margin:2px 0 0; }
+.note-sub  { font-size:14px; opacity:.85; }
 
-/* KPI bars (pure CSS) */
-.narrative-container .kpi{display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; margin:.4rem 0 .2rem;}
-.narrative-container .kpi .bar{
-  width:180px; height:10px; background:#ececec; border:1px solid var(--line); position:relative;
-}
-.narrative-container .kpi .bar > span{
-  display:block; height:100%; width:var(--val,0%); background:var(--win-blue);
-}
-.narrative-container .kpi small{opacity:.8}
-
-/* Tag pills */
-.narrative-container .tags{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.4rem}
-.narrative-container .tag{
-  border:1px solid var(--line); background:#efefef; border-radius:999px; padding:.12rem .45rem;
-  font-size:.85em;
+/* Section titles that sit on teal */
+.section-title{
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  margin:18px 0 8px;
 }
 
-/* Card grid */
-.narrative-container .card-grid{
-  display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
-  gap:.75rem; margin:1rem 0;
-}
-.narrative-container .card{
-  border:1px solid var(--line); background:#fff; padding:.7rem; box-shadow:inset 0 0 0 2px #fff;
-}
-.narrative-container .card header{font-weight:700; color:var(--win-blue); margin-bottom:.35rem}
+/* Lists / tables */
+.list{ padding-left:1.2rem; margin:0; }
+.list li{ margin:6px 0; }
+.table{ width:100%; border-collapse:collapse; }
+.table th,.table td{ padding:10px 12px; text-align:left; border-bottom:1px solid #e7eef6; }
+.table th{ font-weight:700; }
+code,.mono{ font-family:"Share Tech Mono",monospace; background:#f5f9fc; padding:0 6px; border-radius:6px; }
 
-/* Checklist bullets */
-.narrative-container .checklist{list-style:none; padding-left:0; margin:.4rem 0}
-.narrative-container .checklist li{position:relative; padding-left:1.1rem; margin:.15rem 0}
-.narrative-container .checklist li::before{content:"✓"; position:absolute; left:0; top:0; color:#0a7}
-
-/* Sticky header/first column tables */
-.narrative-container table.sticky{border-collapse:collapse; width:100%; font-size:.95em}
-.narrative-container table.sticky th, .narrative-container table.sticky td{
-  border:1px solid var(--line); padding:.45rem; background:#fff;
+/* Feature menu chips styled like the screenshot */
+.menu{ display:grid; gap:12px; }
+.menu-item{
+  list-style:none;
+  padding:14px 16px;
+  border-radius:14px;
+  background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.08));
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:var(--cg-shadow);
+  color:#fff;
 }
-.narrative-container table.sticky thead th{
-  position:sticky; top:0; background:#cfd2d6; z-index:2;
-}
-.narrative-container table.sticky th[scope=row]{
-  position:sticky; left:0; background:#eee; z-index:1; min-width:11ch;
-}
-
-/* Figure with caption */
-.narrative-container figure{margin:1rem 0; padding:.6rem; background:#fff; border:1px solid var(--line)}
-.narrative-container figcaption{font-size:.85em; color:#555; margin-top:.35rem}
-
-/* Simple accordion (no JS) */
-.narrative-container details{border:1px solid var(--line); background:#fff; padding:.5rem .6rem; margin:.6rem 0}
-.narrative-container summary{cursor:pointer; font-weight:700; color:var(--win-blue)}
+.menu-item .label{ font-weight:700; }
+.menu-item small{ display:block; opacity:.9; margin-top:4px; }
 
         
         /* Welcome window body: black background + green text */
@@ -583,57 +480,41 @@
         <div class="window notepad note-e1 windows-box-shadow">
             <div class="header">
                 <label for="windows-note-e1-input-on-top">Notepad — Enhancement 1 Narrative.txt</label>
-                <div class="header-buttons">
-                    <label for="windows-note-e1-input-min" class="minimize windows-box-shadow"></label>
-                    <label for="windows-note-e1-input-max" class="maximize windows-box-shadow"></label>
-                    <label for="windows-note-e1-input" class="close windows-box-shadow">X</label>
-                </div>
-            </div>
-            <div class="options line">
-                <div class="item">File</div>
-                <div class="item">Edit</div>
-                <div class="item">Search</div>
-            </div>
-            <div class="content">
-                <div class="nc-title">
-                  <span class="emoji">🧰</span>
-                  <div>
-                    <h2>Software Design & Engineering</h2>
-                    <p class="subtitle">Corner Grocer — Python Refactor</p>
-                  </div>
-                  <span class="badge">Enhancement 1</span>
-                </div>
-                
-                <div class="callout">
-                  <strong>Why this matters:</strong> Modernizes a C++ console app into a safer, more extensible Python tool with backups and clearer UX.
-                </div>
-                <div class="card-grid">
-                  <article class="card">
-                    <header>Outcome 1 — Collaboration</header>
-                    <p>Handoff-friendly modules and comments; clear menu boundaries.</p>
-                    <div class="kpi"><div class="bar" style="--val:90%"><span></span></div><small>Evidence: module split, docstrings</small></div>
-                    <div class="tags"><span class="tag">Modularity</span><span class="tag">Docs</span><span class="tag">Reviews</span></div>
-                  </article>
-                
-                  <article class="card">
-                    <header>Outcome 2 — Communication</header>
-                    <p>Readable prompts, errors, and change logs.</p>
-                    <div class="kpi"><div class="bar" style="--val:85%"><span></span></div><small>Evidence: UX copy, messages</small></div>
-                    <div class="tags"><span class="tag">UX</span><span class="tag">Clarity</span></div>
-                  </article>
-                
-                  <article class="card">
-                    <header>Outcome 3 — Algorithms & Trade-offs</header>
-                    <p>Efficient counting/search; simple, testable functions.</p>
-                    <div class="kpi"><div class="bar" style="--val:95%"><span></span></div><small>Evidence: sorting/search utils</small></div>
-                    <div class="tags"><span class="tag">Sorting</span><span class="tag">Search</span></div>
-                  </article>
-                </div>
-                <ul class="checklist">
-                  <li>Added <code>GroceryFrequency</code> class and input validation</li>
-                  <li>Backups for frequency list + histogram with success paths</li>
-                  <li>Clear error handling via <code>try/except</code></li>
-                </ul>
+                <div class="note-header">
+  <div class="note-title">Software Design & Engineering</div>
+  <div class="note-sub mono">Corner Grocer — Python Refactor</div>
+</div>
+
+<div class="note-card">
+  <p><strong>Enhancement 1 — Why this matters</strong>: Modernizes a C++ console app into a safer, more extensible Python tool with backups and clearer UX.</p>
+  <ul class="list">
+    <li>Rewrote as Python with a <code>GroceryFrequency</code> class.</li>
+    <li>Validated inputs; structured error handling with <code>try/except</code>.</li>
+    <li>Added backups for frequency list & histogram (with success paths).</li>
+  </ul>
+</div>
+
+<h2 class="section-title">Course Outcomes</h2>
+<div class="note-card">
+  <table class="table">
+    <tr><th>Outcome</th><th>Description</th></tr>
+    <tr><td><b>Collaboration</b></td><td>Hand-off friendly modules & comments; clear menu boundaries.</td></tr>
+    <tr><td><b>Communication</b></td><td>Readable prompts, errors, confirmations, and change logs.</td></tr>
+    <tr><td><b>Algorithms & Trade-offs</b></td><td>Efficient counting/search; simple, testable functions.</td></tr>
+    <tr><td><b>Techniques & Tools</b></td><td>Python best practices; portable file I/O; zero-regression rewrite.</td></tr>
+    <tr><td><b>Security Mindset</b></td><td>Strict input validation; explicit failure modes; no silent errors.</td></tr>
+  </table>
+</div>
+
+<h2 class="section-title">Key Evidence</h2>
+<div class="note-card">
+  <ul class="list">
+    <li>Module split + docstrings for maintainability.</li>
+    <li>Backup files written with absolute path reporting.</li>
+    <li>Error messages that guide the user (no crashes).</li>
+  </ul>
+</div>
+
 
 
 
