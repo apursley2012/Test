@@ -950,39 +950,57 @@ separating DB concerns and improving feedback to users. The result is a more rel
 </div>    
 </div>
 </div>
-    <div id="start-bar">
-        <div id="start-button-items">
-            <label id="start-button" class="windows-box-shadow" for="start-button-input"></label>
-            <div id="items">
-                <label for="windows-ie-input-min" class="ie-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="internet-explorer" alt="Internet Explorer"/></span><span>Help Center</span></label>
-                <label for="windows-notepad-input-min" class="notepad-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="notepad" alt="Notepad"></span><span>Notepad</span></label>
-                <label for="windows-documents-input-min" class="documents-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="documents" alt="Documents"></span><span>Documents</span></label>
-                <label for="windows-update-input-min" class="update-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="winUpdate" alt="Update Windows"></span><span>Windows Update</span></label>
-                <label for="windows-trash-input-min" class="trash-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="recycleBin" alt="Recycly Bin"></span><span>Recycle Bin</span></label>
-                <label for="windows-minesweeper-input-min" class="minesweeper-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="minesweeper" alt="Minesweeper"></span><span>Minesweeper</span></label>
-            </div>
-        </div>
-        <div id="start-menu" class="windows-box-shadow">
-            <div id="windows-start-menu-blue">Windows<span>98</span></div>
-            <ul>
-                <li class="line welcome"><label for="windows-welcome-input"><img class="icon" data-start-icon="info" alt="Welcome Message"> Welcome Message </label></li>
-                <li class="programs"><label><img class="icon" data-start2-icon="programs" alt="Programs"/> Progams</label>
-                    <ul class="windows-box-shadow">
-                        <li><label for="windows-ie-input"><img class="icon" data-help-icon="internet-explorer" alt="Internet Explorer"><input type="checkbox" /> Internet Explorer</label></li>
-                        <li><label for="windows-minesweeper-input"><img class="icon" data-help-icon="minesweeper" alt="Minesweeper"> Minesweeper</label></li>
-                        <li><label for="windows-notepad-input"><img class="icon" data-help-icon="notepad" alt="Notepad">Notepad</label></li>
-                    </ul>
-                </li>
-                <li><label for="windows-documents-input"><img class="icon" data-taskbar-icon="documents" alt="Documents"/> Documents</label></li>
-                <li class="line"><label for="windows-help-input"><img class="icon" data-start-icon="help" alt="help"/> Help</label></li>
-                <li><label for="login-screen-input"><img class="icon" data-start-icon="logoff" alt="logoff"/> Log Off <span class="spiderman logout-prompt"> Spiderman...</span><span class="zark-muckerberg logout-prompt"> Zark Muckerberg...</span><span class="donald-trump logout-prompt"> Donald Trump...</span></label></li>
-                <li><label for="shutdown-screen-input"><img class="icon" data-start-icon="shutdown" alt="Shutdown"/> Shutdown</label></li>
-            </ul>
-        </div>
-        <div id="time-options"></div>
-    </div>
-</form>
-<!-- partial -->
+<div id="start-bar">
+<div id="start-button-items">
+<label id="start-button" class="windows-box-shadow" for="start-button-input"></label>
+<div id="items">
+<label for="windows-ie-input-min" class="ie-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="internet-explorer" alt="Internet Explorer"/></span><span>Help Center</span></label>
+<label for="windows-notepad-input-min" class="notepad-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="notepad" alt="Notepad"></span><span>Notepad</span></label>
+
+<label for="windows-note-sa-input-min" class="note-sa-tab tab windows-box-shadow">
+<span><img class="icon" data-taskbar-icon="notepad" alt="Notepad"></span>
+<span>Professional Self-Assessment.txt</span>
+</label>
+
+<label for="windows-note-e1-input-min" class="note-e1-tab tab windows-box-shadow">
+<span><img class="icon" data-taskbar-icon="notepad" alt="Notepad"></span>
+<span>Enhancement 1 Narrative.txt</span>
+</label>
+
+<label for="windows-note-e2-input-min" class="note-e2-tab tab windows-box-shadow">
+<span><img class="icon" data-taskbar-icon="notepad" alt="Notepad"></span>
+<span>Enhancement 2 Narrative.txt</span>
+</label>
+
+<label for="windows-note-e3-input-min" class="note-e3-tab tab windows-box-shadow">
+<span><img class="icon" data-taskbar-icon="notepad" alt="Notepad"></span>
+<span>Enhancement 3 Narrative.txt</span>
+</label>
+
+<label for="windows-documents-input-min" class="documents-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="documents" alt="Documents"></span><span>Documents</span></label>
+
+<label for="windows-trash-input-min" class="trash-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="recycleBin" alt="Recycly Bin"></span><span>Recycle Bin</span></label>
+<label for="windows-minesweeper-input-min" class="minesweeper-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="minesweeper" alt="Minesweeper"></span><span>Minesweeper</span></label>
+</div>
+</div>
+<div id="start-menu" class="windows-box-shadow">
+<div id="windows-start-menu-blue">Windows<span>98</span></div>
+<ul>
+<li class="programs"><label><img class="icon" data-start2-icon="programs" alt="Programs"/> Progams</label>
+<ul class="windows-box-shadow">
+<li><label for="windows-ie-input"><img class="icon" data-help-icon="internet-explorer" alt="Internet Explorer"><input type="checkbox" /> Internet Explorer</label></li>
+<li><label for="windows-minesweeper-input"><img class="icon" data-help-icon="minesweeper" alt="Minesweeper"> Minesweeper</label></li>
+<li><label for="windows-notepad-input"><img class="icon" data-help-icon="notepad" alt="Notepad">Notepad</label></li>
+</ul>
+</li>
+<li><label for="windows-documents-input"><img class="icon" data-taskbar-icon="documents" alt="Documents"/> Documents</label></li>
+<li class="line"><label for="windows-help-input"><img class="icon" data-start-icon="help" alt="help"/> Help</label></li>
+<li><label for="login-screen-input"><img class="icon" data-start-icon="logoff" alt="logoff"/> Log Off <span class="spiderman logout-prompt"> Spiderman...</span><span class="zark-muckerberg logout-prompt"> Zark Muckerberg...</span><span class="donald-trump logout-prompt"> Donald Trump...</span></label></li>
+<li><label for="shutdown-screen-input"><img class="icon" data-start-icon="shutdown" alt="Shutdown"/> Shutdown</label></li>
+</ul>
+</div>
+<div id="time-options"></div>
+</div>
 </form>
 <!-- partial -->
 
