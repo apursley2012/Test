@@ -1,159 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Alysha Pursley's ePortfolio</title>
-    <link rel="stylesheet" href="./style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=DotGothic16&family=Fira+Code:wght@300..700&family=Handjet:wght@100..900&family=Jersey+15&family=Jersey+20&family=Jersey+25&family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&family=Share+Tech&family=Share+Tech+Mono&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
-    <style>
-        /* Default: no zoom on touch/smaller screens */
-        @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
-            html {
-                zoom: 1 !important;
-            }
-        }
-        /* Desktop/laptop: scale up */
-        @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
-            html {
-                zoom: 2;
-            }
-        }
-                /* 3) Ensure bold actually maps to the bold face */
-        b, strong, h1, h2, h3, h4, h5, h6, .bold {
-            font-weight: 700 !important;
-        }
-        /* 3) Notepad: make the text area truly reach the bottom & scroll fully */
-        .window.notepad .content {
-            display: block; /* no flex clipping */
-            overflow: auto;
-        }
-        .window.notepad .content textarea {
-            height: 100%;
-            box-sizing: border-box;
-            overflow: auto;
-            padding: 8rem; /* extra space so last lines aren't near the bar */
-        }
-        /* Mobile: make the close "X" easier to tap and always on top */
-        .window .header-buttons {
-            z-index: 1000000010;
-        }
-        .window .header-buttons > label.close {
-            min-width: 1rem;
-            height: 1rem;
-            line-height: 1rem;
-        }
-        /* header is the drag handle; make it obvious & touch-friendly */
-        .window .header {
-            cursor: move;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: none; /* prevents the page from panning while dragging on mobile */
-        }
-       
-        /* Welcome window body: black background + green text */
-.window.welcome .content{
-  background: #000 !important;
-  color: #00ff00 !important;       /* inherits to the typewriter + caret */
-  padding: 1rem 1.25rem;
-  line-height: 1.35;
-  max-height: 70vh;
-  overflow: auto;
-}
+  <meta charset="UTF-8" />
+  <title>Alysha Pursley's ePortfolio</title>
+  <link rel="stylesheet" href="./style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=DotGothic16&family=Fira+Code:wght@300..700&family=Handjet:wght@100..900&family=Jersey+15&family=Jersey+20&family=Jersey+25&family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&family=Share+Tech&family=Share+Tech+Mono&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet"/>
 
-/* Keep the Press Start 2P heading green + glow */
-.window.welcome .welcome-title{
-  color: #00ff00;
-  text-shadow: 0 0 6px rgba(0,255,0,0.35);
-}
+  <style>
+    /* No zoom on touch/smaller screens */
+    @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+      html { zoom: 1 !important; }
+    }
+    /* Desktop/laptop: scale up */
+    @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+      html { zoom: 2; }
+    }
 
-/* Make links readable on black if you ever add any here */
-.window.welcome .content a{
-  color: #8cc8ff;
-  text-decoration: underline;
-}
+    /* Ensure bold is bold */
+    b, strong, h1, h2, h3, h4, h5, h6, .bold { font-weight: 700 !important; }
 
-    </style>
+    /* Notepad text area fit */
+    .window.notepad .content { display: block; overflow: auto; }
+    .window.notepad .content textarea {
+      height: 100%;
+      box-sizing: border-box;
+      overflow: auto;
+      padding: 1rem;
+    }
+
+    /* Header buttons click area + z-order */
+    .window .header-buttons { z-index: 1000000010; }
+    .window .header-buttons > label.close {
+      min-width: 1rem; height: 1rem; line-height: 1rem;
+    }
+
+    /* Header is drag handle */
+    .window .header {
+      cursor: move;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+    }
+
+    /* ===== Welcome window (visuals only inside the window) ===== */
+    .window.welcome .content{
+      background: #000 !important;
+      color: #00ff00 !important;
+      padding: 1rem 1.25rem;
+      line-height: 1.35;
+      max-height: 70vh;
+      overflow: auto;
+    }
+    .window.welcome .welcome-title{
+      color: #00ff00;
+      text-shadow: 0 0 6px rgba(0,255,0,0.35);
+      font-family: "Press Start 2P", system-ui, monospace;
+      font-size: 18px;
+      margin: 0 0 .5rem;
+    }
+    .typewriter-caret::after{
+      content: "▋"; margin-left: 2px; animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .window.welcome .content a{
+      color: #8cc8ff; text-decoration: underline;
+    }
+
+    /* ===== Narrative: small, clean visual upgrade (no page bg change) ===== */
+    .narrative-container { max-width: 820px; margin: 12px auto 18px; line-height: 1.55; }
+    .n-card {
+      background: #fff;
+      border: 1px solid #cce7f5;           /* light teal, not gray */
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.08);
+      padding: 18px 20px;
+    }
+    .narrative-container h1,
+    .narrative-container h2,
+    .narrative-container h3 { color: #0a6e8a; margin: 10px 0 6px; }
+      /* Show 1px gridlines on all tables */
+
+    .narrative-container table { width: 100%; border: 2px solid; margin: 10px 0 12px; text-align-last: center; vertical-align: middle; }
+    .narrative-container th, .narrative-container td {
+      padding: 8px 10px;  border: solid 2px #0a6e8a; text-align: center; vertical-align: middle; 
+    }
+    .narrative-container th { font-weight: 700; }
+    .highlight { color: #0d8aa8; font-weight: 700; }
+
+    /* ===== Welcome open/min/max/on-top (checkbox/radio-driven) ===== */
+    #all-windows #welcome-window { display: none; position: absolute; }
+    /* open/visible */
+    #windows-welcome-input:checked ~ #all-windows #welcome-window { display: block; }
+    /* minimized hides it */
+    #windows-welcome-input-min:checked ~ #all-windows #welcome-window { display: none; }
+    /* maximize */
+    #windows-welcome-input-max:checked ~ #all-windows #welcome-window {
+      left: 0 !important; top: 0 !important;
+      width: 100vw !important; height: calc(100vh - 40px) !important; /* adjust to taskbar height */
+    }
+    /* on-top radio gives it a high z-index */
+    #windows-welcome-input-on-top:checked ~ #all-windows #welcome-window {
+      z-index: 1000001200 !important;
+    }
+    #windows-welcome-input-max:checked ~ #all-windows #welcome-window .content {
+      height: calc(100% - 86px); overflow: auto;
+    }
+  </style>
 </head>
+
 <body>
 <form id="windows">
-    <input type="checkbox" id="login-screen-input" name="login-screen-input"/>
-    <input type="checkbox" id="shutdown-screen-input" name="shutdown-screen-input"/>
-    <input type="checkbox" name="start-button-input" id="start-button-input"/>
-    
-    <input type="checkbox" id="windows-welcome-input-min" name="windows-welcome-input-min">
-    <input type="checkbox" id="windows-ie-input-min" name="windows-ie-input-min"/>
-    <input type="checkbox" id="windows-documents-input-min" name="windows-documents-input-min"/>
-    <input type="checkbox" id="windows-help-input-min" name="windows-help-input-min"/>
-    <input type="checkbox" id="windows-notepad-input-min" name="windows-notepad-min"/>
-    <input type="checkbox" id="windows-note-sa-input-min" name="windows-note-sa-input-min"/>
-    <input type="checkbox" id="windows-note-e1-input-min" name="windows-note-e1-input-min"/>
-    <input type="checkbox" id="windows-note-e2-input-min" name="windows-note-e2-input-min"/>
-    <input type="checkbox" id="windows-note-e3-input-min" name="windows-note-e3-input-min"/>
-    <input type="checkbox" id="windows-minesweeper-input-min" name="windows-minesweeper-input-min"/>
-    <input type="checkbox" id="windows-trash-input-min" name="windows-trash-input-min"/>
-    
-    <input type="checkbox" id="windows-welcome-input-max" name="windows-welcome-input-max">
-    <input type="checkbox" id="windows-ie-input-max" name="windows-ie-input-max"/>
-    <input type="checkbox" id="windows-documents-input-max" name="windows-documents-input-max"/>
-    <input type="checkbox" id="windows-help-input-max" name="windows-help-input-max"/>
-    <input type="checkbox" id="windows-note-sa-input-max" name="windows-note-sa-input-max"/>
-    <input type="checkbox" id="windows-note-e1-input-max" name="windows-note-e1-input-max"/>
-    <input type="checkbox" id="windows-note-e2-input-max" name="windows-note-e2-input-max"/>
-    <input type="checkbox" id="windows-note-e3-input-max" name="windows-note-e3-input-max"/>
-    <input type="checkbox" id="windows-notepad-input-max" name="windows-notepad-max"/>
-    <input type="checkbox" id="windows-minesweeper-input-max" name="windows-minesweeper-input-max"/>
-    <input type="checkbox" id="windows-trash-input-max" name="windows-trash-input-max"/>
-    
-    <input type="radio" id="windows-welcome-input-on-top" name="windows-welcome-input-on-top">
-    <input type="radio" id="windows-ie-input-on-top" name="windows-order"/>
-    <input type="radio" id="windows-documents-input-on-top" name="windows-order"/>
-    <input type="radio" id="windows-help-input-on-top" name="windows-order"/>
-    <input type="radio" id="windows-note-sa-input-on-top" name="windows-order"/>
-    <input type="radio" id="windows-note-e1-input-on-top" name="windows-order"/>
-    <input type="radio" id="windows-note-e2-input-on-top" name="windows-order"/>
-    <input type="radio" id="windows-note-e3-input-on-top" name="windows-order"/>
-    <input type="radio" id="windows-notepad-input-on-top" name="windows-order"/>
-    <input type="radio" id="windows-minesweeper-input-on-top" name="windows-order"/>
-    <input type="radio" id="windows-trash-input-on-top" name="windows-order"/>
-    
-    <input type="checkbox" id="windows-welcome-input" name="windows-welcome-input">
-    <input type="checkbox" id="windows-ie-input" name="windows-ie-input"/>
-    <input type="checkbox" id="windows-documents-input" name="windows-documents-input"/>
-    <input type="checkbox" id="windows-help-input" name="windows-help-input"/>
-    <input type="checkbox" id="windows-note-sa-input" name="windows-note-sa-input"/>
-    <input type="checkbox" id="windows-note-e1-input" name="windows-note-e1-input"/>
-    <input type="checkbox" id="windows-note-e2-input" name="windows-note-e2-input"/>
-    <input type="checkbox" id="windows-note-e3-input" name="windows-note-e3-input"/>
-    <input type="checkbox" id="windows-notepad-input" name="windows-notepad-input"/>
-    <input type="checkbox" id="windows-minesweeper-input" name="windows-minesweeper-input"/>
-    <input type="checkbox" id="windows-trash-input" name="windows-trash-input"/>
+  <!-- Global inputs -->
+  <input type="checkbox" id="login-screen-input" name="login-screen-input"/>
+  <input type="checkbox" id="shutdown-screen-input" name="shutdown-screen-input"/>
+  <input type="checkbox" id="start-button-input" name="start-button-input"/>
 
-    <div id="shutdown-screen"><label for="shutdown-screen-input"></label></div>
-    <div id="login-screen">
-        <div id="login-window" class="window windows-box-shadow">
-            <div class="header">Enter Password</div>
-            <div class="content">
-                <img class="icon" data-icon="windows" alt="Windows">
-                <div class="select-box inverse-windows-box-shadow">
-                    <input type="radio" name="users" id="zark-muckerberg" checked/>
-                    <input type="radio" name="users" id="donald-trump"/>
-                    <input type="radio" name="users" id="spiderman"/>
-                    <label for="zark-muckerberg" id="zark-muckerberg-label">Zark Muckerberg</label>
-                    <label for="donald-trump" id="donald-trump-label">Donald Trump</label>
-                    <label for="spiderman" id="spiderman-label">Spiderman</label>
-                </div>
-                <input type="password" class="margin-input inverse-windows-box-shadow"/>
-                <div class="ok-cancel">
-                    <label for="login-screen-input" class="windows-box-shadow">OK</label>
-                    <label for="login-screen-input" class="windows-box-shadow">Cancel</label>
-                </div>
-            </div>
+  <!-- Per-window state: minimize -->
+  <input type="checkbox" id="windows-welcome-input-min" name="windows-welcome-input-min"/>
+  <input type="checkbox" id="windows-ie-input-min" name="windows-ie-input-min"/>
+  <input type="checkbox" id="windows-documents-input-min" name="windows-documents-input-min"/>
+  <input type="checkbox" id="windows-help-input-min" name="windows-help-input-min"/>
+  <input type="checkbox" id="windows-notepad-input-min" name="windows-notepad-min"/>
+  <input type="checkbox" id="windows-note-sa-input-min" name="windows-note-sa-input-min"/>
+  <input type="checkbox" id="windows-note-e1-input-min" name="windows-note-e1-input-min"/>
+  <input type="checkbox" id="windows-note-e2-input-min" name="windows-note-e2-input-min"/>
+  <input type="checkbox" id="windows-note-e3-input-min" name="windows-note-e3-input-min"/>
+  <input type="checkbox" id="windows-minesweeper-input-min" name="windows-minesweeper-input-min"/>
+  <input type="checkbox" id="windows-trash-input-min" name="windows-trash-input-min"/>
+
+  <!-- Per-window state: maximize -->
+  <input type="checkbox" id="windows-welcome-input-max" name="windows-welcome-input-max"/>
+  <input type="checkbox" id="windows-ie-input-max" name="windows-ie-input-max"/>
+  <input type="checkbox" id="windows-documents-input-max" name="windows-documents-input-max"/>
+  <input type="checkbox" id="windows-help-input-max" name="windows-help-input-max"/>
+  <input type="checkbox" id="windows-note-sa-input-max" name="windows-note-sa-input-max"/>
+  <input type="checkbox" id="windows-note-e1-input-max" name="windows-note-e1-input-max"/>
+  <input type="checkbox" id="windows-note-e2-input-max" name="windows-note-e2-input-max"/>
+  <input type="checkbox" id="windows-note-e3-input-max" name="windows-note-e3-input-max"/>
+  <input type="checkbox" id="windows-notepad-input-max" name="windows-notepad-max"/>
+  <input type="checkbox" id="windows-minesweeper-input-max" name="windows-minesweeper-input-max"/>
+  <input type="checkbox" id="windows-trash-input-max" name="windows-trash-input-max"/>
+
+  <!-- On-top ordering radios (all share the same name) -->
+  <input type="radio" id="windows-welcome-input-on-top" name="windows-order"/>
+  <input type="radio" id="windows-ie-input-on-top" name="windows-order"/>
+  <input type="radio" id="windows-documents-input-on-top" name="windows-order"/>
+  <input type="radio" id="windows-help-input-on-top" name="windows-order"/>
+  <input type="radio" id="windows-note-sa-input-on-top" name="windows-order"/>
+  <input type="radio" id="windows-note-e1-input-on-top" name="windows-order"/>
+  <input type="radio" id="windows-note-e2-input-on-top" name="windows-order"/>
+  <input type="radio" id="windows-note-e3-input-on-top" name="windows-order"/>
+  <input type="radio" id="windows-notepad-input-on-top" name="windows-order"/>
+  <input type="radio" id="windows-minesweeper-input-on-top" name="windows-order"/>
+  <input type="radio" id="windows-trash-input-on-top" name="windows-order"/>
+
+  <!-- Per-window visibility checkboxes -->
+  <input type="checkbox" id="windows-welcome-input" name="windows-welcome-input"/>
+  <input type="checkbox" id="windows-ie-input" name="windows-ie-input"/>
+  <input type="checkbox" id="windows-documents-input" name="windows-documents-input"/>
+  <input type="checkbox" id="windows-help-input" name="windows-help-input"/>
+  <input type="checkbox" id="windows-note-sa-input" name="windows-note-sa-input"/>
+  <input type="checkbox" id="windows-note-e1-input" name="windows-note-e1-input"/>
+  <input type="checkbox" id="windows-note-e2-input" name="windows-note-e2-input"/>
+  <input type="checkbox" id="windows-note-e3-input" name="windows-note-e3-input"/>
+  <input type="checkbox" id="windows-notepad-input" name="windows-notepad-input"/>
+  <input type="checkbox" id="windows-minesweeper-input" name="windows-minesweeper-input"/>
+  <input type="checkbox" id="windows-trash-input" name="windows-trash-input"/>
+
+  <!-- Shutdown/Login overlays -->
+  <div id="shutdown-screen"><label for="shutdown-screen-input"></label></div>
+  <div id="login-screen">
+    <div id="login-window" class="window windows-box-shadow">
+      <div class="header">Enter Password</div>
+      <div class="content">
+        <img class="icon" data-icon="windows" alt="Windows" />
+        <div class="select-box inverse-windows-box-shadow">
+          <input type="radio" name="users" id="zark-muckerberg" checked/>
+          <input type="radio" name="users" id="donald-trump"/>
+          <input type="radio" name="users" id="spiderman"/>
+          <label for="zark-muckerberg" id="zark-muckerberg-label">Zark Muckerberg</label>
+          <label for="donald-trump" id="donald-trump-label">Donald Trump</label>
+          <label for="spiderman" id="spiderman-label">Spiderman</label>
         </div>
+        <input type="password" class="margin-input inverse-windows-box-shadow"/>
+        <div class="ok-cancel">
+          <label for="login-screen-input" class="windows-box-shadow">OK</label>
+          <label for="login-screen-input" class="windows-box-shadow">Cancel</label>
+        </div>
+      </div>
     </div>
-    <div id="desktop">
+  </div>
+
+  <!-- Desktop shortcuts -->
+  <div id="desktop">
         <label for="windows-ie-input" class="desktop-item">
             <div><img class="icon" data-icon="internet-explorer" alt="Internet Explorer"/></div>
             <div class="text">Internet Explorer</div>
@@ -199,660 +241,791 @@
             <span class="text">View Enhancement Demo</span>
         </a>
     </div>
-    <div id="all-windows">
-        <div class="window welcome windows-box-shadow" id="welcome-window" style="left: 48px; top: 48px; width: 520px;">
-  <div class="header">
-    <label for="windows-welcome-input-on-top">Welcome</label>
-    <div class="header-buttons">
-      <label for="windows-welcome-input-min" class="minimize windows-box-shadow"></label>
-      <label for="windows-welcome-input-max" class="maximize windows-box-shadow"></label>
-      <label for="windows-welcome-input"     class="close    windows-box-shadow">X</label>
+  <!-- All windows -->
+  <div id="all-windows">
+
+    <!-- Welcome -->
+    <div class="window welcome windows-box-shadow" id="welcome-window" style="left:48px; top:48px; width:520px;">
+      <div class="header">
+        <label for="windows-welcome-input-on-top">Welcome</label>
+        <div class="header-buttons">
+          <label for="windows-welcome-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-welcome-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-welcome-input" class="close windows-box-shadow">X</label>
+        </div>
+      </div>
+
+      <div class="options line">
+        <div class="item">File</div>
+        <div class="item">Edit</div>
+        <div class="item">Help</div>
+      </div>
+
+      <div class="content">
+        <h1 class="welcome-title">Alysha Pursley's ePortfolio</h1>
+
+        <p id="welcome-typer"
+           class="typewriter-caret"
+           data-text="Welcome! This is my retro-themed ePortfolio. Use the desktop icons or the Start menu to open my Professional Self-Assessment and each Enhancement narrative. You can always reopen this welcome message from the desktop or Start → Programs → Welcome.">
+        </p>
+
+        <p class="welcome-subtle">Tip: Close this window any time — the 'Welcome' icon stays on the desktop.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="options line">
-    <div class="item">File</div>
-    <div class="item">Edit</div>
-    <div class="item">Help</div>
-  </div>
-
-  <div class="content">
-    <h1 class="welcome-title">Alysha Pursley's ePortfolio</h1>
-
-    <!-- This paragraph will be typed out on first load (once per session). -->
-    <p id="welcome-typer"
-       class="typewriter typewriter-caret"
-       data-text="Welcome! This is my retro-themed ePortfolio. Use the desktop icons or the Start menu to open my Professional Self-Assessment and each Enhancement narrative. You can always reopen this welcome message from the desktop or Start → Programs → Welcome.">
-      <!-- will be filled by JS -->
-    </p>
-
-    <p class="welcome-subtle">Tip: Close this window any time — the 'Welcome' icon stays on the desktop.</p>
-  </div>
-</div>
-
-        <div class="window ie windows-box-shadow">
-            <div class="header">
-                <label for="windows-ie-input-on-top">Microsoft Internet Explorer</label>
-                <div class="header-buttons">
-                    <label for="windows-ie-input-min" class="minimize windows-box-shadow"></label>
-                    <label for="windows-ie-input-max" class="maximize windows-box-shadow"></label>
-                    <label for="windows-ie-input" class="close windows-box-shadow">X</label>
-                </div>
-            </div>
-            <div class="options line">
-                <div class="item">File</div>
-                <div class="item">Edit</div>
-                <div class="item">Views</div>
-                <div class="item">Favorites</div>
-                <div class="item">Tools</div>
-                <div class="item">Help</div>
-                <div class="item float-right"><img class="icon" data-icon="startLogo" alt="Start Logo"></div>
-            </div>
-            <div class="options padding">
-                <div class="item">Address</div>
-                <input type="text" class="inverse-windows-box-shadow" value="https://github.com/apursley2012"/>
-            </div>
-            <div class="content">
-                <iframe src="https://github.com/apursley2012"></iframe>
-            </div>
+    <!-- IE -->
+    <div class="window ie windows-box-shadow">
+      <div class="header">
+        <label for="windows-ie-input-on-top">Microsoft Internet Explorer</label>
+        <div class="header-buttons">
+          <label for="windows-ie-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-ie-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-ie-input" class="close windows-box-shadow">X</label>
         </div>
-        <div class="window help windows-box-shadow">
-            <div class="header">
-                <label for="windows-help-input-on-top">Windows Help</label>
-                <div class="header-buttons">
-                    <label for="windows-help-input-min" class="minimize windows-box-shadow"></label>
-                    <label for="windows-help-input-max" class="maximize windows-box-shadow"></label>
-                    <label for="windows-help-input" class="close windows-box-shadow">X</label>
-                </div>
-            </div>
-            <div class="options padding">
-                <div class="item">Location</div>
-                <input type="text" class="inverse-windows-box-shadow" value="General Help"/>
-            </div>
-            <div class="tab-box-content">
-                <input name="topics-radio" id="topic-1" type="radio" checked/>
-                <input name="topics-radio" id="topic-2" type="radio"/>
-                <input name="topics-radio" id="topic-3" type="radio"/>
-                <input name="topics-radio" id="topic-4" type="radio"/>
-                <div class="tab-box">
-                    <div class="tab-header">Alysha Pursley's ePortfolio</div>
-                    <ul class="box">
-                        <li>
-                            <label for="topic-1"><img data-help-icon="help" alt="Help"/> Why is my copy of Windows feature limited?</label>
-                        </li>
-                        <li>
-                            <label for="topic-2"><img data-help-icon="help" alt="Help"/> Why can't I move Windows?</label>
-                        </li>
-                        <li>
-                            <label for="topic-3"><img data-help-icon="help" alt="Help"/> Is it a good idea to make CSS Windows?</label>
-                        </li>
-                        <li>
-                            <label for="topic-4"><img data-help-icon="help" alt="Help"/> How long did it take to make CSS Windows?</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="content">
-                    <div class="topic-1-content">
-                        <h2>Why is my copy of Windows feature limited?</h2>
-                        <p>Since this version of Windows was built entirely with CSS, you may notice some features are missing. This is because of the limitations of CSS. <a href="https://fjolt.com/category/css" target="_blank">To learn more about CSS, you can click here</a>.</p>
-                    </div>
-                    <div class="topic-2-content">
-                        <h2>Why can't I move windows?</h2>
-                        <p>Although CSS lets you do quite a lot of things, unfortunately drag and drop is not one of them. To enable drag and drop on this version of windows, <a href="https://fjolt.com/series/learn-javascript" target="_blank">please learn Javascript first</a>, and then write the necessary scripts to add drag and drop.</p>
-                    </div>
-                    <div class="topic-3-content">
-                        <h2>Why can't I move windows?</h2>
-                        <p>Creating Windows in CSS is quite difficult, and requires a lot of input elements. Therefore, it may be recommended that you use another language if you wish to make a fully fledged operating system. Even so, it is a good way to demonstrate the <strong>power</strong> of CSS.</p>
-                    </div>
-                    <div class="topic-4-content">
-                        <h2>How long did it take to make CSS Windows?</h2>
-                        <p>Roughly 1.5 weeks, on and off.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="window trash windows-box-shadow">
-            <div class="header">
-                <label for="windows-trash-input-on-top">Recycle Bin</label>
-                <div class="header-buttons">
-                    <label for="windows-trash-input-min" class="minimize windows-box-shadow"></label>
-                    <label for="windows-trash-input-max" class="maximize windows-box-shadow"></label>
-                    <label for="windows-trash-input" class="close windows-box-shadow">X</label>
-                </div>
-            </div>
-            <div class="options line">
-                <div class="item">File</div>
-                <div class="item">Edit</div>
-                <div class="item">Views</div>
-                <div class="item">Go</div>
-                <div class="item">Favorites</div>
-                <div class="item">Help</div>
-            </div>
-            <div class="content white">
-                <input type="radio" name="trash-radio" id="windows-11"/>
-                <input type="radio" name="trash-radio" id="macos"/>
-                <input type="radio" name="trash-radio" id="itunes"/>
-                <label class="file windows-11" for="windows-11">
-                    <span class="image"><img class="icon" data-icon="winUpdate" alt="Update Windows"></span>
-                    <span class="text">Windows_11.exe</span>
-                </label>
-                <label class="file macos" for="macos">
-                    <span class="image"><img class="icon" data-icon="macos" alt="macOS"/></span>
-                    <span class="text">Mac_OS.exe</span>
-                </label>
-                <label class="file itunes" for="itunes">
-                    <span class="image"><img class="icon" data-icon="itunes" alt="iTunes"/></span>
-                    <span class="text">itunes.exe</span>
-                </label>
-            </div>
-        </div>
-        <div class="window documents windows-box-shadow">
-            <div class="header">
-                <label for="windows-documents-input-on-top">Documents</label>
-                <div class="header-buttons">
-                    <label for="windows-documents-input-min" class="minimize windows-box-shadow"></label>
-                    <label for="windows-documents-input-max" class="maximize windows-box-shadow"></label>
-                    <label for="windows-documents-input" class="close windows-box-shadow">X</label>
-                </div>
-            </div>
-            <div class="options line">
-                <div class="item">File</div>
-                <div class="item">Edit</div>
-                <div class="item">Views</div>
-                <div class="item">Go</div>
-                <div class="item">Favorites</div>
-                <div class="item">Help</div>
-            </div>
-            <div class="content white">
-                <input type="radio" name="documents-radio" id="narrative-one"/>
-                <label class="file narrative-one" for="narrative-one">
-                    <span class="image"><img class="icon" data-icon="textdoc" alt="Text Doc"></span>
-                    <span class="text">Narrative<br> One</span>
-                </label>
-                <input type="radio" name="documents-radio" id="narrative-one"/>
-                <label class="file narrative-one" for="narrative-one">
-                    <span class="image"><img class="icon" data-icon="textdoc" alt="Text Doc"></span>
-                    <span class="text">Narrative<br> Two</span>
-                </label>
-                <input type="radio" name="documents-radio" id="narrative-one"/>
-                <label class="file narrative-one" for="narrative-one">
-                    <span class="image"><img class="icon" data-icon="textdoc" alt="Text Doc"></span>
-                    <span class="text">Narrative<br> Three</span>
-                </label>
-                <label class="file diary" for="diary">
-                    <span class="image"><img class="icon" data-icon="textdoc" alt="Self-Assessment"/></span>
-                    <span class="text">Professional Self-Assessment</span>
-                </label>
-            </div>
-        </div>
-        <div class="window notepad windows-box-shadow">
-            <div class="header">
-                <label for="windows-notepad-input-on-top">Notepad</label>
-                <div class="header-buttons">
-                    <label for="windows-notepad-input-min" class="minimize windows-box-shadow"></label>
-                    <label for="windows-notepad-input-max" class="maximize windows-box-shadow"></label>
-                    <label for="windows-notepad-input" class="close windows-box-shadow">X</label>
-                </div>
-            </div>
-            <div class="options line">
-                <div class="item">File</div>
-                <div class="item">Edit</div>
-                <div class="item">Search</div>
-            </div>
-            <div class="content">
-                <textarea></textarea>
-            </div>
-        </div>
-
-       <div class="window notepad note-sa windows-box-shadow">
-                  <div class="header">
-                    <label for="windows-note-sa-input-on-top">Notepad — Professtional Self-Assessment</label>
-                    <div class="header-buttons">
-                      <label for="windows-note-sa-input-min" class="minimize windows-box-shadow"></label>
-                      <label for="windows-note-sa-input-max" class="maximize windows-box-shadow"></label>
-                      <label for="windows-note-sa-input" class="close windows-box-shadow">X</label>
-                    </div>
-                  </div>
-                  <div class="options line">
-                    <div class="item">File</div>
-                    <div class="item">Edit</div>
-                    <div class="item">Search</div>
-                  </div>
-                  <div class="content">
-                    <div class="narrative-container">
-                <div class="item">File</div>
-                <div class="item">Edit</div>
-                <div class="item">Search</div>
-            </div>
-            <div class="content">
-                <textarea spellcheck="false" wrap="soft">
-
-                </textarea>
-            </div>
-        </div>
-
-             <div class="window notepad note-e1 windows-box-shadow">
-                  <div class="header">
-                    <label for="windows-note-e1-input-on-top">Notepad — Enhancement 1 Narrative</label>
-                    <div class="header-buttons">
-                      <label for="windows-note-e1-input-min" class="minimize windows-box-shadow"></label>
-                      <label for="windows-note-e1-input-max" class="maximize windows-box-shadow"></label>
-                      <label for="windows-note-e1-input" class="close windows-box-shadow">X</label>
-                    </div>
-                  </div>
-                  <div class="options line">
-                    <div class="item">File</div>
-                    <div class="item">Edit</div>
-                    <div class="item">Search</div>
-                  </div>
-                  <div class="content">
-                    <div class="narrative-container">
-                    <h2>Software Design & Engineering Enhancement</h2>
-                    <br>
-                    <h3>Artifact Overview</h3>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;The artifact I’m enhancing is a C++ console program called <span class="highlight">CornerGrocerApp.cpp</span>, originally created in CS 210: Programming Languages. The application reads grocery item data from a text file, counts how often each item appears, and displays the results either in a simple list or a histogram. The program uses a <span class="highlight">std::map</span> to track frequencies and runs entirely in the terminal with a basic menu system. It’s clean and functional, but it’s also limited—there’s no error messaging for failed operations, and it doesn’t support any kind of expansion or integration outside of its current setup.</p>
-                    <br>
-                    <h3>Justification for Inclusion</h3>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;I selected this artifact for my ePortfolio because it is a strong example of my ability to design and implement a functional software solution from start to finish. It addresses a real problem—tracking and displaying frequency data from inventory records—and clearly shows my understanding of programming logic, user interaction, and data organization.</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;For this enhancement, I rewrote the artifact in <span class="highlight">Python</span>, maintaining the original functionality while improving its design and expanding its capabilities. The enhanced version introduces a class-based structure with a <span class="highlight">GroceryFrequency class</span>, improved input validation, and stronger error handling. I also added new menu options to back up both the frequency list and the histogram to separate text files. Each backup feature now provides a clear confirmation message that includes the full file path when a save is successful, or an error message if it fails. These improvements not only make the application more robust and user-friendly but also demonstrate my ability to modernize existing code and apply current best practices.</p>
-                    <br>
-                    <h3>Course Outcomes and Skills Demonstrated</h3>
-                    <p>This enhancement clearly aligns with the software engineering and design category. It touches on several course outcomes and builds on a wide range of technical skills:</p>
-                    <table>
-                         <caption><strong>Skills</strong></caption>
-                        <tr>
-                            <th>Skill</th>
-                            <th>Description</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Language Portability</td>
-                            <td>Rewriting the entire application in Python while keeping the original functionality intact shows I can translate logic between languages.</td>
-                        </tr>
-                        <tr>
-                            <td>Programming Proficiency</td>
-                            <td>The core logic—reading data, counting items, sorting results, and interacting with users—is now implemented using Python best practices.</td>
-                        </tr>
-                        <tr>
-                            <td>Software Design Principles</td>
-                            <td>I used a class-based structure to keep things organized and modular, which makes future changes easier to manage.</td>
-                        </tr>
-                        <tr>
-                            <td>Input Validation</td>
-                            <td>Every input is now validated to make sure the program can’t crash due to unexpected values. This includes menu selections and item searches.</td>
-                        </tr>
-                        <tr>
-                            <td>File I/O and Error Handling</td>
-                            <td>I added try-except blocks to handle file errors gracefully. If something goes wrong, the program tells the user instead of crashing.</td>
-                        </tr>
-                        <tr>
-                            <td>New Features</td>
-                            <td>The app now includes two backup options—one for the frequency list and one for the histogram. Each one confirms whether the file was saved successfully.</td>
-                        </tr>
-                        <tr>
-                            <td>Commenting and Documentation</td>
-                            <td>Every part of the program includes clear, useful comments that explain both what the code is doing and why. This makes the program easier to read, maintain, or extend in the future.</td>
-                        </tr>
-                        <tr>
-                            <td>Secure Programming Mindset</td>
-                            <td>I took care to write safe, predictable code that doesn’t rely on assumptions about the input or file system. This reduces the risk of unexpected behavior or data issues.</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <p>These updates directly support the following course outcomes:</p>
-                    <table>
-                      <caption><strong>Course Outcomes</strong></caption>
-                      <tr><th>&nbsp;</th><th>Course Outcome</th><th>Description</th></tr>
-                      <tr>
-                          <td>Course Outcome 1</td>
-                          <td><i>“Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision-making in the field of computer science.”</i></td>
-                          <td>I wrote the code in a way that makes it easier for others to read, understand, and work with—whether they’re teammates or future maintainers.</td>
-                      </tr>
-                      <tr>
-                          <td>Course Outcome 2</td>
-                          <td><i>“Design, develop, and deliver professional-quality oral, written, and visual communications that are coherent, technically sound, and appropriately adapted to specific audiences and contexts.”</i></td>
-                          <td>The new version is not only functional, but also well-documented and logically structured, which reflects professional software development standards.</td>
-                      </tr>
-                      <tr><td>Course Outcome 3</td>
-                          <td><i>“Design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards appropriate to its solution while managing the trade-offs involved in design choices.”</i></td>
-                          <td>Rebuilding the app in Python shows I can design a computing solution that follows appropriate principles and makes smart trade-offs between simplicity and functionality.</td>
-                      </tr>
-                      <tr>
-                          <td>Course Outcome 4</td>
-                          <td>“Demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals.”</td>
-                          <td>I used modern Python features and coding techniques that make the software easier to use and expand in the future.</td>
-                      </tr>
-                      <tr>
-                          <td>Course Outcome 5</td>
-                          <td>I added try-except blocks to handle file errors gracefully. If something goes wrong, the program tells the user instead of crashing.</td>
-                          <td>I made sure the design is stable and secure by validating inputs, handling errors, and providing users with clear feedback when something fails.</td>
-                       </tr>
-                    </table>
-
-                    
-                    <h3>Reflection on the Enhancement Process</h3>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Enhancing this artifact gave me the chance to approach the project from a different perspective than when I originally built it. In the C++ version, my focus was on meeting the assignment requirements and ensuring the program worked correctly. For the enhancement, I treated it as if I were delivering a tool that others might rely on, which meant paying closer attention to maintainability, usability, and scalability. That shift in focus guided every design choice I made, from adopting a class-based structure to making sure the program clearly communicates with the user at every step.</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;I also learned how valuable it is to design features with flexibility in mind. The new backup functionality is a good example—it works now by creating simple text files, but it’s built in a way that I could easily change the format, save location, or even connect it to a database in the future without rewriting the entire program. This kind of forward-looking design wasn’t something I prioritized in the original project, but it’s a habit I plan to carry forward.</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Another key takeaway is how much the right tools can simplify the logic and reduce complexity. Using <span class="highlight">Python’s defaultdict</span> allowed me to eliminate unnecessary checks and streamline the frequency-counting process, resulting in code that is both shorter and easier to read. This reinforced the idea that choosing the right data structures and language features from the start can save significant time and effort later. Overall, this enhancement not only improved the program itself but also strengthened my approach to software design. It reminded me that a well-built application should be easy to maintain, adaptable to future needs, and clear for both users and other developers to work with.</p>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                </div>
-            </div>
-        </div>
-
-        <div class="window notepad note-e2 windows-box-shadow">
-                  <div class="header">
-                    <label for="windows-note-e2-input-on-top">Notepad — Enhancement 2 Narrative</label>
-                    <div class="header-buttons">
-                      <label for="windows-note-e2-input-min" class="minimize windows-box-shadow"></label>
-                      <label for="windows-note-e2-input-max" class="maximize windows-box-shadow"></label>
-                      <label for="windows-note-e2-input" class="close windows-box-shadow">X</label>
-                    </div>
-                  </div>
-                  <div class="options line">
-                    <div class="item">File</div>
-                    <div class="item">Edit</div>
-                    <div class="item">Search</div>
-                  </div>
-                  <div class="content">
-                    <div class="narrative-container">
-                    <h2>Algorithms and Data Structures Enhancement</h2>
-                    <h3>Artifact Overview</h3>
-                    <p>This enhancement builds on the Python version of my Corner Grocer application, which was originally developed as a C++ program in CS 210. The program processes an input file containing purchased grocery items, counts the frequency of each item, and provides a menu-based interface for interacting with the results. In its previous version from Enhancement One, it allowed users to look up an item’s frequency, display a full list of items with their counts, and show a histogram of frequencies.</p>
-                    <p>Enhancement Two expands the program’s capabilities by adding alphabetical sorting, frequency-based sorting, an item search feature, and two file export options for saving frequency data and histograms. The alphabetical sort lists items in A–Z order with their purchase counts, while the frequency sort arranges them from most to least purchased. The search function normalizes user input to lowercase before performing the lookup, ensuring accurate results regardless of case differences. Two additional export features save the frequency list and histogram to files so that results can be archived or shared.</p>
-                    <p>To maintain modularity and organization, all sorting and searching functions were placed into a separate module (<span class="highlight">grocery_utils.py</span>) while the main file remains responsible for menu handling and frequency processing. This separation of concerns ensures the program stays clean, scalable, and easy to maintain while making new features easier to test and debug.</p>
-                    <h3>Justification for Inclusion</h3>
-                    <p>This artifact is an excellent example for demonstrating algorithms and data structures because it relies on both for its core functionality. The program uses Python’s <span class="highlight">defaultdict(int)</span> for efficient frequency counting and constant-time lookups. Alphabetical sorting uses the built-in <span class="highlight">sorted()</span> function applied to dictionary keys, while frequency sorting uses a custom key to order dictionary items by value in descending order. The search function normalizes user input to lowercase before performing the lookup, ensuring accurate results regardless of case differences.</p>
-                    <p>By placing all new sorting and searching logic in <span class="highlight">grocery_utils.py</span>, the design preserves a clean separation between business logic and the user interface. This modular structure not only makes the code easier to maintain and extend but also supports collaborative development. Importantly, all original functionality from Enhancement One was preserved without any regressions, ensuring backward compatibility while delivering new, valuable features.</p>
-                    <h3>Skills and Course Outcomes</h3>
-                    <div class="chart-container">
-                        <h4>Skills Demonstrated Across Course Outcomes</h4>
-                        <div class="bar-chart">
-                            <div class="bar" style="height: 90%" data-label="Modularity & Readability">
-                                <div class="bar-value">90%</div>
-                                <div class="bar-label">Modularity & Readability</div>
-                            </div>
-                            <div class="bar" style="height: 85%" data-label="UX/UI & Comm.">
-                                <div class="bar-value">85%</div>
-                                <div class="bar-label">UX/UI & Comm.</div>
-                            </div>
-                            <div class="bar" style="height: 95%" data-label="Algorithmic Design">
-                                <div class="bar-value">95%</div>
-                                <div class="bar-label">Algorithmic Design</div>
-                            </div>
-                            <div class="bar" style="height: 80%" data-label="Tools & Techniques">
-                                <div class="bar-value">80%</div>
-                                <div class="bar-label">Tools & Techniques</div>
-                            </div>
-                            <div class="bar" style="height: 75%" data-label="Security Mindset">
-                                <div class="bar-value">75%</div>
-                                <div class="bar-label">Security Mindset</div>
-                            </div>
-                        </div>
-                    </div>
-                    <h4>Course Outcome 1: Collaboration</h4>
-                    <p><strong>Skills Demonstrated:</strong> Modular Design, Code Documentation, Modular Architecture, Code Readability, Separation of Concerns.</p>
-                    <ul>
-                        <li><span class="highlight">Modular Design</span> – By placing sorting and searching functions into a separate <span class="highlight">grocery_utils.py</span> file, I made the codebase easier for other developers to understand and extend, promoting effective collaboration.</li>
-                        <li><span class="highlight">Code Documentation</span> – Detailed, structured comments clearly explain each function’s purpose and logic, ensuring that anyone reviewing the code can quickly understand its functionality.</li>
-                        <li><span class="highlight">Modular Architecture</span> – Separating the utility module from the main program supports a team-based workflow, allowing multiple developers to work on different parts of the program without conflict.</li>
-                        <li><span class="highlight">Code Readability</span> – Using clear naming conventions, logical organization, and consistent formatting makes it easier for others to follow the program’s structure.</li>
-                        <li><span class="highlight">Separation of Concerns</span> – Keeping business logic separate from menu and input handling ensures that changes can be made to one area without breaking unrelated functionality, simplifying collaborative work.</li>
-                    </ul>
-                    <h4>Course Outcome 2: Professional Communication</h4>
-                    <p><strong>Skills Demonstrated:</strong> Menu Design, User Experience Improvements, Expanded Menu System, Code Documentation, Code Readability.</p>
-                    <ul>
-                        <li><span class="highlight">Menu Design</span> – The menu was expanded to nine options while remaining clear and logically organized, ensuring that users can quickly understand how to access each feature.</li>
-                        <li><span class="highlight">User Experience Improvements</span> – Clear prompts, error messages, and outputs make the program easy for any user to work, even without prior technical experience.</li>
-                        <li><span class="highlight">Expanded Menu System</span> – Adding new features without making the interface overwhelming shows careful attention to user communication.</li>
-                        <li><span class="highlight">Code Documentation</span> – Well-written comments act as a form of technical communication, making the intent and logic of the program easy to follow.</li>
-                        <li><span class="highlight">Code Readability</span> – Maintaining consistent formatting and descriptive variable/function names makes the code understandable to both technical reviewers and new developers.</li>
-                    </ul>
-                    <h4>Course Outcome 3: Algorithms & Design Choices</h4>
-                    <p><strong>Skills Demonstrated:</strong> Data Sorting, Alphabetical Sorting Logic, Frequency-Based Sorting, Separation of Concerns, Function Abstraction, Code Reusability.</p>
-                    <ul>
-                        <li><span class="highlight">Data Sorting</span> – Implementing both alphabetical and frequency-based sorting demonstrates the ability to design different algorithmic approaches for viewing the same dataset.</li>
-                        <li><span class="highlight">Alphabetical Sorting Logic</span> – Applying <span class="highlight">sorted()</span> to dictionary keys reflects an understanding of efficient sorting methods.</li>
-                        <li><span class="highlight">Frequency-Based Sorting</span> – Using a custom sort key to order by frequency highlights control over sorting algorithms and data structures.</li>
-                        <li><span class="highlight">Separation of Concerns</span> – Keeping the sorting and searching logic separate from menu flow makes the codebase more maintainable and scalable.</li>
-                        <li><span class="highlight">Function Abstraction</span> – Encapsulating each sorting and searching feature in its own function allows for better control, testing, and modification.</li>
-                        <li><span class="highlight">Code Reusability</span> – Designing the sorting and searching logic so it can be reused across the program demonstrates a scalable problem-solving approach.</li>
-                    </ul>
-                    <h4>Course Outcome 4: Techniques & Tools</h4>
-                    <p><strong>Skills Demonstrated:</strong> Programming Proficiency, Search Functionality, Function Abstraction, Code Reusability, Preserved Backward Compatibility.</p>
-                    <ul>
-                        <li><span class="highlight">Programming Proficiency</span> – Designing and implementing new features using Python’s built-in tools ensures that the application delivers real-world value efficiently.</li>
-                        <li><span class="highlight">Search Functionality</span> – Adding the ability to find specific items quickly makes the application more useful for inventory tracking and analysis.</li>
-                        <li><span class="highlight">Function Abstraction</span> – Keeping each new feature in its own function improves maintainability and allows for easier enhancements in the future.</li>
-                        <li><span class="highlight">Code Reusability</span> – Writing generic sorting and searching functions means they can be adapted to different uses without rewriting logic.</li>
-                        <li><span class="highlight">Preserved Backward Compatibility</span> – Maintaining all original features while adding new ones ensures that existing workflows remain intact for users.</li>
-                    </ul>
-                    <h4>Course Outcome 5: Security Mindset</h4>
-                    <p><strong>Skills Demonstrated:</strong> Input Validation, Input Handling Enhancements, User Experience Improvements.</p>
-                    <ul>
-                        <li><span class="highlight">Input Validation</span> – Menu selections are checked for valid ranges, and item names are restricted to letters and spaces, preventing invalid data from being processed.</li>
-                        <li><span class="highlight">Input Handling Enhancements</span> – Validation logic was updated to handle the expanded menu, catching errors before they can cause program crashes.</li>
-                        <li><span class="highlight">User Experience Improvements</span> – Clear error messages guide the user to correct mistakes without compromising program stability or security.</li>
-                    </ul>
-                    <h3>Reflection on the Enhancement Process</h3>
-                    <p>Completing this enhancement reinforced how valuable modular architecture is for maintainability and scalability. Moving sorting and searching into a separate utility module kept the main program focused on menu logic and data processing, making the code easier to read and update. It also made testing simpler since I could run and verify each helper function independently.</p>
-                    <p>Another takeaway was the importance of balancing new features with interface clarity. Expanding the menu from four to nine options could have made the interface cluttered, but careful grouping and consistent formatting kept it user-friendly. Input validation remained a top priority, ensuring that no matter how the program grows, it continues to handle user input safely and predictably. Overall, this enhancement improved functionality, usability, and maintainability without sacrificing the stability of the original design.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="window notepad note-e3 windows-box-shadow">
-                  <div class="header">
-                    <label for="windows-note-e3-input-on-top">Notepad — Enhancement 3 Narrative</label>
-                    <div class="header-buttons">
-                      <label for="windows-note-e3-input-min" class="minimize windows-box-shadow"></label>
-                      <label for="windows-note-e3-input-max" class="maximize windows-box-shadow"></label>
-                      <label for="windows-note-e3-input" class="close windows-box-shadow">X</label>
-                    </div>
-                  </div>
-                  <div class="options line">
-                    <div class="item">File</div>
-                    <div class="item">Edit</div>
-                    <div class="item">Search</div>
-                  </div>
-                  <div class="content">
-                    <div class="narrative-container">
-                    <h1> Database Enhancement </h1>
-                    <h2>Artifact Overview</h2>
-                    <p>The Corner Grocer app now uses a persistent <strong>SQLite</strong> backend, replacing in-memory storage. All previous features remain, but data persists across runs for real-world utility and portability.</p>
-                    <h2>Justification for Inclusion</h2>
-                    <p>This enhancement integrates a database while maintaining backward compatibility. It demonstrates schema design, SQL queries, and Python’s DB-API, improving reliability and distribution without external setup.</p>
-                    <h2>Skills & Course Outcomes</h2>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Outcome</th>
-                            <th>Description</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><strong>Outcome 1 — Collaboration</strong></td>
-                            <td>Dedicated <span class="highlight">db_handler.py</span> isolates database logic; structured comments explain SQL choices; clear, readable function names.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Outcome 2 — Communication</strong></td>
-                            <td>Menu options for DB actions are clearly labeled; success and error messages improve user trust; documentation clarifies data flow.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Outcome 3 — Algorithmic/Design Choices</strong></td>
-                            <td>Efficient queries for storing/retrieving frequencies; separation of concerns between DB and UI; function abstraction for maintainability and tests.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Outcome 4 — Techniques & Tools</strong></td>
-                            <td>SQLite integration elevates value and reliability; reusability of DB functions across menu paths; backward compatibility preserved.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Outcome 5 — Security Mindset</strong></td>
-                            <td>Validated item names reduce bad data and risk; <span class="highlight">try/except</span> guards connection/query failures; clear error messages without exposing internals.</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <h2>Reflection</h2>
-                    <p>Shifting to SQLite required re-thinking data flow while preserving the interface. The biggest wins were cleanly separating DB concerns and improving feedback to users. The result is a more reliable, maintainable application.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="window minesweeper windows-box-shadow">
-            <div class="header">
-                <label for="windows-minesweeper-input-on-top">Minesweeper</label>
-                <div class="header-buttons">
-                    <label for="windows-minesweeper-input-min" class="minimize windows-box-shadow"></label>
-                    <label for="windows-minesweeper-input-max" class="maximize windows-box-shadow"></label>
-                    <label for="windows-minesweeper-input" class="close windows-box-shadow">X</label>
-                </div>
-            </div>
-            <div class="options line">
-                <div class="item">Game</div>
-                <div class="item">Help</div>
-            </div>
-            <input type="radio" name="data-id-1-1" id="data-id-1-1" class="group"><input type="radio" name="data-id-2-1" id="data-id-2-1" class="group"><input type="radio" name="data-id-3-1" id="data-id-3-1" class="group"><input type="radio" name="data-id-4-1" id="data-id-4-1" class="group"><input type="radio" name="data-id-5-1" id="data-id-5-1"><input class="mine" type="radio" name="data-id-6-1" id="data-id-6-1"><input type="radio" name="data-id-7-1" id="data-id-7-1"><input type="radio" name="data-id-8-1" id="data-id-8-1">
-            <input type="radio" name="data-id-1-2" id="data-id-1-2"><input type="radio" name="data-id-2-2" id="data-id-2-2"><input type="radio" name="data-id-3-2" id="data-id-3-2"><input type="radio" name="data-id-4-2" id="data-id-4-2"><input type="radio" name="data-id-5-2" id="data-id-5-2"><input type="radio" name="data-id-6-2" id="data-id-6-2"><input type="radio" name="data-id-7-2" id="data-id-7-2"><input type="radio" name="data-id-8-2" id="data-id-8-2">
-            <input type="radio" name="data-id-1-3" id="data-id-1-3"><input type="radio" name="data-id-2-3" id="data-id-2-3"><input type="radio" name="data-id-3-3" id="data-id-3-3"><input type="radio" name="data-id-4-3" id="data-id-4-3"><input type="radio" name="data-id-5-3" id="data-id-5-3"><input type="radio" name="data-id-6-3" id="data-id-6-3"><input type="radio" name="data-id-7-3" id="data-id-7-3"><input type="radio" name="data-id-8-3" id="data-id-8-3">
-            <input type="radio" name="data-id-1-4" id="data-id-1-4"><input type="radio" name="data-id-2-4" id="data-id-2-4"><input class="mine" type="radio" name="data-id-3-4" id="data-id-3-4"><input type="radio" name="data-id-4-4" id="data-id-4-4"><input type="radio" name="data-id-5-4" id="data-id-5-4"><input type="radio" name="data-id-6-4" id="data-id-6-4"><input class="mine" type="radio" name="data-id-7-4" id="data-id-7-4"><input type="radio" name="data-id-8-4" id="data-id-8-4">
-            <input class="mine" type="radio" name="data-id-1-5" id="data-id-1-5"><input type="radio" name="data-id-2-5" id="data-id-2-5"><input type="radio" name="data-id-3-5" id="data-id-3-5"><input type="radio" name="data-id-4-5" id="data-id-4-5"><input type="radio" name="data-id-5-5" id="data-id-5-5"><input type="radio" name="data-id-6-5" id="data-id-6-5"><input type="radio" name="data-id-7-5" id="data-id-7-5"><input type="radio" name="data-id-8-5" id="data-id-8-5">
-            <input type="radio" name="data-id-1-6" id="data-id-1-6"><input type="radio" name="data-id-2-6" id="data-id-2-6"><input type="radio" name="data-id-3-6" id="data-id-3-6"><input type="radio" name="data-id-4-6" id="data-id-4-6"><input class="mine" type="radio" name="data-id-5-6" id="data-id-5-6"><input type="radio" name="data-id-6-6" id="data-id-6-6"><input class="mine" type="radio" name="data-id-7-6" id="data-id-7-6"><input class="mine" type="radio" name="data-id-8-6" id="data-id-8-6">
-            <input type="radio" name="data-id-1-7" id="data-id-1-7"><input type="radio" name="data-id-2-7" id="data-id-2-7"><input type="radio" name="data-id-3-7" id="data-id-3-7"><input type="radio" name="data-id-4-7" id="data-id-4-7"><input type="radio" name="data-id-5-7" id="data-id-5-7"><input type="radio" name="data-id-6-7" id="data-id-6-7"><input type="radio" name="data-id-7-7" id="data-id-7-7"><input class="mine" type="radio" name="data-id-8-7" id="data-id-8-7">
-            <input type="radio" name="data-id-1-8" id="data-id-1-8"><input type="radio" name="data-id-2-8" id="data-id-2-8"><input class="mine" type="radio" name="data-id-3-8" id="data-id-3-8"><input class="mine" type="radio" name="data-id-4-8" id="data-id-4-8"><input type="radio" name="data-id-5-8" id="data-id-5-8"><input type="radio" name="data-id-6-8" id="data-id-6-8"><input type="radio" name="data-id-7-8" id="data-id-7-8"><input type="radio" name="data-id-8-8" id="data-id-8-8">
-            <div class="score">
-                <div class="scoreboard">
-                    <div></div><div></div><div></div><div></div><div></div>
-                    <div></div><div></div><div></div><div></div><div></div><div></div>
-                    <div></div><div></div><div></div><div></div><div></div><div></div>
-                </div>
-                <div class="smiley-face"></div>
-                <div class="scoreboard">
-                    <div></div><div></div><div></div><div></div><div></div>
-                    <div></div><div></div><div></div><div></div><div></div><div></div>
-                    <div></div><div></div><div></div><div></div><div></div><div></div>
-                </div>
-            </div>
-            <div class="content">
-                <label for="data-id-1-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
-                <label for="data-id-2-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
-                <label for="data-id-3-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
-                <label for="data-id-4-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
-                <label for="data-id-5-1" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-6-1" class="minesweeper-block" data-type="mine"></label>
-                <label for="data-id-7-1" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-8-1" class="minesweeper-block end" data-type="empty" data-group="2"></label>
-                <label for="data-id-1-2" class="minesweeper-block" data-type="empty" data-group="1"></label>
-                <label for="data-id-2-2" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-3-2" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-4-2" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-5-2" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-6-2" class="minesweeper-block" data-type="2">2</label>
-                <label for="data-id-7-2" class="minesweeper-block" data-type="2">2</label>
-                <label for="data-id-8-2" class="minesweeper-block end" data-type="empty" data-group="2"></label>
-                <label for="data-id-1-3" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-2-3" class="minesweeper-block" data-type="mine"></label>
-                <label for="data-id-3-3" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-4-3" class="minesweeper-block" data-type="empty"></label>
-                <label for="data-id-5-3" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-6-3" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-7-3" class="minesweeper-block" data-type="2">2</label>
-                <label for="data-id-8-3" class="minesweeper-block end" data-type="3">3</label>
-                <label for="data-id-1-4" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-2-4" class="minesweeper-block" data-type="2">2</label>
-                <label for="data-id-3-4" class="minesweeper-block" data-type="mine"></label>
-                <label for="data-id-4-4" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-5-4" class="minesweeper-block" data-type="empty"></label>
-                <label for="data-id-6-4" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-7-4" class="minesweeper-block" data-type="mine"></label>
-                <label for="data-id-8-4" class="minesweeper-block end" data-type="1">1</label>
-                <label for="data-id-1-5" class="minesweeper-block" data-type="mine"></label>
-                <label for="data-id-2-5" class="minesweeper-block" data-type="2">2</label>
-                <label for="data-id-3-5" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-4-5" class="minesweeper-block" data-type="2">2</label>
-                <label for="data-id-5-5" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-6-5" class="minesweeper-block" data-type="2">2</label>
-                <label for="data-id-7-5" class="minesweeper-block" data-type="3">3</label>
-                <label for="data-id-8-5" class="minesweeper-block end" data-type="3">3</label>
-                <label for="data-id-1-6" class="minesweeper-block" data-type="empty" data-group="3"></label>
-                <label for="data-id-2-6" class="minesweeper-block" data-type="empty" data-group="3"></label>
-                <label for="data-id-3-6" class="minesweeper-block" data-type="empty" data-group="3"></label>
-                <label for="data-id-4-6" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-5-6" class="minesweeper-block" data-type="mine"></label>
-                <label for="data-id-6-6" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-7-6" class="minesweeper-block" data-type="mine"></label>
-                <label for="data-id-8-6" class="minesweeper-block end" data-type="mine"></label>
-                <label for="data-id-1-7" class="minesweeper-block" data-type="empty" data-group="3"></label>
-                <label for="data-id-2-7" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-3-7" class="minesweeper-block" data-type="2">2</label>
-                <label for="data-id-4-7" class="minesweeper-block" data-type="3">3</label>
-                <label for="data-id-5-7" class="minesweeper-block" data-type="2">2</label>
-                <label for="data-id-6-7" class="minesweeper-block" data-type="2">2</label>
-                <label for="data-id-7-7" class="minesweeper-block" data-type="3">3</label>
-                <label for="data-id-8-7" class="minesweeper-block end" data-type="mine"></label>
-                <label for="data-id-1-8" class="minesweeper-block" data-type="empty" data-group="3"></label>
-                <label for="data-id-2-8" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-3-8" class="minesweeper-block" data-type="mine"></label>
-                <label for="data-id-4-8" class="minesweeper-block" data-type="mine"></label>
-                <label for="data-id-5-8" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-6-8" class="minesweeper-block" data-type="empty"></label>
-                <label for="data-id-7-8" class="minesweeper-block" data-type="1">1</label>
-                <label for="data-id-8-8" class="minesweeper-block end" data-type="1">1</label>
-            </div>
-        </div>
+      </div>
+      <div class="options line">
+        <div class="item">File</div>
+        <div class="item">Edit</div>
+        <div class="item">Views</div>
+        <div class="item">Favorites</div>
+        <div class="item">Tools</div>
+        <div class="item">Help</div>
+        <div class="item float-right"><img class="icon" data-icon="startLogo" alt="Start Logo"/></div>
+      </div>
+      <div class="options padding">
+        <div class="item">Address</div>
+        <input type="text" class="inverse-windows-box-shadow" value="https://github.com/apursley2012"/>
+      </div>
+      <div class="content">
+        <iframe src="https://github.com/apursley2012"></iframe>
+      </div>
     </div>
-    <div id="start-bar">
-        <div id="start-button-items">
-            <label id="start-button" class="windows-box-shadow" for="start-button-input"></label>
-            <div id="items">
-                <label for="windows-ie-input-min" class="ie-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="internet-explorer" alt="Internet Explorer"/></span><span>Help Center</span></label>
-                <label for="windows-notepad-input-min" class="notepad-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="notepad" alt="Notepad"></span><span>Notepad</span></label>
-                <label for="windows-documents-input-min" class="documents-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="documents" alt="Documents"></span><span>Documents</span></label>
-                <label for="windows-update-input-min" class="update-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="winUpdate" alt="Update Windows"></span><span>Windows Update</span></label>
-                <label for="windows-trash-input-min" class="trash-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="recycleBin" alt="Recycly Bin"></span><span>Recycle Bin</span></label>
-                <label for="windows-minesweeper-input-min" class="minesweeper-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="minesweeper" alt="Minesweeper"></span><span>Minesweeper</span></label>
-            </div>
+
+    <!-- Help -->
+    <div class="window help windows-box-shadow">
+      <div class="header">
+        <label for="windows-help-input-on-top">Windows Help</label>
+        <div class="header-buttons">
+          <label for="windows-help-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-help-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-help-input" class="close windows-box-shadow">X</label>
         </div>
-        <div id="start-menu" class="windows-box-shadow">
-            <div id="windows-start-menu-blue">Windows<span>98</span></div>
-            <ul>
-                <li class="line welcome">
-                    <label for="windows-welcome-input"><img class="icon" data-start-icon="info" alt="Welcome Message"> Welcome Message </label>
-                </li>
-                <li class="programs">
-                    <label><img class="icon" data-start2-icon="programs" alt="Programs"/> Progams</label>
-                    <ul class="windows-box-shadow">
-                        <li>
-                            <label for="windows-ie-input"><img class="icon" data-help-icon="internet-explorer" alt="Internet Explorer"><input type="checkbox"/> Internet Explorer</label>
-                        </li>
-                        <li>
-                            <label for="windows-minesweeper-input"><img class="icon" data-help-icon="minesweeper" alt="Minesweeper"> Minesweeper</label>
-                        </li>
-                        <li>
-                            <label for="windows-notepad-input"><img class="icon" data-help-icon="notepad" alt="Notepad">Notepad</label>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <label for="windows-documents-input"><img class="icon" data-taskbar-icon="documents" alt="Documents"/> Documents</label>
-                </li>
-                <li class="line">
-                    <label for="windows-help-input"><img class="icon" data-start-icon="help" alt="help"/> Help</label>
-                </li>
-                <li>
-                    <label for="login-screen-input"><img class="icon" data-start-icon="logoff" alt="logoff"/> Log Off <span class="spiderman logout-prompt"> Spiderman...</span><span class="zark-muckerberg logout-prompt"> Zark Muckerberg...</span><span class="donald-trump logout-prompt"> Donald Trump...</span></label>
-                </li>
-                <li>
-                    <label for="shutdown-screen-input"><img class="icon" data-start-icon="shutdown" alt="Shutdown"/> Shutdown</label>
-                </li>
-            </ul>
+      </div>
+      <div class="options padding">
+        <div class="item">Location</div>
+        <input type="text" class="inverse-windows-box-shadow" value="General Help"/>
+      </div>
+      <div class="tab-box-content">
+        <input name="topics-radio" id="topic-1" type="radio" checked/>
+        <input name="topics-radio" id="topic-2" type="radio"/>
+        <input name="topics-radio" id="topic-3" type="radio"/>
+        <input name="topics-radio" id="topic-4" type="radio"/>
+        <div class="tab-box">
+          <div class="tab-header">Alysha Pursley's ePortfolio</div>
+          <ul class="box">
+            <li><label for="topic-1"><img data-help-icon="help" alt="Help"/> Why is my copy of Windows feature limited?</label></li>
+            <li><label for="topic-2"><img data-help-icon="help" alt="Help"/> Why can't I move Windows?</label></li>
+            <li><label for="topic-3"><img data-help-icon="help" alt="Help"/> Is it a good idea to make CSS Windows?</label></li>
+            <li><label for="topic-4"><img data-help-icon="help" alt="Help"/> How long did it take to make CSS Windows?</label></li>
+          </ul>
         </div>
-        <div id="time-options"></div>
+        <div class="content">
+          <div class="topic-1-content">
+            <h2>Why is my copy of Windows feature limited?</h2>
+            <p>Since this version of Windows was built entirely with CSS, you may notice some features are missing. This is because of the limitations of CSS. <a href="https://fjolt.com/category/css" target="_blank">To learn more about CSS, you can click here</a>.</p>
+          </div>
+          <div class="topic-2-content">
+            <h2>Why can't I move windows?</h2>
+            <p>Although CSS lets you do quite a lot of things, unfortunately drag and drop is not one of them. To enable drag and drop on this version of windows, <a href="https://fjolt.com/series/learn-javascript" target="_blank">please learn Javascript first</a>, and then write the necessary scripts to add drag and drop.</p>
+          </div>
+          <div class="topic-3-content">
+            <h2>Why can't I move windows?</h2>
+            <p>Creating Windows in CSS is quite difficult, and requires a lot of input elements. Therefore, it may be recommended that you use another language if you wish to make a fully fledged operating system. Even so, it is a good way to demonstrate the <strong>power</strong> of CSS.</p>
+          </div>
+          <div class="topic-4-content">
+            <h2>How long did it take to make CSS Windows?</h2>
+            <p>Roughly 1.5 weeks, on and off.</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Trash -->
+    <div class="window trash windows-box-shadow">
+      <div class="header">
+        <label for="windows-trash-input-on-top">Recycle Bin</label>
+        <div class="header-buttons">
+          <label for="windows-trash-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-trash-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-trash-input" class="close windows-box-shadow">X</label>
+        </div>
+      </div>
+      <div class="options line">
+        <div class="item">File</div>
+        <div class="item">Edit</div>
+        <div class="item">Views</div>
+        <div class="item">Go</div>
+        <div class="item">Favorites</div>
+        <div class="item">Help</div>
+      </div>
+      <div class="content white">
+        <input type="radio" name="trash-radio" id="windows-11"/>
+        <input type="radio" name="trash-radio" id="macos"/>
+        <input type="radio" name="trash-radio" id="itunes"/>
+
+        <label class="file windows-11" for="windows-11">
+          <span class="image"><img class="icon" data-icon="winUpdate" alt="Update Windows"/></span>
+          <span class="text">Windows_11.exe</span>
+        </label>
+        <label class="file macos" for="macos">
+          <span class="image"><img class="icon" data-icon="macos" alt="macOS"/></span>
+          <span class="text">Mac_OS.exe</span>
+        </label>
+        <label class="file itunes" for="itunes">
+          <span class="image"><img class="icon" data-icon="itunes" alt="iTunes"/></span>
+          <span class="text">itunes.exe</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Documents (fixed duplicate IDs) -->
+    <div class="window documents windows-box-shadow">
+      <div class="header">
+        <label for="windows-documents-input-on-top">Documents</label>
+        <div class="header-buttons">
+          <label for="windows-documents-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-documents-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-documents-input" class="close windows-box-shadow">X</label>
+        </div>
+      </div>
+      <div class="options line">
+        <div class="item">File</div>
+        <div class="item">Edit</div>
+        <div class="item">Views</div>
+        <div class="item">Go</div>
+        <div class="item">Favorites</div>
+        <div class="item">Help</div>
+      </div>
+      <div class="content white">
+        <input type="radio" name="documents-radio" id="narrative-one"/>
+        <label class="file narrative-one" for="narrative-one">
+          <span class="image"><img class="icon" data-icon="textdoc" alt="Text Doc"/></span>
+          <span class="text">Narrative<br/> One</span>
+        </label>
+
+        <input type="radio" name="documents-radio" id="narrative-two"/>
+        <label class="file narrative-two" for="narrative-two">
+          <span class="image"><img class="icon" data-icon="textdoc" alt="Text Doc"/></span>
+          <span class="text">Narrative<br/> Two</span>
+        </label>
+
+        <input type="radio" name="documents-radio" id="narrative-three"/>
+        <label class="file narrative-three" for="narrative-three">
+          <span class="image"><img class="icon" data-icon="textdoc" alt="Text Doc"/></span>
+          <span class="text">Narrative<br/> Three</span>
+        </label>
+
+        <label class="file diary" for="diary">
+          <span class="image"><img class="icon" data-icon="textdoc" alt="Self-Assessment"/></span>
+          <span class="text">Professional Self-Assessment</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Notepad (blank) -->
+    <div class="window notepad windows-box-shadow">
+      <div class="header">
+        <label for="windows-notepad-input-on-top">Notepad</label>
+        <div class="header-buttons">
+          <label for="windows-notepad-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-notepad-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-notepad-input" class="close windows-box-shadow">X</label>
+        </div>
+      </div>
+      <div class="options line">
+        <div class="item">File</div>
+        <div class="item">Edit</div>
+        <div class="item">Search</div>
+      </div>
+      <div class="content">
+        <textarea></textarea>
+      </div>
+    </div>
+
+    <!-- Self-Assessment (kept as textarea) -->
+    <div class="window notepad note-sa windows-box-shadow">
+      <div class="header">
+        <label for="windows-note-sa-input-on-top">Notepad — Professional Self-Assessment</label>
+        <div class="header-buttons">
+          <label for="windows-note-sa-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-note-sa-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-note-sa-input" class="close windows-box-shadow">X</label>
+        </div>
+      </div>
+      <div class="options line">
+        <div class="item">File</div>
+        <div class="item">Edit</div>
+        <div class="item">Search</div>
+      </div>
+      <div class="content">
+        <textarea spellcheck="false" wrap="soft"></textarea>
+      </div>
+    </div>
+
+    <!-- Enhancement 1 -->
+    <div class="window notepad note-e1 windows-box-shadow">
+      <div class="header">
+        <label for="windows-note-e1-input-on-top">Notepad — Enhancement 1 Narrative</label>
+        <div class="header-buttons">
+          <label for="windows-note-e1-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-note-e1-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-note-e1-input" class="close windows-box-shadow">X</label>
+        </div>
+      </div>
+      <div class="options line">
+        <div class="item">File</div>
+        <div class="item">Edit</div>
+        <div class="item">Search</div>
+      </div>
+      <div class="content">
+        <div class="narrative-container">
+          <div class="n-card">
+            <h2>Software Design & Engineering Enhancement</h2>
+            <br/>
+            <h3>Artifact Overview</h3>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;The artifact I’m enhancing is a C++ console program called <span class="highlight">CornerGrocerApp.cpp</span>, originally created in CS 210: Programming Languages. The application reads grocery item data from a text file, counts how often each item appears, and displays the results either in a simple list or a histogram. The program uses a <span class="highlight">std::map</span> to track frequencies and runs entirely in the terminal with a basic menu system. It’s clean and functional, but it’s also limited—there’s no error messaging for failed operations, and it doesn’t support any kind of expansion or integration outside of its current setup.</p>
+            <br>
+            <h3>Justification for Inclusion</h3>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;I selected this artifact for my ePortfolio because it is a strong example of my ability to design and implement a functional software solution from start to finish. It addresses a real problem—tracking and displaying frequency data from inventory records—and clearly shows my understanding of programming logic, user interaction, and data organization.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;For this enhancement, I rewrote the artifact in <span class="highlight">Python</span>, maintaining the original functionality while improving its design and expanding its capabilities. The enhanced version introduces a class-based structure with a <span class="highlight">GroceryFrequency class</span>, improved input validation, and stronger error handling. I also added new menu options to back up both the frequency list and the histogram to separate text files. Each backup feature now provides a clear confirmation message that includes the full file path when a save is successful, or an error message if it fails. These improvements not only make the application more robust and user-friendly but also demonstrate my ability to modernize existing code and apply current best practices.</p>
+            <br/>
+            <h3>Course Outcomes and Skills Demonstrated</h3>
+            <p>This enhancement clearly aligns with the software engineering and design category. It touches on several course outcomes and builds on a wide range of technical skills:</p>
+            <table>
+              <caption><strong>Skills</strong></caption>
+              <tr><th>Skill</th><th>Description</th></tr>
+              <tr><td>Language Portability</td><td>Rewriting the entire application in Python while keeping the original functionality intact shows I can translate logic between languages.</td></tr>
+              <tr><td>Programming Proficiency</td><td>The core logic—reading data, counting items, sorting results, and interacting with users—is now implemented using Python best practices.</td></tr>
+              <tr><td>Software Design Principles</td><td>I used a class-based structure to keep things organized and modular, which makes future changes easier to manage.</td></tr>
+              <tr><td>Input Validation</td><td>Every input is now validated to make sure the program can’t crash due to unexpected values. This includes menu selections and item searches.</td></tr>
+              <tr><td>File I/O and Error Handling</td><td>I added try-except blocks to handle file errors gracefully. If something goes wrong, the program tells the user instead of crashing.</td></tr>
+              <tr><td>New Features</td><td>The app now includes two backup options—one for the frequency list and one for the histogram. Each one confirms whether the file was saved successfully.</td></tr>
+              <tr><td>Commenting and Documentation</td><td>Every part of the program includes clear, useful comments that explain both what the code is doing and why. This makes the program easier to read, maintain, or extend in the future.</td></tr>
+              <tr><td>Secure Programming Mindset</td><td>I took care to write safe, predictable code that doesn’t rely on assumptions about the input or file system. This reduces the risk of unexpected behavior or data issues.</td></tr>
+            </table>
+
+              <h4>These updates directly support the following course outcomes:</h4>
+            <table>
+              <caption><strong>Course Outcomes</strong></caption>
+              <tr><th>&nbsp;</th><th>Course Outcome</th><th>Description</th></tr>
+              <tr>
+                <td>Course Outcome 1</td>
+                <td><i>“Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision-making in the field of computer science.”</i></td>
+                <td>I wrote the code in a way that makes it easier for others to read, understand, and work with—whether they’re teammates or future maintainers.</td>
+              </tr>
+              <tr>
+                <td>Course Outcome 2</td>
+                <td><i>“Design, develop, and deliver professional-quality oral, written, and visual communications that are coherent, technically sound, and appropriately adapted to specific audiences and contexts.”</i></td>
+                <td>The new version is not only functional, but also well-documented and logically structured, which reflects professional software development standards.</td>
+              </tr>
+              <tr>
+                <td>Course Outcome 3</td>
+                <td><i>“Design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards appropriate to its solution while managing the trade-offs involved in design choices.”</i></td>
+                <td>Rebuilding the app in Python shows I can design a computing solution that follows appropriate principles and makes smart trade-offs between simplicity and functionality.</td>
+              </tr>
+              <tr>
+                <td>Course Outcome 4</td>
+                <td>“Demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals.”</td>
+                <td>I used modern Python features and coding techniques that make the software easier to use and expand in the future.</td>
+              </tr>
+              <tr>
+                <td>Course Outcome 5</td>
+                <td>I added try-except blocks to handle file errors gracefully. If something goes wrong, the program tells the user instead of crashing.</td>
+                <td>I made sure the design is stable and secure by validating inputs, handling errors, and providing users with clear feedback when something fails.</td>
+              </tr>
+            </table>
+
+            <h3>Reflection on the Enhancement Process</h3>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Enhancing this artifact gave me the chance to approach the project from a different perspective than when I originally built it. In the C++ version, my focus was on meeting the assignment requirements and ensuring the program worked correctly. For the enhancement, I treated it as if I were delivering a tool that others might rely on, which meant paying closer attention to maintainability, usability, and scalability. That shift in focus guided every design choice I made, from adopting a class-based structure to making sure the program clearly communicates with the user at every step.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;I also learned how valuable it is to design features with flexibility in mind. The new backup functionality is a good example—it works now by creating simple text files, but it’s built in a way that I could easily change the format, save location, or even connect it to a database in the future without rewriting the entire program. This kind of forward-looking design wasn’t something I prioritized in the original project, but it’s a habit I plan to carry forward.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Another key takeaway is how much the right tools can simplify the logic and reduce complexity. Using <span class="highlight">Python’s defaultdict</span> allowed me to eliminate unnecessary checks and streamline the frequency-counting process, resulting in code that is both shorter and easier to read. This reinforced the idea that choosing the right data structures and language features from the start can save significant time and effort later. Overall, this enhancement not only improved the program itself but also strengthened my approach to software design. It reminded me that a well-built application should be easy to maintain, adaptable to future needs, and clear for both users and other developers to work with.</p>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhancement 2 -->
+    <div class="window notepad note-e2 windows-box-shadow">
+      <div class="header">
+        <label for="windows-note-e2-input-on-top">Notepad — Enhancement 2 Narrative.txt</label>
+        <div class="header-buttons">
+          <label for="windows-note-e2-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-note-e2-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-note-e2-input" class="close windows-box-shadow">X</label>
+        </div>
+      </div>
+      <div class="options line">
+        <div class="item">File</div>
+        <div class="item">Edit</div>
+        <div class="item">Search</div>
+      </div>
+      <div class="content">
+        <div class="narrative-container">
+          <div class="n-card">
+            <h1>Algorithms and Data Structures Enhancement</h1>
+            <br>
+            <h2>Artifact Overview</h2>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;This enhancement builds on the Python version of my Corner Grocer application, which was originally developed as a C++ program in CS 210. The program processes an input file containing purchased grocery items, counts the frequency of each item, and provides a menu-based interface for interacting with the results. In its previous version from Enhancement One, it allowed users to look up an item’s frequency, display a full list of items with their counts, and show a histogram of frequencies.</p>
+            <p>&nbsp;&nbsp;&nbsp;Enhancement Two expands the program’s capabilities by adding alphabetical sorting, frequency-based sorting, an item search feature, and two file export options for saving frequency data and histograms. The alphabetical sort lists items in A–Z order with their purchase counts, while the frequency sort arranges them from most to least purchased. The search function lets a user check whether a specific item exists and see its frequency. Two additional export features save the frequency list and histogram to files so that results can be archived or shared.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;To maintain modularity and organization, all sorting and searching functions were placed into a separate module (grocery_utils.py) while the main file remains responsible for menu handling and frequency processing. This separation of concerns ensures the program stays clean, scalable, and easy to maintain while making new features easier to test and debug.</p>
+            <br>
+            <h2>Justification for Inclusion</h2>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;This artifact is an excellent example for demonstrating algorithms and data structures because it relies on both for its core functionality. The program uses Python’s defaultdict(int) for efficient frequency counting and constant-time lookups. Alphabetical sorting uses the built-in sorted() function applied to dictionary keys, while frequency sorting uses a custom key to order dictionary items by value in descending order. The search function normalizes user input to lowercase before performing the lookup, ensuring accurate results regardless of case differences.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;By placing all new sorting and searching logic in grocery_utils.py, the design preserves a clean separation between business logic and the user interface. This modular structure not only makes the code easier to maintain and extend but also supports collaborative development. Importantly, all original functionality from Enhancement One was preserved without any regressions, ensuring backward compatibility while delivering new, valuable features.</p>
+            <br>
+            <h2>Skills and Course Outcomes</h2>
+
+            <h3>Course Outcome 1</h3>
+            <p><i>“Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision-making in the field of computer science.”</i></p>
+            <h4><i>Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:</i></h4>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Modular Design<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Code Documentation<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Modular Architecture<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Code Readability<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Separation of Concerns
+            </p>
+            <h4>How these skills support this outcome:</h4>
+            <p>
+                <strong>✓ Modular Design –</strong> By placing sorting and searching functions into a separate grocery_utils.py file, I made the codebase easier for other developers to understand and extend, promoting effective collaboration.<br>
+                <strong>✓ Code Documentation –</strong> Detailed, structured comments clearly explain each function’s purpose and logic, ensuring that anyone reviewing the code can quickly understand its functionality.<br>
+                <strong>✓ Modular Architecture –</strong> Separating the utility module from the main program supports a team-based workflow, allowing multiple developers to work on different parts of the program without conflict.<br>
+                <strong>✓ Code Readability –</strong> Using clear naming conventions, logical organization, and consistent formatting makes it easier for others to follow the program’s structure.<br>
+                <strong>✓ Separation of Concerns –</strong> Keeping business logic separate from menu and input handling ensures that changes can be made to one area without breaking unrelated functionality, simplifying collaborative work.
+            </p>
+
+            <h3>Course Outcome 2:</h3>
+            <p><i>“Design, develop, and deliver professional-quality oral, written, and visual communications that are coherent, technically sound, and appropriately adapted to specific audiences and contexts.”</i></p>
+            <h4><i>Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:</i></h4>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Menu Design<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• User Experience Improvements<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Expanded Menu System<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Code Documentation<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Code Readability
+            </p>
+            <h4>How these skills support this outcome:</h4>
+            <p>
+                <strong> ✓ Menu Design – </strong>The menu was expanded to nine options while remaining clear and logically organized, ensuring that users can quickly understand how to access each feature.<br>
+                <strong> ✓ User Experience Improvements –</strong> Clear prompts, error messages, and outputs make the program easy for any user to work, even without prior technical experience.<br>
+                <strong>✓ Expanded Menu System –</strong> Adding new features without making the interface overwhelming shows careful attention to user communication.<br>
+                <strong>✓ Code Documentation –</strong> Well-written comments act as a form of technical communication, making the intent and logic of the program easy to follow.<br>
+                <strong> ✓ Code Readability – </strong>Maintaining consistent formatting and descriptive variable/function names makes the code understandable to both technical reviewers and new developers.
+            </p>
+
+            <h3>Course Outcome 3</h3>
+            <p><i>“Design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards appropriate to its solution while managing the trade-offs involved in design choices.”</i></p>
+            <h4><i>Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:</i></h4>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Data Sorting<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Alphabetical Sorting Logic<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Frequency-Based Sorting<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Separation of Concerns<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Function Abstraction<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Code Reusability
+            </p>
+            <h4>How these skills support this outcome:</h4>
+            <p>
+                <strong>✓ Data Sorting –</strong> Implementing both alphabetical and frequency-based sorting demonstrates the ability to design different algorithmic approaches for viewing the same dataset.<br>
+                <strong>✓ Alphabetical Sorting Logic –</strong> Applying sorted() to dictionary keys reflects an understanding of efficient sorting methods.<br>
+                <strong>✓ Frequency-Based Sorting –</strong> Using a custom sort key to order by frequency highlights control over sorting algorithms and data structures.<br>
+                <strong>✓ Separation of Concerns –</strong> Keeping the sorting and searching logic separate from menu flow makes the codebase more maintainable and scalable.<br>
+                <strong> ✓ Function Abstraction – </strong>Encapsulating each sorting and searching feature in its own function allows for better control, testing, and modification.<br>
+                <strong> ✓ Code Reusability –</strong> Designing the sorting and searching logic so it can be reused across the program demonstrates a scalable problem-solving approach.
+            </p>
+
+            <h3>Course Outcome 4</h3>
+            <p><i>“Demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals.”</i></p>
+            <h4><i>Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:</i></h4>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Programming Proficiency<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Search Functionality<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Function Abstraction<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Code Reusability<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Preserved Backward Compatibility
+            </p>
+            <h4>How these skills support this outcome:</h4>
+            <p>
+                <strong>✓ Programming Proficiency –</strong> Designing and implementing new features using Python’s built-in tools ensures that the application delivers real-world value efficiently.<br>
+                <strong>✓ Search Functionality –</strong> Adding the ability to find specific items quickly makes the application more useful for inventory tracking and analysis.<br>
+                <strong>✓ Function Abstraction –</strong> Keeping each new feature in its own function improves maintainability and allows for easier enhancements in the future.<br>
+                <strong>✓ Code Reusability –</strong> Writing generic sorting and searching functions means they can be adapted to different uses without rewriting logic.<br>
+                <strong>✓ Preserved Backward Compatibility –</strong> Maintaining all original features while adding new ones ensures that existing workflows remain intact for users.
+            </p>
+
+            <h3>Course Outcome 5</h3>
+            <p><i>“Develop a security mindset that anticipates adversarial exploits in software architecture and designs to expose potential vulnerabilities, mitigate design flaws, and ensure privacy and enhanced security of data and resources.”</i></p>
+            <h4><i>Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:</i></h4>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Input Validation<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Input Handling Enhancements<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• User Experience Improvements
+            </p>
+            <h4>How these skills support this outcome:</h4>
+            <p>
+                <strong>✓ Input Validation –</strong> Menu selections are checked for valid ranges, and item names are restricted to letters and spaces, preventing invalid data from being processed.<br>
+                <strong> ✓ Input Handling Enhancements –</strong> Validation logic was updated to handle the expanded menu, catching errors before they can cause program crashes.<br>
+                <strong>✓ User Experience Improvements –</strong> Clear error messages guide the user to correct mistakes without compromising program stability or security.
+            </p>
+            <br>
+            <h2>Reflection on the Enhancement Process</h2>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Completing this enhancement reinforced how valuable modular architecture is for maintainability and scalability. Moving sorting and searching into a separate utility module kept the main program focused on menu logic and data processing, making the code easier to read and update. It also made testing simpler since I could run and verify each helper function independently.</p>
+            <p>&nbsp;&nbsp;&nbsp;Another takeaway was the importance of balancing new features with interface clarity. Expanding the menu from four to nine options could have made the interface cluttered, but careful grouping and consistent formatting kept it user-friendly. Input validation remained a top priority, ensuring that no matter how the program grows, it continues to handle user input safely and predictably. Overall, this enhancement improved functionality, usability, and maintainability without sacrificing the stability of the original design.</p>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Enhancement 3 (card typo fixed) -->
+    <div class="window notepad note-e3 windows-box-shadow">
+      <div class="header">
+        <label for="windows-note-e3-input-on-top">Notepad — Enhancement 3 Narrative.txt</label>
+        <div class="header-buttons">
+          <label for="windows-note-e3-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-note-e3-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-note-e3-input" class="close windows-box-shadow">X</label>
+        </div>
+      </div>
+      <div class="options line">
+        <div class="item">File</div>
+        <div class="item">Edit</div>
+        <div class="item">Search</div>
+      </div>
+      <div class="content">
+        <div class="narrative-container">
+          <div class="n-card">
+            <h1>Database Enhancement</h1>
+            <h2>Artifact Overview</h2>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;The artifact selected for this enhancement is the same Corner Grocer application originally developed in C++ for CS 210: Programming Languages. In its earliest form, the application read grocery sales data from a text file, stored the frequency of each item using a std::map, and allowed users to view results as a list or a histogram. In earlier enhancements, the program was <strong>rewritten in Python</strong> and <strong>expanded with sorting and search capabilities</strong>. For this third enhancement, the focus shifted to replacing the program’s in-memory data handling with a persistent <strong>SQLite database backend</strong>. The change ensures that data is stored and retrieved efficiently, even across program restarts, without losing any of the program’s original functionality.</p>
+            <h2>Justification for Inclusion</h2>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;This enhancement was selected because it demonstrates my ability to integrate a database into an existing application while maintaining backward compatibility with all previously implemented features. In practical terms, this update improves the program’s value for real-world use by allowing it to store, retrieve, and update inventory frequency data directly from a database rather than relying solely on memory. The use of SQLite means the application can be run as a standalone program without requiring additional database setup, making it portable and easy to distribute. Additionally, this enhancement showcases skills in database schema design, SQL query writing, and Python database API usage, all of which are important for full-stack and backend development roles.</p>
+            <h2>Skills & Course Outcomes</h2>
+              <h3>Course Outcome 1</h3>
+              <p><i>“Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision-making in the field of computer science.”</i></p>
+              <p><strong>✓ Modular Design –</strong> DB logic isolated in <span class="highlight">db_handler.py</span>.<br>
+                 <strong>✓ Code Documentation –</strong> Clear comments explain SQL operations.<br>
+                 <strong>✓ Modular Architecture –</strong> DB layer separated from menu code.<br>
+                 <strong>✓ Code Readability –</strong> Descriptive function names.<br>
+                 <strong>✓ Separation of Concerns –</strong> DB and UI concerns are fully decoupled.</p>
+
+              <h3>Course Outcome 2</h3>
+              <p><i>“Design, develop, and deliver professional-quality communications…”</i></p>
+              <p><strong>✓ Menu Design –</strong> Options for DB actions are explicit.<br>
+                 <strong>✓ UX Improvements –</strong> Success and error messages are clear.<br>
+                 <strong>✓ Expanded Menu –</strong> New options fit without clutter.<br>
+                 <strong>✓ Documentation –</strong> Comments describe data flow.<br>
+                 <strong>✓ Readability –</strong> Organization aids review by any audience.</p>
+
+              <h3>Course Outcome 3</h3>
+              <p><i>“Design and evaluate computing solutions using algorithmic principles…”</i></p>
+              <p><strong>✓ Database Query Logic –</strong> Efficient CRUD for frequencies.<br>
+                 <strong>✓ Separation of Concerns –</strong> DB CRUD in <span class="highlight">db_handler.py</span> only.<br>
+                 <strong>✓ Function Abstraction –</strong> Each DB op is a function.<br>
+                 <strong>✓ Code Reusability –</strong> Same functions serve multiple menu paths.</p>
+
+              <h3>Course Outcome 4</h3>
+              <p><i>“Use well-founded techniques, skills, and tools to implement solutions…”</i></p>
+              <p><strong>✓ Programming Proficiency –</strong> Python + SQL integration via SQLite.<br>
+                 <strong>✓ Database Integration –</strong> Real persistence, portable runtime.<br>
+                 <strong>✓ Function Abstraction –</strong> Easier extension later.<br>
+                 <strong>✓ Code Reusability –</strong> DB helpers reusable across projects.<br>
+                 <strong>✓ Backward Compatibility –</strong> All prior features still work.</p>
+
+              <h3>Course Outcome 5</h3>
+              <p><i>“Develop a security mindset…”</i></p>
+              <p><strong>✓ Input Validation –</strong> Item names validated.<br>
+                 <strong>✓ Error Handling –</strong> try/except around connections/queries.<br>
+                 <strong>✓ UX & Safety –</strong> Helpful errors without leaking internals.</p>
+
+            <h2>Reflection</h2>
+            <p>Shifting to SQLite required re-thinking data flow while preserving the interface. The biggest wins were cleanly separating DB concerns and improving feedback to users. The result is a more reliable, maintainable application.</p>
+              <br><br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Enhancement 3 -->
+    <div class="window notepad note-e3 windows-box-shadow">
+      <div class="header">
+        <label for="windows-note-e3-input-on-top">Notepad — Enhancement 3 Narrative.txt</label>
+        <div class="header-buttons">
+          <label for="windows-note-e3-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-note-e3-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-note-e3-input" class="close windows-box-shadow">X</label>
+        </div>
+      </div>
+      <div class="options line">
+        <div class="item">File</div>
+        <div class="item">Edit</div>
+        <div class="item">Search</div>
+      </div>
+      <div class="content">
+        <div class="narrative-container">
+          <div class="n-card">
+            <h1>Database Enhancement</h1>
+            <h2>Artifact Overview</h2>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;The artifact selected for this enhancement is the same Corner Grocer application originally developed in C++ for CS 210: Programming Languages. In its earliest form, the application read grocery sales data from a text file, stored the frequency of each item using a std::map, and allowed users to view results as a list or a histogram. In earlier enhancements, the program was <strong>rewritten in Python</strong> and <strong>expanded with sorting and search capabilities</strong>. For this third enhancement, the focus shifted to replacing the program’s in-memory data handling with a persistent <strong>SQLite database backend</strong>. The change ensures that data is stored and retrieved efficiently, even across program restarts, without losing any of the program’s original functionality.</p>
+            <h2>Justification for Inclusion</h2>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;This enhancement was selected because it demonstrates my ability to integrate a database into an existing application while maintaining backward compatibility with all previously implemented features. In practical terms, this update improves the program’s value for real-world use by allowing it to store, retrieve, and update inventory frequency data directly from a database rather than relying solely on memory. The use of SQLite means the application can be run as a standalone program without requiring additional database setup, making it portable and easy to distribute. Additionally, this enhancement showcases skills in database schema design, SQL query writing, and Python database API usage, all of which are important for full-stack and backend development roles.</p>
+            <h2>Skills & Course Outcomes</h2>
+              <h3>Course Outcome 1</h3>
+              <p><i>“Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision-making in the field of computer science.”</i></p>
+              <h4><i>Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:</i></h4>
+&nbsp;&nbsp;&nbsp;&nbsp;• Modular Design<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Code Documentation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Modular Architecture<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Code Readability<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Separation of Concerns<br>
+              <h4>How these skills support this outcome:</h4>
+              <p><strong>✓ Modular Design –</strong> By placing all database-related logic into a dedicated db_handler.py file, the project is easier for multiple developers to work on without interfering with unrelated code.<br>
+             <strong>✓ Code Documentation –</strong> Structured, descriptive comments clearly explain the purpose of each SQL operation and why certain database practices were used, making it easier for collaborators to understand the database layer.<br>
+                  <strong>✓ Modular Architecture –</strong>Separating database operations from the main menu code allows each part to be developed or updated independently, supporting teamwork.<br>
+                  <strong>✓ Code Readability –</strong> Using clear function names like connect_to_db and insert_item makes it obvious what each part of the program does.<br>
+                  <strong>✓ Separation of Concerns –</strong> Database logic is fully isolated from user interaction logic, reducing the chance that changes to one will break the other.<br>
+              <h3>Course Outcome 2</h3>
+              <p><i>“Design, develop, and deliver professional-quality oral, written, and visual communications that are coherent, technically sound, and appropriately adapted to specific audiences and contexts.”</i></p>
+              <h4><i>Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:</i></h4>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;• Menu Design<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• User Experience Improvements<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Expanded Menu System<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Code Documentation<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;• Code Readability</p>
+             
+              <h4>How these skills support this outcome:</h4>
+              <p><strong>✓ Menu Design –</strong> The main menu clearly labels all options related to database actions, making them intuitive for end users.<br>
+                  <strong>✓ User Experience Improvements –</strong> The program now provides success messages when connecting to the database, inserting records, or retrieving data, as well as clear error messages if something goes wrong.<br>
+                  <strong>✓ Expanded Menu System –</strong> New menu options for loading data into the database and retrieving stored information are integrated without overwhelming the user.<br>
+                  <strong>✓ Code Documentation – </strong>Comments explain how each database interaction works, helping others understand the application’s data flow.<br>
+                  <strong>✓ Code Readability –</strong> The logical organization and naming conventions make the code accessible to both technical reviewers and less experienced developers.<br>
+              <h3>Course Outcome 3</h3>
+              <p><i>“Design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards appropriate to its solution while managing the trade-offs involved in design choices.”</i></p>
+              <h4><i>Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:</i></h4>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;• Database Query Logic<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Separation of Concerns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Function Abstraction<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;• Code Reusability</p>
+              <h4>How these skills support this outcome:</h4>
+              <p><strong>✓ Database Query Logic –</strong> I implemented efficient SQL queries to store and retrieve grocery item frequencies, ensuring minimal overhead and accurate results.<br>
+                  <strong>✓ Separation of Concerns –</strong> Database CRUD operations are handled in db_handler.py while presentation logic stays in the main program, keeping responsibilities clear.<br>
+                  <strong>✓ Function Abstraction –</strong> Each database operation is encapsulated in a dedicated function, making them easy to maintain and test individually.<br>
+                  <strong>✓ Code Reusability –</strong> The same database query functions can be used across different menu options without rewriting logic.</p>
+
+                <h2>Course Outcome 4</h2>
+              <p><i>“Demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals.”</i></p>
+              <h4><i>Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:</i></h4>
+              <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Programming Proficiency <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Database Integration <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Function Abstraction <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Code Reusability <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Preserved Backward Compatibility <br></p>
+              <h4>How these skills support this outcome:</h4>
+              <p><strong>✓ Programming Proficiency –</strong> The enhancement demonstrates strong Python and SQL skills by integrating SQLite and writing clean, functional database code.<br>
+                  <strong>✓ Database Integration –</strong> Introducing persistent storage into the application transforms it from a temporary data processor to a fully capable inventory tracking system.<br>
+                  <strong>✓ Function Abstraction –</strong> Isolating SQL operations into functions makes the database layer easier to expand in the future.<br>
+                  <strong>✓ Code Reusability –</strong> The database functions can be adapted for other projects requiring similar functionality.<br>
+                  <strong>✓ Preserved Backward Compatibility –</strong> All existing non-database features still work, ensuring that the enhancement adds value without removing existing functionality.<br>
+              <h3> Course Outcome 5</h3>
+              <p><i>“Develop a security mindset that anticipates adversarial exploits in software architecture and designs to expose potential vulnerabilities, mitigate design flaws, and ensure privacy and enhanced security of data and resources.”</i></p>
+              <h4><i>Some of the skills I’ve demonstrated in this enhancement that meet this outcome are:</i></h4>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Input Validation<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• Error Handling Enhancements<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• User Experience Improvements<br>
+              
+              <h4><i>How these skills support this outcome:</i></h4>
+             <p> <strong>
+             ✓ Input Validation – </strong>Only valid grocery item names are accepted, preventing injection of invalid or potentially harmful data into the database.<br>
+             <strong>✓ Error Handling Enhancements – </strong>Database operations include try/except blocks to handle connection failures or query errors without crashing the application.<br>
+              <strong>✓ User Experience Improvements –</strong> Error messages are clear and informative, helping users correct mistakes without compromising data integrity.<br>
+              </p>
+
+            <h2>Reflection</h2>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;This enhancement significantly changed the internal workings of the Corner Grocer application while keeping the user interface consistent with earlier versions. Moving the data into a SQLite database required rethinking how the program reads, stores, and retrieves information. One of the main lessons learned during the process was the importance of separating business logic from database operations, which makes the program more modular and easier to maintain. I also learned the value of user feedback in database-driven applications—providing clear connection messages, success confirmations, and error outputs makes the system feel more reliable and professional to the end user.</p>
+
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;The biggest challenge was ensuring backward compatibility while shifting the program from file-based data storage to a persistent database. This required carefully mapping the existing data flow to new database operations and making sure that all existing features still worked exactly as they did before. Error handling was another important focus; the program now gives clear error messages when the database cannot be connected to or when a file is missing, which would have been silent failures in earlier versions. Overall, this enhancement strengthened the application’s reliability, maintainability, and professional quality, making it a stronger example of my abilities in database integration and software design.</p>
+              <br>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Minesweeper (unchanged layout) -->
+    <div class="window minesweeper windows-box-shadow">
+      <div class="header">
+        <label for="windows-minesweeper-input-on-top">Minesweeper</label>
+        <div class="header-buttons">
+          <label for="windows-minesweeper-input-min" class="minimize windows-box-shadow"></label>
+          <label for="windows-minesweeper-input-max" class="maximize windows-box-shadow"></label>
+          <label for="windows-minesweeper-input" class="close windows-box-shadow">X</label>
+        </div>
+      </div>
+      <div class="options line">
+        <div class="item">Game</div>
+        <div class="item">Help</div>
+      </div>
+      <!-- radio grid... (kept as in your original) -->
+      <input type="radio" name="data-id-1-1" id="data-id-1-1" class="group"><input type="radio" name="data-id-2-1" id="data-id-2-1" class="group"><input type="radio" name="data-id-3-1" id="data-id-3-1" class="group"><input type="radio" name="data-id-4-1" id="data-id-4-1" class="group"><input type="radio" name="data-id-5-1" id="data-id-5-1"><input class="mine" type="radio" name="data-id-6-1" id="data-id-6-1"><input type="radio" name="data-id-7-1" id="data-id-7-1"><input type="radio" name="data-id-8-1" id="data-id-8-1">
+      <input type="radio" name="data-id-1-2" id="data-id-1-2"><input type="radio" name="data-id-2-2" id="data-id-2-2"><input type="radio" name="data-id-3-2" id="data-id-3-2"><input type="radio" name="data-id-4-2" id="data-id-4-2"><input type="radio" name="data-id-5-2" id="data-id-5-2"><input type="radio" name="data-id-6-2" id="data-id-6-2"><input type="radio" name="data-id-7-2" id="data-id-7-2"><input type="radio" name="data-id-8-2" id="data-id-8-2">
+      <input type="radio" name="data-id-1-3" id="data-id-1-3"><input type="radio" name="data-id-2-3" id="data-id-2-3"><input type="radio" name="data-id-3-3" id="data-id-3-3"><input type="radio" name="data-id-4-3" id="data-id-4-3"><input type="radio" name="data-id-5-3" id="data-id-5-3"><input type="radio" name="data-id-6-3" id="data-id-6-3"><input type="radio" name="data-id-7-3" id="data-id-7-3"><input type="radio" name="data-id-8-3" id="data-id-8-3">
+      <input type="radio" name="data-id-1-4" id="data-id-1-4"><input type="radio" name="data-id-2-4" id="data-id-2-4"><input class="mine" type="radio" name="data-id-3-4" id="data-id-3-4"><input type="radio" name="data-id-4-4" id="data-id-4-4"><input type="radio" name="data-id-5-4" id="data-id-5-4"><input type="radio" name="data-id-6-4" id="data-id-6-4"><input class="mine" type="radio" name="data-id-7-4" id="data-id-7-4"><input type="radio" name="data-id-8-4" id="data-id-8-4">
+      <input class="mine" type="radio" name="data-id-1-5" id="data-id-1-5"><input type="radio" name="data-id-2-5" id="data-id-2-5"><input type="radio" name="data-id-3-5" id="data-id-3-5"><input type="radio" name="data-id-4-5" id="data-id-4-5"><input type="radio" name="data-id-5-5" id="data-id-5-5"><input type="radio" name="data-id-6-5" id="data-id-6-5"><input type="radio" name="data-id-7-5" id="data-id-7-5"><input type="radio" name="data-id-8-5" id="data-id-8-5">
+      <input type="radio" name="data-id-1-6" id="data-id-1-6"><input type="radio" name="data-id-2-6" id="data-id-2-6"><input type="radio" name="data-id-3-6" id="data-id-3-6"><input type="radio" name="data-id-4-6" id="data-id-4-6"><input class="mine" type="radio" name="data-id-5-6" id="data-id-5-6"><input type="radio" name="data-id-6-6" id="data-id-6-6"><input class="mine" type="radio" name="data-id-7-6" id="data-id-7-6"><input class="mine" type="radio" name="data-id-8-6" id="data-id-8-6">
+      <input type="radio" name="data-id-1-7" id="data-id-1-7"><input type="radio" name="data-id-2-7" id="data-id-2-7"><input type="radio" name="data-id-3-7" id="data-id-3-7"><input type="radio" name="data-id-4-7" id="data-id-4-7"><input type="radio" name="data-id-5-7" id="data-id-5-7"><input type="radio" name="data-id-6-7" id="data-id-6-7"><input type="radio" name="data-id-7-7" id="data-id-7-7"><input class="mine" type="radio" name="data-id-8-7" id="data-id-8-7">
+      <input type="radio" name="data-id-1-8" id="data-id-1-8"><input type="radio" name="data-id-2-8" id="data-id-2-8"><input class="mine" type="radio" name="data-id-3-8" id="data-id-3-8"><input class="mine" type="radio" name="data-id-4-8" id="data-id-4-8"><input type="radio" name="data-id-5-8" id="data-id-5-8"><input type="radio" name="data-id-6-8" id="data-id-6-8"><input type="radio" name="data-id-7-8" id="data-id-7-8"><input type="radio" name="data-id-8-8" id="data-id-8-8">
+      <div class="score">
+        <div class="scoreboard">
+          <div></div><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+        <div class="smiley-face"></div>
+        <div class="scoreboard">
+          <div></div><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+      </div>
+      <div class="content">
+        <label for="data-id-1-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
+        <label for="data-id-2-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
+        <label for="data-id-3-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
+        <label for="data-id-4-1" class="minesweeper-block" data-type="empty" data-group="1"></label>
+        <label for="data-id-5-1" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-6-1" class="minesweeper-block" data-type="mine"></label>
+        <label for="data-id-7-1" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-8-1" class="minesweeper-block end" data-type="empty" data-group="2"></label>
+        <label for="data-id-1-2" class="minesweeper-block" data-type="empty" data-group="1"></label>
+        <label for="data-id-2-2" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-3-2" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-4-2" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-5-2" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-6-2" class="minesweeper-block" data-type="2">2</label>
+        <label for="data-id-7-2" class="minesweeper-block" data-type="2">2</label>
+        <label for="data-id-8-2" class="minesweeper-block end" data-type="empty" data-group="2"></label>
+        <label for="data-id-1-3" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-2-3" class="minesweeper-block" data-type="mine"></label>
+        <label for="data-id-3-3" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-4-3" class="minesweeper-block" data-type="empty"></label>
+        <label for="data-id-5-3" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-6-3" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-7-3" class="minesweeper-block" data-type="2">2</label>
+        <label for="data-id-8-3" class="minesweeper-block end" data-type="3">3</label>
+        <label for="data-id-1-4" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-2-4" class="minesweeper-block" data-type="2">2</label>
+        <label for="data-id-3-4" class="minesweeper-block" data-type="mine"></label>
+        <label for="data-id-4-4" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-5-4" class="minesweeper-block" data-type="empty"></label>
+        <label for="data-id-6-4" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-7-4" class="minesweeper-block" data-type="mine"></label>
+        <label for="data-id-8-4" class="minesweeper-block end" data-type="1">1</label>
+        <label for="data-id-1-5" class="minesweeper-block" data-type="mine"></label>
+        <label for="data-id-2-5" class="minesweeper-block" data-type="2">2</label>
+        <label for="data-id-3-5" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-4-5" class="minesweeper-block" data-type="2">2</label>
+        <label for="data-id-5-5" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-6-5" class="minesweeper-block" data-type="2">2</label>
+        <label for="data-id-7-5" class="minesweeper-block" data-type="3">3</label>
+        <label for="data-id-8-5" class="minesweeper-block end" data-type="3">3</label>
+        <label for="data-id-1-6" class="minesweeper-block" data-type="empty" data-group="3"></label>
+        <label for="data-id-2-6" class="minesweeper-block" data-type="empty" data-group="3"></label>
+        <label for="data-id-3-6" class="minesweeper-block" data-type="empty" data-group="3"></label>
+        <label for="data-id-4-6" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-5-6" class="minesweeper-block" data-type="mine"></label>
+        <label for="data-id-6-6" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-7-6" class="minesweeper-block" data-type="mine"></label>
+        <label for="data-id-8-6" class="minesweeper-block end" data-type="mine"></label>
+        <label for="data-id-1-7" class="minesweeper-block" data-type="empty" data-group="3"></label>
+        <label for="data-id-2-7" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-3-7" class="minesweeper-block" data-type="2">2</label>
+        <label for="data-id-4-7" class="minesweeper-block" data-type="3">3</label>
+        <label for="data-id-5-7" class="minesweeper-block" data-type="2">2</label>
+        <label for="data-id-6-7" class="minesweeper-block" data-type="2">2</label>
+        <label for="data-id-7-7" class="minesweeper-block" data-type="3">3</label>
+        <label for="data-id-8-7" class="minesweeper-block end" data-type="mine"></label>
+        <label for="data-id-1-8" class="minesweeper-block" data-type="empty" data-group="3"></label>
+        <label for="data-id-2-8" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-3-8" class="minesweeper-block" data-type="mine"></label>
+        <label for="data-id-4-8" class="minesweeper-block" data-type="mine"></label>
+        <label for="data-id-5-8" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-6-8" class="minesweeper-block" data-type="empty"></label>
+        <label for="data-id-7-8" class="minesweeper-block" data-type="1">1</label>
+        <label for="data-id-8-8" class="minesweeper-block end" data-type="1">1</label>
+      </div>
+    </div>
+
+  </div> <!-- /#all-windows -->
+
+  <!-- Start bar -->
+  <div id="start-bar">
+    <div id="start-button-items">
+      <label id="start-button" class="windows-box-shadow" for="start-button-input"></label>
+      <div id="items">
+        <label for="windows-ie-input-min" class="ie-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="internet-explorer" alt="Internet Explorer"/></span><span>Help Center</span></label>
+        <label for="windows-notepad-input-min" class="notepad-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="notepad" alt="Notepad"/></span><span>Notepad</span></label>
+        <label for="windows-documents-input-min" class="documents-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="documents" alt="Documents"/></span><span>Documents</span></label>
+        <label for="windows-update-input-min" class="update-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="winUpdate" alt="Update Windows"/></span><span>Windows Update</span></label>
+        <label for="windows-trash-input-min" class="trash-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="recycleBin" alt="Recycle Bin"/></span><span>Recycle Bin</span></label>
+        <label for="windows-minesweeper-input-min" class="minesweeper-tab tab windows-box-shadow"><span><img class="icon" data-taskbar-icon="minesweeper" alt="Minesweeper"/></span><span>Minesweeper</span></label>
+      </div>
+    </div>
+
+    <div id="start-menu" class="windows-box-shadow">
+      <div id="windows-start-menu-blue">Windows<span>98</span></div>
+      <ul>
+        <li class="line welcome">
+          <label for="windows-welcome-input"><img class="icon" data-start-icon="info" alt="Welcome Message"/> Welcome Message </label>
+        </li>
+        <li class="programs">
+          <label><img class="icon" data-start2-icon="programs" alt="Programs"/> Programs</label>
+          <ul class="windows-box-shadow">
+            <li>
+              <label for="windows-ie-input"><img class="icon" data-help-icon="internet-explorer" alt="Internet Explorer"/><input type="checkbox"/> Internet Explorer</label>
+            </li>
+            <li>
+              <label for="windows-minesweeper-input"><img class="icon" data-help-icon="minesweeper" alt="Minesweeper"/> Minesweeper</label>
+            </li>
+            <li>
+              <label for="windows-notepad-input"><img class="icon" data-help-icon="notepad" alt="Notepad"/> Notepad</label>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <label for="windows-documents-input"><img class="icon" data-taskbar-icon="documents" alt="Documents"/> Documents</label>
+        </li>
+        <li class="line">
+          <label for="windows-help-input"><img class="icon" data-start-icon="help" alt="help"/> Help</label>
+        </li>
+        <li>
+          <label for="login-screen-input"><img class="icon" data-start-icon="logoff" alt="logoff"/> Log Off <span class="spiderman logout-prompt"> Spiderman...</span><span class="zark-muckerberg logout-prompt"> Zark Muckerberg...</span><span class="donald-trump logout-prompt"> Donald Trump...</span></label>
+        </li>
+        <li>
+          <label for="shutdown-screen-input"><img class="icon" data-start-icon="shutdown" alt="Shutdown"/> Shutdown</label>
+        </li>
+      </ul>
+    </div>
+
+    <div id="time-options"></div>
+  </div>
 </form>
+
 <script src="icons.js"></script>
 
 <script>
@@ -1056,8 +1229,5 @@
   });
 })();
 </script>
-
-
 </body>
 </html>
-
